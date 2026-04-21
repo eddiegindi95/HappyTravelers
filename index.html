@@ -13,191 +13,92 @@
 
     /* ─── HEADER ─── */
     .header {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      padding: 0 40px;
-      height: 80px;
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-      position: relative;
-      z-index: 300;
+      display: flex; align-items: center; gap: 24px;
+      padding: 0 40px; height: 80px;
+      background: #fff; border-bottom: 1px solid #e8e8e8;
+      position: relative; z-index: 300;
     }
     .logo-img {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #f0f0f0;
-      border: 2px solid #ddd;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 600;
-      color: #bbb;
-      text-align: center;
-      flex-shrink: 0;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #f0f0f0; border: 2px solid #ddd; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 600; color: #bbb; text-align: center; flex-shrink: 0;
     }
     .logo-img img { width: 100%; height: 100%; object-fit: cover; }
-    /* REPLACE LOGO: remove the "LOGO" text and add: <img src="images/logo.png" alt="Happy Travelers"> */
-
-    .phone {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #555;
-      white-space: nowrap;
-    }
+    .phone { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; color: #555; white-space: nowrap; }
     .searchbar {
-      flex: 1;
-      max-width: 600px;
-      display: flex;
-      border: 1px solid #d0d0d0;
-      border-radius: 3px;
-      overflow: hidden;
+      flex: 1; max-width: 600px; display: flex;
+      border: 1px solid #d0d0d0; border-radius: 3px; overflow: hidden;
     }
     .searchbar select {
-      border: none;
-      border-right: 1px solid #d0d0d0;
-      background: #f5f5f5;
-      padding: 0 12px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      color: #444;
-      cursor: pointer;
-      outline: none;
-      min-width: 120px;
+      border: none; border-right: 1px solid #d0d0d0; background: #f5f5f5;
+      padding: 0 12px; font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 500; color: #444; cursor: pointer; outline: none; min-width: 120px;
     }
     .searchbar input {
-      flex: 1;
-      border: none;
-      padding: 0 16px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      color: #222;
-      outline: none;
+      flex: 1; border: none; padding: 0 16px;
+      font-family: 'Montserrat', sans-serif; font-size: 13px; color: #222; outline: none;
     }
     .searchbar input::placeholder { color: #aaa; }
     .search-go {
-      background: none;
-      border: none;
-      padding: 0 18px;
-      cursor: pointer;
-      color: #c8102e;
-      display: flex;
-      align-items: center;
+      background: none; border: none; padding: 0 18px; cursor: pointer;
+      color: #c8102e; display: flex; align-items: center;
     }
-    .hdr-right {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-left: auto;
-      flex-shrink: 0;
-    }
+    .hdr-right { display: flex; align-items: center; gap: 18px; margin-left: auto; flex-shrink: 0; }
     .hdr-link {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #333;
-      transition: color 0.15s;
-      cursor: pointer;
-      white-space: nowrap;
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: #333;
+      transition: color 0.15s; cursor: pointer; white-space: nowrap;
     }
     .hdr-link:hover { color: #1a6fc4; }
     .hdr-divider { width: 1px; height: 18px; background: #e0e0e0; }
     .cart-wrap { position: relative; }
     .cart-count {
-      position: absolute;
-      top: -7px; right: -10px;
-      background: #c8102e;
-      color: #fff;
-      border-radius: 10px;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 1px 5px;
-      line-height: 1.5;
+      position: absolute; top: -7px; right: -10px;
+      background: #c8102e; color: #fff; border-radius: 10px;
+      font-size: 10px; font-weight: 700; padding: 1px 5px; line-height: 1.5;
     }
 
     /* ─── NAV BAR ─── */
     .nav-bar {
-      background: #fff;
-      border-bottom: 1px solid #e0e0e0;
-      position: sticky;
-      top: 0;
-      z-index: 200;
+      background: #fff; border-bottom: 1px solid #e0e0e0;
+      position: sticky; top: 0; z-index: 200;
     }
     .nav-inner {
-      display: flex;
-      padding: 0 40px;
-      overflow-x: auto;
-      scrollbar-width: none;
+      display: flex; padding: 0 40px;
+      overflow-x: auto; scrollbar-width: none;
     }
     .nav-inner::-webkit-scrollbar { display: none; }
-
     .nav-item { position: relative; flex-shrink: 0; }
     .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 14px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: #333;
-      white-space: nowrap;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      user-select: none;
-      transition: color 0.15s, border-color 0.15s;
+      display: flex; align-items: center; gap: 4px;
+      padding: 14px 14px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      color: #333; white-space: nowrap;
+      border-bottom: 2px solid transparent; cursor: pointer;
+      user-select: none; transition: color 0.15s, border-color 0.15s;
     }
-    .nav-link:hover, .nav-link.open { color: #1a6fc4; border-bottom-color: #1a6fc4; }
+    .nav-link:hover, .nav-link.active { color: #1a6fc4; border-bottom-color: #1a6fc4; }
     .nav-link.featured { color: #c8102e; font-weight: 700; }
-    .nav-link.featured:hover { color: #a50d25; border-bottom-color: #c8102e; }
+    .nav-link.featured:hover, .nav-link.featured.active { color: #a50d25; border-bottom-color: #c8102e; }
     .caret { font-size: 8px; margin-top: 1px; }
 
-    /* ─── DROPDOWNS (CSS hover — reliable everywhere) ─── */
+    /* ─── DROPDOWNS ─── */
     .dd {
-      visibility: hidden;
-      opacity: 0;
-      pointer-events: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      border-top: 2px solid #1a6fc4;
-      min-width: 200px;
+      visibility: hidden; opacity: 0; pointer-events: none;
+      position: absolute; top: 100%; left: 0;
+      background: #fff; border: 1px solid #e0e0e0;
+      border-top: 2px solid #1a6fc4; min-width: 200px;
       box-shadow: 0 10px 28px rgba(0,0,0,0.1);
-      z-index: 999;
-      padding: 6px 0;
+      z-index: 999; padding: 6px 0;
       transition: opacity 0.15s, visibility 0.15s;
     }
-    .dd.wide {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-width: 360px;
-    }
-    /* Show on hover — both trigger AND dropdown stay open as mouse moves between them */
-    .nav-item:hover > .dd {
-      visibility: visible;
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .dd.wide { display: grid; grid-template-columns: 1fr 1fr; min-width: 360px; }
+    .nav-item:hover > .dd { visibility: visible; opacity: 1; pointer-events: auto; }
     .dd a {
-      display: block;
-      padding: 10px 20px;
-      font-size: 11.5px;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      color: #333;
-      border-bottom: 1px solid #f5f5f5;
+      display: block; padding: 10px 20px;
+      font-size: 11.5px; font-weight: 500; letter-spacing: 0.3px;
+      color: #333; border-bottom: 1px solid #f5f5f5;
       transition: background 0.12s, color 0.12s, padding-left 0.12s;
     }
     .dd a:last-child { border-bottom: none; }
@@ -208,190 +109,44 @@
 
     /* ─── LEFT SIDEBAR ─── */
     .sidebar {
-      width: 215px;
-      min-width: 215px;
-      background: #f8fafb;
-      border-right: 1px solid #dde4ec;
+      width: 215px; min-width: 215px;
+      background: #f8fafb; border-right: 1px solid #dde4ec;
       padding: 22px 0 60px;
-      min-height: calc(100vh - 120px);
-      flex-shrink: 0;
+      min-height: calc(100vh - 120px); flex-shrink: 0;
     }
-    .sb-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #aab0ba;
-      padding: 0 18px 12px;
-    }
-    .sb-group { }
+    .sb-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #aab0ba; padding: 0 18px 12px; }
     .sb-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 18px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      color: #1a2a3a;
-      cursor: pointer;
-      border-left: 3px solid transparent;
-      transition: background 0.15s, border-color 0.15s;
-      user-select: none;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 18px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.3px; text-transform: uppercase; color: #1a2a3a;
+      cursor: pointer; border-left: 3px solid transparent;
+      transition: background 0.15s, border-color 0.15s; user-select: none;
     }
     .sb-head:hover { background: #edf1f6; }
     .sb-head.open { color: #1a6fc4; border-left-color: #1a6fc4; background: #f0f5ff; }
     .sb-arrow { font-size: 9px; color: #aab; transition: transform 0.2s; }
     .sb-arrow.rotated { transform: rotate(90deg); }
-    .sb-children {
-      display: none;
-      background: #fff;
-      border-top: 1px solid #e8edf2;
-      border-bottom: 1px solid #e8edf2;
-    }
+    .sb-children { display: none; background: #fff; border-top: 1px solid #e8edf2; border-bottom: 1px solid #e8edf2; }
     .sb-children.open { display: block; }
     .sb-children a {
-      display: block;
-      padding: 9px 18px 9px 26px;
-      font-size: 12px;
-      font-weight: 500;
-      color: #4a6070;
+      display: block; padding: 9px 18px 9px 26px;
+      font-size: 12px; font-weight: 500; color: #4a6070;
       border-bottom: 1px solid #f0f4f8;
       transition: background 0.12s, color 0.12s, padding-left 0.12s;
     }
     .sb-children a:last-child { border-bottom: none; }
-    .sb-children a:hover { background: #f0f5ff; color: #1a6fc4; padding-left: 30px; }
+    .sb-children a:hover, .sb-children a.active { background: #f0f5ff; color: #1a6fc4; padding-left: 30px; }
     .sb-divider { height: 1px; background: #dde4ec; margin: 8px 0; }
     .sb-plain {
-      display: block;
-      padding: 10px 18px;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      color: #1a2a3a;
+      display: block; padding: 10px 18px;
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.3px; color: #1a2a3a;
       border-left: 3px solid transparent;
       transition: background 0.15s, border-color 0.15s;
     }
-    .sb-plain:hover { background: #edf1f6; border-left-color: #1a6fc4; color: #1a6fc4; }
+    .sb-plain:hover, .sb-plain.active { background: #edf1f6; border-left-color: #1a6fc4; color: #1a6fc4; }
     .sb-plain.featured { color: #c8102e; }
-
-    /* ─── ADD TO CART BUTTON ─── */
-    .add-btn {
-      display: block;
-      width: 100%;
-      margin-top: 10px;
-      padding: 9px 0;
-      background: #0a2540;
-      color: #fff;
-      border: none;
-      border-radius: 2px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .add-btn:hover { background: #1a6fc4; }
-    .add-btn:disabled { background: #aaa; cursor: default; }
-
-    /* ─── CART DRAWER ─── */
-    .cart-overlay {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.4);
-      z-index: 9000;
-    }
-    .cart-overlay.open { display: block; }
-    .cart-drawer {
-      position: fixed;
-      top: 0; right: -420px; bottom: 0;
-      width: 400px;
-      background: #fff;
-      z-index: 9001;
-      display: flex;
-      flex-direction: column;
-      box-shadow: -4px 0 32px rgba(0,0,0,0.15);
-      transition: right 0.3s ease;
-    }
-    .cart-drawer.open { right: 0; }
-    .cart-drawer-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 24px;
-      border-bottom: 1px solid #eee;
-    }
-    .cart-drawer-head h3 {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .cart-close {
-      background: none;
-      border: none;
-      font-size: 22px;
-      cursor: pointer;
-      color: #666;
-      line-height: 1;
-      padding: 0 4px;
-    }
-    .cart-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px 24px;
-    }
-    .cart-empty {
-      text-align: center;
-      padding: 60px 20px;
-      font-size: 13px;
-      color: #aaa;
-      font-weight: 500;
-    }
-    .cart-item {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 14px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .cart-item img { width: 64px; height: 64px; object-fit: contain; border: 1px solid #eee; border-radius: 3px; }
-    .cart-item-info { flex: 1; }
-    .cart-item-name { font-size: 12.5px; font-weight: 600; color: #111; margin-bottom: 4px; }
-    .cart-item-price { font-size: 13px; font-weight: 700; color: #c8102e; }
-    .cart-item-qty { font-size: 11px; color: #888; margin-top: 3px; }
-    .cart-footer {
-      padding: 20px 24px;
-      border-top: 1px solid #eee;
-    }
-    .cart-subtotal {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .cart-checkout-btn {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      background: #c8102e;
-      color: #fff;
-      border: none;
-      border-radius: 2px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .cart-checkout-btn:hover { background: #a50d25; }
+    .sb-plain.featured:hover { color: #a50d25; }
 
     /* ─── MAIN CONTENT ─── */
     .main { flex: 1; overflow: hidden; }
@@ -400,337 +155,169 @@
     .hero {
       position: relative;
       background: linear-gradient(110deg, #eef4fb 0%, #e8f0fa 55%, #f5eeee 100%);
-      min-height: 400px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
+      min-height: 400px; display: flex; align-items: center; overflow: hidden;
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 64px 56px;
-      max-width: 520px;
-    }
-    .hero-tag {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: #1a6fc4;
-      margin-bottom: 14px;
-    }
-    .hero-content h1 {
-      font-size: 48px;
-      font-weight: 800;
-      line-height: 1.07;
-      color: #111;
-      letter-spacing: -0.5px;
-    }
+    .hero-content { position: relative; z-index: 2; padding: 64px 56px; max-width: 520px; }
+    .hero-tag { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #1a6fc4; margin-bottom: 14px; }
+    .hero-content h1 { font-size: 48px; font-weight: 800; line-height: 1.07; color: #111; letter-spacing: -0.5px; }
     .hero-content h1 span { color: #c8102e; }
-    .hero-content p {
-      font-size: 14px;
-      font-weight: 400;
-      color: #556;
-      line-height: 1.7;
-      margin: 16px 0 28px;
-    }
+    .hero-content p { font-size: 14px; font-weight: 400; color: #556; line-height: 1.7; margin: 16px 0 28px; }
     .hero-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #1a6fc4;
-      color: #fff;
-      padding: 13px 28px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      border-radius: 2px;
-      transition: background 0.2s;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1a6fc4; color: #fff; padding: 13px 28px;
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      border: none; cursor: pointer; border-radius: 2px; transition: background 0.2s;
     }
     .hero-btn:hover { background: #155fa0; }
     .hero-img-side {
-      position: absolute;
-      right: 0; top: 0; bottom: 0;
-      width: 42%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.02);
+      position: absolute; right: 0; top: 0; bottom: 0; width: 45%;
+      overflow: hidden;
     }
-    .hero-img-side .img-ph {
-      width: 220px;
-      height: 280px;
-      background: rgba(255,255,255,0.65);
-      border: 1.5px dashed #ccc;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 600;
-      color: #bbb;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1.6;
-      padding: 20px;
-    }
+    .hero-img-side img { width: 100%; height: 100%; object-fit: cover; }
 
     /* ─── SECTION ─── */
     .section { padding: 48px 40px; }
-    .section-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 28px;
-    }
+    .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
     .section-head h2 {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #111;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #111;
+      display: flex; align-items: center; gap: 10px;
     }
-    .section-head h2::before {
-      content: '';
-      width: 3px;
-      height: 15px;
-      background: #1a6fc4;
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-    .section-head a {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: #1a6fc4;
-      border-bottom: 1px solid #1a6fc4;
-      padding-bottom: 1px;
-    }
+    .section-head h2::before { content: ''; width: 3px; height: 15px; background: #1a6fc4; border-radius: 2px; flex-shrink: 0; }
+    .section-head a { font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #1a6fc4; border-bottom: 1px solid #1a6fc4; padding-bottom: 1px; }
 
     /* ─── CATEGORY CIRCLES ─── */
-    .cat-strip {
-      display: flex;
-      gap: 24px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: none;
-    }
+    .cat-strip { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
     .cat-strip::-webkit-scrollbar { display: none; }
-    .cat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-      text-decoration: none;
-    }
+    .cat-item { display: flex; flex-direction: column; align-items: center; gap: 12px; flex-shrink: 0; text-decoration: none; }
     .cat-circle {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      background: #f2f5f8;
-      border: 1.5px solid #dde6ee;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 112px; height: 112px; border-radius: 50%;
+      background: #f2f5f8; border: 1.5px solid #dde6ee; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
       transition: transform 0.22s, box-shadow 0.22s;
     }
     .cat-circle:hover { transform: scale(1.07); box-shadow: 0 6px 22px rgba(0,0,0,0.12); }
     .cat-circle img { width: 100%; height: 100%; object-fit: cover; }
-    .cat-ph {
-      font-size: 10px;
-      font-weight: 600;
-      color: #ccc;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      text-align: center;
-      padding: 8px;
-      line-height: 1.5;
-    }
-    /* REPLACE: inside .cat-circle add <img src="images/cat-NAME.jpg" alt="Category"> */
-    .cat-label {
-      font-size: 11.5px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      color: #222;
-      text-align: center;
-    }
+    .cat-circle-featured { background: #fff3e0; border-color: #f0c040; }
+    .cat-ph { font-size: 10px; font-weight: 600; color: #ccc; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; padding: 8px; line-height: 1.5; }
+    .cat-label { font-size: 11.5px; font-weight: 600; letter-spacing: 0.3px; color: #222; text-align: center; }
     .cat-divider { border: none; border-top: 1px solid #ebebeb; margin: 0 40px; }
 
     /* ─── PRODUCTS ─── */
-    .prod-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
+    .prod-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
     .prod-card {
-      border: 1px solid #eaeaea;
-      border-radius: 4px;
-      overflow: hidden;
-      background: #fff;
-      display: block;
-      text-decoration: none;
-      color: inherit;
+      border: 1px solid #eaeaea; border-radius: 4px; overflow: hidden;
+      background: #fff; display: flex; flex-direction: column;
       transition: box-shadow 0.2s, transform 0.2s;
     }
     .prod-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .prod-card-link { text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
     .prod-img {
-      aspect-ratio: 1;
-      background: #f7f8fa;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      aspect-ratio: 1; background: #f7f8fa; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
     }
     .prod-img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
-    /* REPLACE: inside .prod-img add <img src="images/PRODUCT.jpg" alt="Product Name"> */
-    .prod-img .img-ph {
-      font-size: 10px;
-      font-weight: 600;
-      color: #ccc;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      text-align: center;
-      padding: 16px;
-      line-height: 1.6;
+    .prod-img .img-ph { font-size: 10px; font-weight: 600; color: #ccc; text-transform: uppercase; letter-spacing: 0.4px; text-align: center; padding: 16px; line-height: 1.6; }
+    .prod-body { padding: 12px 14px 8px; flex: 1; }
+    .prod-actions { padding: 0 14px 14px; }
+    .prod-cat { font-size: 10px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #999; margin-bottom: 5px; }
+    .prod-name { font-size: 12.5px; font-weight: 600; color: #111; line-height: 1.4; margin-bottom: 8px; }
+    .prod-price { font-size: 15px; font-weight: 700; color: #c8102e; }
+
+    /* ─── ADD TO CART BUTTON ─── */
+    .add-btn {
+      display: block; width: 100%; margin-top: 10px;
+      padding: 9px 0; background: #0a2540; color: #fff;
+      border: none; border-radius: 2px;
+      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
     }
-    .prod-body { padding: 12px 14px 16px; }
-    .prod-cat {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 5px;
-    }
-    .prod-name {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #111;
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
-    .prod-price {
-      font-size: 15px;
-      font-weight: 700;
-      color: #c8102e;
-    }
+    .add-btn:hover { background: #1a6fc4; }
+    .add-btn:disabled { background: #aaa; cursor: default; }
 
     /* ─── PROMO BANNERS ─── */
-    .promo-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      padding: 0 40px 48px;
-    }
+    .promo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 0 40px 48px; }
     .promo-card {
-      background: #f4f7fb;
-      border-radius: 4px;
-      min-height: 240px;
-      padding: 42px 38px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      cursor: pointer;
-      transition: box-shadow 0.2s;
-      text-decoration: none;
-      color: inherit;
-      /* REPLACE BACKGROUND: add style="background-image:url('images/promo-1.jpg');background-size:cover;background-position:center;" */
+      background: #f4f7fb; border-radius: 4px; min-height: 240px;
+      padding: 42px 38px; display: flex; flex-direction: column; justify-content: center;
+      cursor: pointer; transition: box-shadow 0.2s; text-decoration: none; color: inherit;
     }
     .promo-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
-    .promo-tag {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #1a6fc4;
-      margin-bottom: 10px;
-    }
-    .promo-card h3 {
-      font-size: 34px;
-      font-weight: 800;
-      line-height: 1.08;
-      color: #111;
-      letter-spacing: -0.3px;
-    }
+    .promo-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #1a6fc4; margin-bottom: 10px; }
+    .promo-card h3 { font-size: 34px; font-weight: 800; line-height: 1.08; color: #111; letter-spacing: -0.3px; }
     .promo-card h3 span { color: #c8102e; }
-    .promo-card p {
-      font-size: 13px;
-      font-weight: 400;
-      color: #666;
-      margin: 10px 0 22px;
-      line-height: 1.6;
-    }
-    .promo-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #111;
-      border-bottom: 2px solid #c8102e;
-      padding-bottom: 2px;
-      width: fit-content;
-    }
+    .promo-card p { font-size: 13px; font-weight: 400; color: #666; margin: 10px 0 22px; line-height: 1.6; }
+    .promo-link { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #111; border-bottom: 2px solid #c8102e; padding-bottom: 2px; width: fit-content; }
 
     /* ─── POPULAR ─── */
-    .pop-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-    .pop-card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer;
-    }
+    .pop-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .pop-card { display: block; text-decoration: none; color: inherit; cursor: pointer; }
     .pop-img {
-      aspect-ratio: 1;
-      background: #f7f8fa;
-      border-radius: 4px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-      transition: box-shadow 0.2s;
+      aspect-ratio: 1; background: #f7f8fa; border-radius: 4px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px; transition: box-shadow 0.2s;
     }
     .pop-card:hover .pop-img { box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
     .pop-img img { width: 100%; height: 100%; object-fit: contain; padding: 14px; }
 
+    /* ─── COLLECTION PAGE ─── */
+    .collection-page { padding: 40px; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #888; margin-bottom: 24px; font-weight: 500; }
+    .breadcrumb a { color: #1a6fc4; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: #ccc; }
+    .load-more-btn {
+      padding: 12px 36px; background: none; border: 2px solid #0a2540;
+      color: #0a2540; font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; cursor: pointer; border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .load-more-btn:hover { background: #0a2540; color: #fff; }
+    .loading-full, .empty-msg, .loading-msg {
+      grid-column: 1 / -1; text-align: center; padding: 60px 20px;
+      font-size: 13px; color: #bbb; font-weight: 600; letter-spacing: 0.5px;
+    }
+    .empty-msg a { color: #1a6fc4; }
+
+    /* ─── CART DRAWER ─── */
+    .cart-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 9000; }
+    .cart-overlay.open { display: block; }
+    .cart-drawer {
+      position: fixed; top: 0; right: -420px; bottom: 0; width: 400px;
+      background: #fff; z-index: 9001; display: flex; flex-direction: column;
+      box-shadow: -4px 0 32px rgba(0,0,0,0.15); transition: right 0.3s ease;
+    }
+    .cart-drawer.open { right: 0; }
+    .cart-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid #eee; }
+    .cart-drawer-head h3 { font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+    .cart-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #666; line-height: 1; padding: 0 4px; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+    .cart-empty { text-align: center; padding: 60px 20px; font-size: 13px; color: #aaa; font-weight: 500; }
+    .cart-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
+    .cart-item img { width: 64px; height: 64px; object-fit: contain; border: 1px solid #eee; border-radius: 3px; }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 12.5px; font-weight: 600; color: #111; margin-bottom: 4px; }
+    .cart-item-price { font-size: 13px; font-weight: 700; color: #c8102e; }
+    .cart-item-qty { font-size: 11px; color: #888; margin-top: 3px; }
+    .cart-footer { padding: 20px 24px; border-top: 1px solid #eee; }
+    .cart-subtotal { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 16px; }
+    .cart-checkout-btn {
+      display: block; width: 100%; padding: 14px;
+      background: #c8102e; color: #fff; border: none; border-radius: 2px;
+      font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+    .cart-checkout-btn:hover { background: #a50d25; }
+
     /* ─── FOOTER ─── */
     .footer { background: #0f1f30; color: #fff; padding: 56px 40px 26px; margin-top: 20px; }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      margin-bottom: 26px;
-    }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 26px; }
     .footer-brand { font-size: 15px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
     .footer-desc { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.4); line-height: 1.75; }
-    .footer h4 {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
+    .footer h4 { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px; }
     .footer ul { list-style: none; }
     .footer ul li { margin-bottom: 10px; }
     .footer ul li a { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.4); transition: color 0.15s; }
@@ -742,41 +329,34 @@
 
 <!-- ══ HEADER ══ -->
 <header class="header">
-  <a href="index.html">
-    <div class="logo-img">
-      LOGO
-      <!-- REPLACE WITH YOUR LOGO:
-      <img src="images/logo.png" alt="Happy Travelers"> -->
-    </div>
+  <a href="#" onclick="navigate('')">
+    <div class="logo-img">LOGO</div>
   </a>
-
   <div class="phone">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 13.92z"/></svg>
     (212) 000-0000
   </div>
-
   <div class="searchbar">
-    <select>
-      <option>All Categories</option>
-      <option>Apparel</option>
-      <option>Accessories</option>
-      <option>Christmas</option>
-      <option>Toys &amp; Collectibles</option>
-      <option>Kitchen &amp; Drinkware</option>
-      <option>MLB</option>
-      <option>Army</option>
-      <option>Hollywood</option>
-      <option>FDNY</option>
-      <option>NASA</option>
-      <option>NYPD</option>
-      <option>US Cities</option>
+    <select id="search-cat">
+      <option value="">All Categories</option>
+      <option value="apparel">Apparel</option>
+      <option value="accessories">Accessories</option>
+      <option value="christmas">Christmas</option>
+      <option value="toys-collectibles">Toys &amp; Collectibles</option>
+      <option value="kitchen-drinkware">Kitchen &amp; Drinkware</option>
+      <option value="mlb">MLB</option>
+      <option value="army">Army</option>
+      <option value="hollywood">Hollywood</option>
+      <option value="fdny">FDNY</option>
+      <option value="nasa">NASA</option>
+      <option value="nypd">NYPD</option>
+      <option value="us-cities">US Cities</option>
     </select>
-    <input type="text" placeholder="What are you looking for?" />
-    <button class="search-go">
+    <input type="text" id="search-input" placeholder="What are you looking for?" />
+    <button class="search-go" onclick="doSearch()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </button>
   </div>
-
   <div class="hdr-right">
     <a href="https://countrydreamshop.myshopify.com/account/login" target="_blank" class="hdr-link">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -787,7 +367,7 @@
     <div class="hdr-divider"></div>
     <a href="#" class="hdr-link cart-wrap" onclick="openCart(event)">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-      <span class="cart-count">0</span>
+      <span class="cart-count" id="cart-count-badge">0</span>
     </a>
   </div>
 </header>
@@ -797,114 +377,114 @@
   <div class="nav-inner">
 
     <div class="nav-item">
-      <a href="https://countrydreamshop.myshopify.com/collections/fifa-world-cup-2026" target="_blank" class="nav-link featured">⚽ FIFA World Cup 2026</a>
+      <a href="#collection/fifa-world-cup-2026" class="nav-link featured">⚽ FIFA World Cup 2026</a>
     </div>
 
     <div class="nav-item">
-      <span class="nav-link" data-dd="dd-cat">Shop by Category <span class="caret">▾</span></span>
-      <div class="dd" id="dd-cat">
-        <a href="https://countrydreamshop.myshopify.com/collections/apparel" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/accessories" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/christmas" target="_blank">Christmas</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/toys-collectibles" target="_blank">Toys &amp; Collectibles</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/kitchen-drinkware" target="_blank">Kitchen &amp; Drinkware</a>
+      <span class="nav-link">Shop by Category <span class="caret">▾</span></span>
+      <div class="dd">
+        <a href="#collection/apparel">Apparel</a>
+        <a href="#collection/accessories">Accessories</a>
+        <a href="#collection/christmas">Christmas</a>
+        <a href="#collection/toys-collectibles">Toys &amp; Collectibles</a>
+        <a href="#collection/kitchen-drinkware">Kitchen &amp; Drinkware</a>
       </div>
     </div>
 
     <div class="nav-item">
-      <span class="nav-link" data-dd="dd-mlb">MLB <span class="caret">▾</span></span>
-      <div class="dd wide" id="dd-mlb">
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Atlanta Braves</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">New York Mets</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Baltimore Orioles</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">New York Yankees</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Boston Red Sox</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Philadelphia Phillies</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Chicago Cubs</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Pittsburgh Pirates</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Chicago White Sox</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">San Diego Padres</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Cleveland Guardians</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">San Francisco Giants</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Colorado Rockies</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Seattle Mariners</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Detroit Tigers</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">St. Louis Cardinals</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Houston Astros</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Washington Nationals</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Los Angeles Dodgers</a>
+      <span class="nav-link">MLB <span class="caret">▾</span></span>
+      <div class="dd wide">
+        <a href="#collection/mlb">Atlanta Braves</a>
+        <a href="#collection/mlb">New York Mets</a>
+        <a href="#collection/mlb">Baltimore Orioles</a>
+        <a href="#collection/mlb">New York Yankees</a>
+        <a href="#collection/mlb">Boston Red Sox</a>
+        <a href="#collection/mlb">Philadelphia Phillies</a>
+        <a href="#collection/mlb">Chicago Cubs</a>
+        <a href="#collection/mlb">Pittsburgh Pirates</a>
+        <a href="#collection/mlb">Chicago White Sox</a>
+        <a href="#collection/mlb">San Diego Padres</a>
+        <a href="#collection/mlb">Cleveland Guardians</a>
+        <a href="#collection/mlb">San Francisco Giants</a>
+        <a href="#collection/mlb">Colorado Rockies</a>
+        <a href="#collection/mlb">Seattle Mariners</a>
+        <a href="#collection/mlb">Detroit Tigers</a>
+        <a href="#collection/mlb">St. Louis Cardinals</a>
+        <a href="#collection/mlb">Houston Astros</a>
+        <a href="#collection/mlb">Washington Nationals</a>
+        <a href="#collection/mlb">Los Angeles Dodgers</a>
       </div>
     </div>
 
     <div class="nav-item">
-      <span class="nav-link" data-dd="dd-army">Army <span class="caret">▾</span></span>
-      <div class="dd" id="dd-army">
-        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Toys &amp; Collectibles</a>
+      <span class="nav-link">Army <span class="caret">▾</span></span>
+      <div class="dd">
+        <a href="#collection/army">Accessories</a>
+        <a href="#collection/army">Apparel</a>
+        <a href="#collection/army">Kitchen &amp; Drinkware</a>
+        <a href="#collection/army">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="nav-item">
-      <span class="nav-link" data-dd="dd-hw">Hollywood <span class="caret">▾</span></span>
-      <div class="dd" id="dd-hw">
-        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Toys &amp; Collectibles</a>
+      <span class="nav-link">Hollywood <span class="caret">▾</span></span>
+      <div class="dd">
+        <a href="#collection/hollywood">Accessories</a>
+        <a href="#collection/hollywood">Apparel</a>
+        <a href="#collection/hollywood">Kitchen &amp; Drinkware</a>
+        <a href="#collection/hollywood">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="nav-item">
-      <span class="nav-link" data-dd="dd-fdny">FDNY <span class="caret">▾</span></span>
-      <div class="dd" id="dd-fdny">
-        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Toys &amp; Collectibles</a>
+      <span class="nav-link">FDNY <span class="caret">▾</span></span>
+      <div class="dd">
+        <a href="#collection/fdny">Accessories</a>
+        <a href="#collection/fdny">Apparel</a>
+        <a href="#collection/fdny">Kitchen &amp; Drinkware</a>
+        <a href="#collection/fdny">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="nav-item">
-      <span class="nav-link" data-dd="dd-nasa">NASA <span class="caret">▾</span></span>
-      <div class="dd" id="dd-nasa">
-        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Toys &amp; Collectibles</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Accessories</a>
+      <span class="nav-link">NASA <span class="caret">▾</span></span>
+      <div class="dd">
+        <a href="#collection/nasa">Apparel</a>
+        <a href="#collection/nasa">Toys &amp; Collectibles</a>
+        <a href="#collection/nasa">Kitchen &amp; Drinkware</a>
+        <a href="#collection/nasa">Accessories</a>
       </div>
     </div>
 
     <div class="nav-item">
-      <span class="nav-link" data-dd="dd-nypd">NYPD <span class="caret">▾</span></span>
-      <div class="dd" id="dd-nypd">
-        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Toys &amp; Collectibles</a>
+      <span class="nav-link">NYPD <span class="caret">▾</span></span>
+      <div class="dd">
+        <a href="#collection/nypd">Accessories</a>
+        <a href="#collection/nypd">Apparel</a>
+        <a href="#collection/nypd">Kitchen &amp; Drinkware</a>
+        <a href="#collection/nypd">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="nav-item">
-      <span class="nav-link" data-dd="dd-cities">US Cities <span class="caret">▾</span></span>
-      <div class="dd wide" id="dd-cities">
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">United States</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Texas</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">California</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Washington D.C.</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Florida</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Georgia</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Illinois</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Massachusetts</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Nevada</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">New York City</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Ohio</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Pennsylvania</a>
+      <span class="nav-link">US Cities <span class="caret">▾</span></span>
+      <div class="dd wide">
+        <a href="#collection/us-cities">United States</a>
+        <a href="#collection/us-cities">Texas</a>
+        <a href="#collection/us-cities">California</a>
+        <a href="#collection/us-cities">Washington D.C.</a>
+        <a href="#collection/us-cities">Florida</a>
+        <a href="#collection/us-cities">Georgia</a>
+        <a href="#collection/us-cities">Illinois</a>
+        <a href="#collection/us-cities">Massachusetts</a>
+        <a href="#collection/us-cities">Nevada</a>
+        <a href="#collection/us-cities">New York City</a>
+        <a href="#collection/us-cities">Ohio</a>
+        <a href="#collection/us-cities">Pennsylvania</a>
       </div>
     </div>
 
-    <div class="nav-item"><a href="https://countrydreamshop.myshopify.com/collections/all?sort_by=best-selling" target="_blank" class="nav-link">Best Sellers</a></div>
+    <div class="nav-item"><a href="#collection/all" class="nav-link">Best Sellers</a></div>
     <div class="nav-item"><a href="https://countrydreamshop.myshopify.com/pages/about-us" target="_blank" class="nav-link">About Us</a></div>
     <div class="nav-item"><a href="https://countrydreamshop.myshopify.com/pages/contact-us" target="_blank" class="nav-link">Contact Us</a></div>
 
@@ -919,214 +499,123 @@
     <div class="sb-label">Browse</div>
 
     <div class="sb-group">
-      <div class="sb-head" onclick="toggleSb(this)">
-        Shop by Category <span class="sb-arrow">▶</span>
-      </div>
+      <div class="sb-head" onclick="toggleSb(this)">Shop by Category <span class="sb-arrow">▶</span></div>
       <div class="sb-children">
-        <a href="https://countrydreamshop.myshopify.com/collections/apparel" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/accessories" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/christmas" target="_blank">Christmas</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/toys-collectibles" target="_blank">Toys &amp; Collectibles</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/kitchen-drinkware" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="#collection/apparel">Apparel</a>
+        <a href="#collection/accessories">Accessories</a>
+        <a href="#collection/christmas">Christmas</a>
+        <a href="#collection/toys-collectibles">Toys &amp; Collectibles</a>
+        <a href="#collection/kitchen-drinkware">Kitchen &amp; Drinkware</a>
       </div>
     </div>
 
     <div class="sb-divider"></div>
-
-    <a class="sb-plain featured" href="https://countrydreamshop.myshopify.com/collections/fifa-world-cup-2026" target="_blank">⚽ FIFA World Cup 2026</a>
+    <a class="sb-plain featured" href="#collection/fifa-world-cup-2026">⚽ FIFA World Cup 2026</a>
 
     <div class="sb-group">
-      <div class="sb-head" onclick="toggleSb(this)">
-        MLB <span class="sb-arrow">▶</span>
-      </div>
+      <div class="sb-head" onclick="toggleSb(this)">MLB <span class="sb-arrow">▶</span></div>
       <div class="sb-children">
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Atlanta Braves</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Baltimore Orioles</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Boston Red Sox</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Chicago Cubs</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Chicago White Sox</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Cleveland Guardians</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Colorado Rockies</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Detroit Tigers</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Houston Astros</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Los Angeles Dodgers</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">New York Mets</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">New York Yankees</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Philadelphia Phillies</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Pittsburgh Pirates</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">San Diego Padres</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">San Francisco Giants</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Seattle Mariners</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">St. Louis Cardinals</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Washington Nationals</a>
+        <a href="#collection/mlb">Atlanta Braves</a>
+        <a href="#collection/mlb">Baltimore Orioles</a>
+        <a href="#collection/mlb">Boston Red Sox</a>
+        <a href="#collection/mlb">Chicago Cubs</a>
+        <a href="#collection/mlb">Chicago White Sox</a>
+        <a href="#collection/mlb">Cleveland Guardians</a>
+        <a href="#collection/mlb">Colorado Rockies</a>
+        <a href="#collection/mlb">Detroit Tigers</a>
+        <a href="#collection/mlb">Houston Astros</a>
+        <a href="#collection/mlb">Los Angeles Dodgers</a>
+        <a href="#collection/mlb">New York Mets</a>
+        <a href="#collection/mlb">New York Yankees</a>
+        <a href="#collection/mlb">Philadelphia Phillies</a>
+        <a href="#collection/mlb">Pittsburgh Pirates</a>
+        <a href="#collection/mlb">San Diego Padres</a>
+        <a href="#collection/mlb">San Francisco Giants</a>
+        <a href="#collection/mlb">Seattle Mariners</a>
+        <a href="#collection/mlb">St. Louis Cardinals</a>
+        <a href="#collection/mlb">Washington Nationals</a>
       </div>
     </div>
 
     <div class="sb-group">
-      <div class="sb-head" onclick="toggleSb(this)">
-        Army <span class="sb-arrow">▶</span>
-      </div>
+      <div class="sb-head" onclick="toggleSb(this)">Army <span class="sb-arrow">▶</span></div>
       <div class="sb-children">
-        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Toys &amp; Collectibles</a>
+        <a href="#collection/army">Accessories</a>
+        <a href="#collection/army">Apparel</a>
+        <a href="#collection/army">Kitchen &amp; Drinkware</a>
+        <a href="#collection/army">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="sb-group">
-      <div class="sb-head" onclick="toggleSb(this)">
-        Hollywood <span class="sb-arrow">▶</span>
-      </div>
+      <div class="sb-head" onclick="toggleSb(this)">Hollywood <span class="sb-arrow">▶</span></div>
       <div class="sb-children">
-        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Toys &amp; Collectibles</a>
+        <a href="#collection/hollywood">Accessories</a>
+        <a href="#collection/hollywood">Apparel</a>
+        <a href="#collection/hollywood">Kitchen &amp; Drinkware</a>
+        <a href="#collection/hollywood">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="sb-group">
-      <div class="sb-head" onclick="toggleSb(this)">
-        FDNY <span class="sb-arrow">▶</span>
-      </div>
+      <div class="sb-head" onclick="toggleSb(this)">FDNY <span class="sb-arrow">▶</span></div>
       <div class="sb-children">
-        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Toys &amp; Collectibles</a>
+        <a href="#collection/fdny">Accessories</a>
+        <a href="#collection/fdny">Apparel</a>
+        <a href="#collection/fdny">Kitchen &amp; Drinkware</a>
+        <a href="#collection/fdny">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="sb-group">
-      <div class="sb-head" onclick="toggleSb(this)">
-        NASA <span class="sb-arrow">▶</span>
-      </div>
+      <div class="sb-head" onclick="toggleSb(this)">NASA <span class="sb-arrow">▶</span></div>
       <div class="sb-children">
-        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Toys &amp; Collectibles</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Accessories</a>
+        <a href="#collection/nasa">Apparel</a>
+        <a href="#collection/nasa">Toys &amp; Collectibles</a>
+        <a href="#collection/nasa">Kitchen &amp; Drinkware</a>
+        <a href="#collection/nasa">Accessories</a>
       </div>
     </div>
 
     <div class="sb-group">
-      <div class="sb-head" onclick="toggleSb(this)">
-        NYPD <span class="sb-arrow">▶</span>
-      </div>
+      <div class="sb-head" onclick="toggleSb(this)">NYPD <span class="sb-arrow">▶</span></div>
       <div class="sb-children">
-        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Accessories</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Apparel</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Kitchen &amp; Drinkware</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Toys &amp; Collectibles</a>
+        <a href="#collection/nypd">Accessories</a>
+        <a href="#collection/nypd">Apparel</a>
+        <a href="#collection/nypd">Kitchen &amp; Drinkware</a>
+        <a href="#collection/nypd">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="sb-group">
-      <div class="sb-head" onclick="toggleSb(this)">
-        US Cities <span class="sb-arrow">▶</span>
-      </div>
+      <div class="sb-head" onclick="toggleSb(this)">US Cities <span class="sb-arrow">▶</span></div>
       <div class="sb-children">
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">United States</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">California</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Florida</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Georgia</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Illinois</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Massachusetts</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Nevada</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">New York City</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Ohio</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Pennsylvania</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Texas</a>
-        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Washington D.C.</a>
+        <a href="#collection/us-cities">United States</a>
+        <a href="#collection/us-cities">California</a>
+        <a href="#collection/us-cities">Florida</a>
+        <a href="#collection/us-cities">Georgia</a>
+        <a href="#collection/us-cities">Illinois</a>
+        <a href="#collection/us-cities">Massachusetts</a>
+        <a href="#collection/us-cities">Nevada</a>
+        <a href="#collection/us-cities">New York City</a>
+        <a href="#collection/us-cities">Ohio</a>
+        <a href="#collection/us-cities">Pennsylvania</a>
+        <a href="#collection/us-cities">Texas</a>
+        <a href="#collection/us-cities">Washington D.C.</a>
       </div>
     </div>
 
     <div class="sb-divider"></div>
-    <a class="sb-plain" href="https://countrydreamshop.myshopify.com/collections/all?sort_by=best-selling" target="_blank">Best Sellers</a>
+    <a class="sb-plain" href="#collection/all">Best Sellers</a>
     <a class="sb-plain" href="https://countrydreamshop.myshopify.com/pages/about-us" target="_blank">About Us</a>
     <a class="sb-plain" href="https://countrydreamshop.myshopify.com/pages/contact-us" target="_blank">Contact Us</a>
   </aside>
 
-  <!-- MAIN -->
+  <!-- MAIN APP VIEW -->
   <main class="main">
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-content">
-        <div class="hero-tag">Official Licensed Products</div>
-        <h1>USA Souvenirs<br>&amp; <span>Merchandise</span></h1>
-        <p>MLB, FDNY, NYPD, NASA, Army, Hollywood and more. Quality products shipped fast.</p>
-        <a href="https://countrydreamshop.myshopify.com/collections/all" target="_blank" class="hero-btn">Shop Now &rarr;</a>
-      </div>
-      <div class="hero-img-side">
-        <img src="images/hero.jpg" alt="Happy Travelers Products" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-    </section>
-
-    <!-- SHOP BY CATEGORY -->
-    <section class="section">
-      <div class="section-head">
-        <h2>Shop by Category</h2>
-        <a href="https://countrydreamshop.myshopify.com/collections/all" target="_blank">View All</a>
-      </div>
-      <div class="cat-strip" id="cat-strip">
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/fifa-world-cup-2026" target="_blank"><div class="cat-circle" style="background:#fff3e0;border-color:#f0c040;"><div class="cat-ph" style="color:#c8102e;">⚽ FIFA<br>2026</div></div><span class="cat-label">FIFA 2026</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/apparel" target="_blank"><div class="cat-circle"><div class="cat-ph">Apparel</div></div><span class="cat-label">Apparel</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/accessories" target="_blank"><div class="cat-circle"><div class="cat-ph">Accessories</div></div><span class="cat-label">Accessories</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/christmas" target="_blank"><div class="cat-circle"><div class="cat-ph">Christmas</div></div><span class="cat-label">Christmas</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/toys-collectibles" target="_blank"><div class="cat-circle"><div class="cat-ph">Toys &amp; Collectibles</div></div><span class="cat-label">Toys &amp; Collectibles</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/kitchen-drinkware" target="_blank"><div class="cat-circle"><div class="cat-ph">Kitchen &amp; Drinkware</div></div><span class="cat-label">Kitchen &amp; Drinkware</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank"><div class="cat-circle"><div class="cat-ph">MLB</div></div><span class="cat-label">MLB</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/army" target="_blank"><div class="cat-circle"><div class="cat-ph">Army</div></div><span class="cat-label">Army</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank"><div class="cat-circle"><div class="cat-ph">Hollywood</div></div><span class="cat-label">Hollywood</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank"><div class="cat-circle"><div class="cat-ph">FDNY</div></div><span class="cat-label">FDNY</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank"><div class="cat-circle"><div class="cat-ph">NASA</div></div><span class="cat-label">NASA</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank"><div class="cat-circle"><div class="cat-ph">NYPD</div></div><span class="cat-label">NYPD</span></a>
-        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank"><div class="cat-circle"><div class="cat-ph">US Cities</div></div><span class="cat-label">US Cities</span></a>
-      </div>
-    </section>
-
-    <hr class="cat-divider">
-
-    <!-- FEATURED PRODUCTS -->
-    <section class="section">
-      <div class="section-head">
-        <h2>Featured Products</h2>
-        <a href="https://countrydreamshop.myshopify.com/collections/all" target="_blank">View All</a>
-      </div>
-      <div class="prod-grid" id="featured-grid">
-        <div class="prod-card" style="border:none;background:#f7f8fa;display:flex;align-items:center;justify-content:center;font-size:12px;color:#bbb;font-weight:600;letter-spacing:0.5px;">Loading products...</div>
-      </div>
-    </section>
-
-    <!-- PROMO BANNERS -->
-    <div class="promo-row">
-      <a class="promo-card" href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">
-        <div class="promo-tag">New Collection</div>
-        <h3><span>FDNY</span><br>Collection</h3>
-        <p>Officially licensed FDNY apparel, accessories &amp; gifts</p>
-        <span class="promo-link">Shop Now →</span>
-      </a>
-      <a class="promo-card" href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">
-        <div class="promo-tag">Travel &amp; City Gifts</div>
-        <h3><span>US Cities</span><br>Souvenirs</h3>
-        <p>New York, California, Florida &amp; more — all in one place</p>
-        <span class="promo-link">Shop Now →</span>
-      </a>
+    <div id="app-view">
+      <div style="padding:80px;text-align:center;color:#bbb;font-size:13px;font-weight:600;">Loading...</div>
     </div>
-
-    <!-- MOST POPULAR -->
-    <section class="section" style="padding-top:0">
-      <div class="section-head">
-        <h2>Most Popular</h2>
-        <a href="https://countrydreamshop.myshopify.com/collections/all?sort_by=best-selling" target="_blank">View All</a>
-      </div>
-      <div class="pop-grid" id="popular-grid">
-        <div style="grid-column:1/-1;text-align:center;font-size:12px;color:#bbb;font-weight:600;letter-spacing:0.5px;padding:40px;">Loading products...</div>
-      </div>
-    </section>
-
   </main>
 </div>
 
@@ -1159,23 +648,23 @@
     <div>
       <h4>Categories</h4>
       <ul>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/apparel" target="_blank">Apparel</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/accessories" target="_blank">Accessories</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/christmas" target="_blank">Christmas</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/toys-collectibles" target="_blank">Toys &amp; Collectibles</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/kitchen-drinkware" target="_blank">Kitchen &amp; Drinkware</a></li>
+        <li><a href="#collection/apparel">Apparel</a></li>
+        <li><a href="#collection/accessories">Accessories</a></li>
+        <li><a href="#collection/christmas">Christmas</a></li>
+        <li><a href="#collection/toys-collectibles">Toys &amp; Collectibles</a></li>
+        <li><a href="#collection/kitchen-drinkware">Kitchen &amp; Drinkware</a></li>
       </ul>
     </div>
     <div>
       <h4>Brands</h4>
       <ul>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">MLB</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Army</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Hollywood</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">FDNY</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">NASA</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">NYPD</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">US Cities</a></li>
+        <li><a href="#collection/mlb">MLB</a></li>
+        <li><a href="#collection/army">Army</a></li>
+        <li><a href="#collection/hollywood">Hollywood</a></li>
+        <li><a href="#collection/fdny">FDNY</a></li>
+        <li><a href="#collection/nasa">NASA</a></li>
+        <li><a href="#collection/nypd">NYPD</a></li>
+        <li><a href="#collection/us-cities">US Cities</a></li>
       </ul>
     </div>
     <div>
@@ -1193,283 +682,628 @@
 </footer>
 
 <script>
-  /* ── SIDEBAR ACCORDION ── */
-  function toggleSb(el) {
-    var children = el.nextElementSibling;
-    var arrow = el.querySelector('.sb-arrow');
-    var isOpen = children.classList.contains('open');
-    document.querySelectorAll('.sb-children').forEach(function(c) { c.classList.remove('open'); });
-    document.querySelectorAll('.sb-head').forEach(function(h) { h.classList.remove('open'); });
-    document.querySelectorAll('.sb-arrow').forEach(function(a) { a.classList.remove('rotated'); });
-    if (!isOpen) {
-      children.classList.add('open');
-      el.classList.add('open');
-      arrow.classList.add('rotated');
-    }
-  }
+'use strict';
 
-  /* ── SEARCH ── */
-  document.addEventListener('DOMContentLoaded', function() {
-    var searchBtn = document.querySelector('.search-go');
-    var searchInput = document.querySelector('.searchbar input');
-    var searchSelect = document.querySelector('.searchbar select');
-    function doSearch() {
-      var q = searchInput.value.trim();
-      if (!q) return;
-      var url = 'https://countrydreamshop.myshopify.com/search?q=' + encodeURIComponent(q);
-      window.open(url, '_blank');
-    }
-    if (searchBtn) searchBtn.addEventListener('click', doSearch);
-    if (searchInput) searchInput.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') doSearch();
+/* ══════════════════════════════════════════════════════
+   SHOPIFY CONFIG
+══════════════════════════════════════════════════════ */
+const SHOP_DOMAIN  = 'countrydreamshop.myshopify.com';
+const SHOP_TOKEN   = 'ee2398e9ca5ab23e274f02d5fd21f8a2';
+const SHOP_API_URL = 'https://' + SHOP_DOMAIN + '/api/2024-10/graphql.json';
+
+const COLLECTIONS = [
+  { handle: 'fifa-world-cup-2026', label: 'FIFA 2026',          emoji: '⚽', featured: true },
+  { handle: 'apparel',             label: 'Apparel',             emoji: '👕' },
+  { handle: 'accessories',         label: 'Accessories',         emoji: '🎒' },
+  { handle: 'christmas',           label: 'Christmas',           emoji: '🎄' },
+  { handle: 'toys-collectibles',   label: 'Toys & Collectibles', emoji: '🧸' },
+  { handle: 'kitchen-drinkware',   label: 'Kitchen & Drinkware', emoji: '☕' },
+  { handle: 'mlb',                 label: 'MLB',                 emoji: '⚾' },
+  { handle: 'army',                label: 'Army',                emoji: '🎖️' },
+  { handle: 'hollywood',           label: 'Hollywood',           emoji: '🎬' },
+  { handle: 'fdny',                label: 'FDNY',                emoji: '🚒' },
+  { handle: 'nasa',                label: 'NASA',                emoji: '🚀' },
+  { handle: 'nypd',                label: 'NYPD',                emoji: '👮' },
+  { handle: 'us-cities',           label: 'US Cities',           emoji: '🗽' }
+];
+
+/* ── State ── */
+const collectionImages = {};
+let cartId      = null;
+let cartCount   = 0;
+let cartLines   = [];
+let pageCursor  = null;
+let pageHandle  = null;
+
+/* ══════════════════════════════════════════════════════
+   SHOPIFY FETCH
+══════════════════════════════════════════════════════ */
+async function shopifyFetch(query, variables) {
+  try {
+    var res = await fetch(SHOP_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': SHOP_TOKEN
+      },
+      body: JSON.stringify({ query: query, variables: variables || {} })
     });
-  });
-
-  /* ══════════════════════════════════
-     SHOPIFY STOREFRONT API
-  ══════════════════════════════════ */
-  const SHOP_DOMAIN  = 'countrydreamshop.myshopify.com';
-  const SHOP_TOKEN   = 'ee2398e9ca5ab23e274f02d5fd21f8a2';
-  const SHOP_API_URL = 'https://' + SHOP_DOMAIN + '/api/2024-10/graphql.json';
-
-  /* Cart state */
-  var cartId    = null;
-  var cartCount = 0;
-  var cartLines = []; /* { title, price, currency, img, qty } */
-
-  async function shopifyFetch(query, variables) {
-    try {
-      var res = await fetch(SHOP_API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Shopify-Storefront-Access-Token': SHOP_TOKEN
-        },
-        body: JSON.stringify({ query: query, variables: variables || {} })
-      });
-      var json = await res.json();
-      return json.data;
-    } catch(e) {
-      console.error('Shopify API error:', e);
-      return null;
-    }
+    var json = await res.json();
+    if (json.errors) console.warn('GraphQL:', json.errors);
+    return json.data || null;
+  } catch (e) {
+    console.error('Shopify fetch error:', e);
+    return null;
   }
+}
 
-  /* ── Render product card ── */
-  function productCard(product) {
-    var price = parseFloat(product.priceRange.minVariantPrice.amount).toFixed(2);
-    var currency = product.priceRange.minVariantPrice.currencyCode;
-    var img = product.images.edges[0] ? product.images.edges[0].node.url : '';
-    var alt = product.images.edges[0] ? product.images.edges[0].node.altText || product.title : product.title;
-    var collection = product.collections.edges[0] ? product.collections.edges[0].node.title : '';
-    var url = 'https://' + SHOP_DOMAIN + '/products/' + product.handle;
-    var variantId = product.variants.edges[0].node.id;
-    var imgHtml = img
-      ? '<img src="' + img + '" alt="' + alt + '" style="width:100%;height:100%;object-fit:contain;padding:10px;">'
-      : '<div class="img-ph">' + product.title + '</div>';
-    return '<div class="prod-card">' +
-      '<a href="' + url + '" target="_blank" style="text-decoration:none;color:inherit;">' +
-        '<div class="prod-img">' + imgHtml + '</div>' +
-        '<div class="prod-body">' +
-          '<div class="prod-cat">' + collection + '</div>' +
-          '<div class="prod-name">' + product.title + '</div>' +
-          '<div class="prod-price">' + currency + ' $' + price + '</div>' +
-        '</div>' +
+/* ══════════════════════════════════════════════════════
+   ROUTER
+══════════════════════════════════════════════════════ */
+function router() {
+  window.scrollTo(0, 0);
+  var hash = location.hash.replace(/^#\/?/, '');
+
+  if (!hash || hash === 'home') {
+    renderHome();
+  } else if (hash.startsWith('collection/')) {
+    var handle = hash.replace('collection/', '');
+    renderCollection(handle);
+  } else if (hash.startsWith('search/')) {
+    var query = decodeURIComponent(hash.replace('search/', ''));
+    renderSearch(query);
+  } else {
+    renderHome();
+  }
+}
+
+function navigate(hash) {
+  location.hash = hash || '';
+}
+
+/* ══════════════════════════════════════════════════════
+   HOME VIEW
+══════════════════════════════════════════════════════ */
+function renderHome() {
+  var catHtml = COLLECTIONS.map(function(c) {
+    var img = collectionImages[c.handle]
+      ? '<img src="' + collectionImages[c.handle] + '" alt="' + c.label + '" style="width:100%;height:100%;object-fit:cover;">'
+      : '<div class="cat-ph">' + c.emoji + '</div>';
+    return '<a class="cat-item" href="#collection/' + c.handle + '">' +
+      '<div class="cat-circle' + (c.featured ? ' cat-circle-featured' : '') + '" id="circle-' + c.handle + '">' + img + '</div>' +
+      '<span class="cat-label">' + c.label + '</span>' +
+    '</a>';
+  }).join('');
+
+  var view = document.getElementById('app-view');
+  view.innerHTML =
+    /* HERO */
+    '<section class="hero">' +
+      '<div class="hero-content">' +
+        '<div class="hero-tag">Official Licensed Products</div>' +
+        '<h1>USA Souvenirs<br>&amp; <span>Merchandise</span></h1>' +
+        '<p>MLB, FDNY, NYPD, NASA, Army, Hollywood and more. Quality products shipped fast.</p>' +
+        '<a href="#collection/all" class="hero-btn">Shop Now &rarr;</a>' +
+      '</div>' +
+      '<div class="hero-img-side">' +
+        '<img src="images/hero.jpg" alt="Happy Travelers Products">' +
+      '</div>' +
+    '</section>' +
+
+    /* SHOP BY CATEGORY */
+    '<section class="section">' +
+      '<div class="section-head">' +
+        '<h2>Shop by Category</h2>' +
+        '<a href="#collection/all">View All</a>' +
+      '</div>' +
+      '<div class="cat-strip" id="cat-strip">' + catHtml + '</div>' +
+    '</section>' +
+    '<hr class="cat-divider">' +
+
+    /* FEATURED PRODUCTS */
+    '<section class="section">' +
+      '<div class="section-head">' +
+        '<h2>Featured Products</h2>' +
+        '<a href="#collection/all">View All</a>' +
+      '</div>' +
+      '<div class="prod-grid" id="featured-grid">' +
+        '<div class="loading-msg">Loading products...</div>' +
+      '</div>' +
+    '</section>' +
+
+    /* PROMO BANNERS */
+    '<div class="promo-row">' +
+      '<a class="promo-card" href="#collection/fdny">' +
+        '<div class="promo-tag">New Collection</div>' +
+        '<h3><span>FDNY</span><br>Collection</h3>' +
+        '<p>Officially licensed FDNY apparel, accessories &amp; gifts</p>' +
+        '<span class="promo-link">Shop Now \u2192</span>' +
       '</a>' +
-      '<div style="padding:0 14px 14px;">' +
-        '<button class="add-btn"' +
-          ' data-id="' + variantId + '"' +
-          ' data-title="' + product.title.replace(/"/g,'&quot;') + '"' +
-          ' data-price="' + price + '"' +
-          ' data-currency="' + currency + '"' +
-          ' data-img="' + img + '"' +
-          ' onclick="addToCart(this)">Add to Cart</button>' +
+      '<a class="promo-card" href="#collection/us-cities">' +
+        '<div class="promo-tag">Travel &amp; City Gifts</div>' +
+        '<h3><span>US Cities</span><br>Souvenirs</h3>' +
+        '<p>New York, California, Florida &amp; more \u2014 all in one place</p>' +
+        '<span class="promo-link">Shop Now \u2192</span>' +
+      '</a>' +
+    '</div>' +
+
+    /* MOST POPULAR */
+    '<section class="section" style="padding-top:0">' +
+      '<div class="section-head">' +
+        '<h2>Most Popular</h2>' +
+        '<a href="#collection/all">View All</a>' +
+      '</div>' +
+      '<div class="pop-grid" id="popular-grid">' +
+        '<div class="loading-msg" style="grid-column:1/-1;text-align:center;padding:40px;">Loading products...</div>' +
+      '</div>' +
+    '</section>';
+
+  loadFeatured();
+  loadPopular();
+}
+
+/* ══════════════════════════════════════════════════════
+   COLLECTION PAGE
+══════════════════════════════════════════════════════ */
+function renderCollection(handle) {
+  pageHandle = handle;
+  pageCursor = null;
+
+  var cfg   = COLLECTIONS.find(function(c) { return c.handle === handle; });
+  var label = cfg ? cfg.label : handle.replace(/-/g, ' ').replace(/\b\w/g, function(l) { return l.toUpperCase(); });
+  var emoji = cfg ? cfg.emoji : '';
+
+  var view = document.getElementById('app-view');
+  view.innerHTML =
+    '<div class="collection-page">' +
+      '<div class="breadcrumb">' +
+        '<a href="#" onclick="navigate(\'\')">Home</a>' +
+        '<span class="breadcrumb-sep">&rsaquo;</span>' +
+        '<span>' + label + '</span>' +
+      '</div>' +
+      '<div class="section-head" style="margin-bottom:24px;">' +
+        '<h2>' + (emoji ? emoji + ' ' : '') + label + '</h2>' +
+        '<span id="prod-count" style="font-size:12px;color:#888;font-weight:500;"></span>' +
+      '</div>' +
+      '<div class="prod-grid" id="coll-grid">' +
+        '<div class="loading-full">Loading products...</div>' +
+      '</div>' +
+      '<div id="load-more-wrap" style="text-align:center;padding:32px 0;display:none;">' +
+        '<button class="load-more-btn" onclick="loadMore()">Load More Products</button>' +
       '</div>' +
     '</div>';
+
+  fetchProducts(handle, null, false);
+}
+
+/* ── Fetch products for collection ── */
+async function fetchProducts(handle, cursor, append) {
+  var grid        = document.getElementById('coll-grid');
+  var loadMoreEl  = document.getElementById('load-more-wrap');
+  if (!grid) return;
+
+  var afterPart = cursor ? ', after: "' + cursor + '"' : '';
+  var q;
+
+  if (handle === 'all') {
+    /* All products — no specific collection */
+    q = '{ products(first: 12, sortKey: BEST_SELLING' + afterPart + ') {' +
+      ' edges { node {' +
+        ' title handle' +
+        ' priceRange { minVariantPrice { amount currencyCode } }' +
+        ' images(first:1) { edges { node { url altText } } }' +
+        ' collections(first:1) { edges { node { title } } }' +
+        ' variants(first:1) { edges { node { id } } }' +
+      ' } }' +
+      ' pageInfo { hasNextPage endCursor }' +
+    '} }';
+  } else {
+    q = '{ collectionByHandle(handle: "' + handle + '") {' +
+      ' title' +
+      ' products(first: 12, sortKey: BEST_SELLING' + afterPart + ') {' +
+        ' edges { node {' +
+          ' title handle' +
+          ' priceRange { minVariantPrice { amount currencyCode } }' +
+          ' images(first:1) { edges { node { url altText } } }' +
+          ' collections(first:1) { edges { node { title } } }' +
+          ' variants(first:1) { edges { node { id } } }' +
+        ' } }' +
+        ' pageInfo { hasNextPage endCursor }' +
+      ' }' +
+    '} }';
   }
 
-  /* ── Render popular card ── */
-  function popularCard(product) {
-    var price = parseFloat(product.priceRange.minVariantPrice.amount).toFixed(2);
-    var currency = product.priceRange.minVariantPrice.currencyCode;
-    var img = product.images.edges[0] ? product.images.edges[0].node.url : '';
-    var alt = product.images.edges[0] ? product.images.edges[0].node.altText || product.title : product.title;
-    var collection = product.collections.edges[0] ? product.collections.edges[0].node.title : '';
-    var url = 'https://' + SHOP_DOMAIN + '/products/' + product.handle;
-    var imgHtml = img
-      ? '<img src="' + img + '" alt="' + alt + '" style="width:100%;height:100%;object-fit:contain;padding:14px;">'
-      : '<div class="img-ph">' + product.title + '</div>';
-    return '<a class="pop-card" href="' + url + '" target="_blank">' +
-      '<div class="pop-img">' + imgHtml + '</div>' +
-      '<div class="prod-cat">' + collection + '</div>' +
-      '<div class="prod-name">' + product.title + '</div>' +
-      '<div class="prod-price">' + currency + ' $' + price + '</div>' +
-    '</a>';
-  }
+  var data = await shopifyFetch(q);
+  var products, pageInfo;
 
-  /* ── Load featured products ── */
-  async function loadFeatured() {
-    var q = '{ products(first:5, sortKey:BEST_SELLING) { edges { node {' +
-      'title handle' +
-      ' priceRange { minVariantPrice { amount currencyCode } }' +
-      ' images(first:1) { edges { node { url altText } } }' +
-      ' collections(first:1) { edges { node { title } } }' +
-      ' variants(first:1) { edges { node { id } } }' +
-    '} } } }';
-    var data = await shopifyFetch(q);
-    if (!data || !data.products) return;
-    var grid = document.getElementById('featured-grid');
-    if (!grid) return;
-    grid.innerHTML = data.products.edges.map(function(e) { return productCard(e.node); }).join('');
-  }
-
-  /* ── Load popular products ── */
-  async function loadPopular() {
-    var q = '{ products(first:4, sortKey:BEST_SELLING, reverse:false) { edges { node {' +
-      'title handle' +
-      ' priceRange { minVariantPrice { amount currencyCode } }' +
-      ' images(first:1) { edges { node { url altText } } }' +
-      ' collections(first:1) { edges { node { title } } }' +
-      ' variants(first:1) { edges { node { id } } }' +
-    '} } } }';
-    var data = await shopifyFetch(q);
-    if (!data || !data.products) return;
-    var grid = document.getElementById('popular-grid');
-    if (!grid) return;
-    grid.innerHTML = data.products.edges.map(function(e) { return popularCard(e.node); }).join('');
-  }
-
-  /* ── Cart: create cart ── */
-  async function createCart() {
-    var q = 'mutation { cartCreate { cart { id checkoutUrl } } }';
-    var data = await shopifyFetch(q);
-    if (data && data.cartCreate) {
-      cartId = data.cartCreate.cart.id;
-      localStorage.setItem('ht_cart_id', cartId);
-      localStorage.setItem('ht_checkout_url', data.cartCreate.cart.checkoutUrl);
-    }
-  }
-
-  /* ── Cart: add item ── */
-  async function addToCart(btn) {
-    var variantId = btn.getAttribute('data-id');
-    var title     = btn.getAttribute('data-title');
-    var price     = btn.getAttribute('data-price');
-    var currency  = btn.getAttribute('data-currency');
-    var img       = btn.getAttribute('data-img');
-
-    if (!cartId) await createCart();
-    btn.textContent = 'Adding...';
-    btn.disabled = true;
-
-    var q = 'mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {' +
-      'cartLinesAdd(cartId: $cartId, lines: $lines) {' +
-        'cart { id checkoutUrl totalQuantity' +
-          ' lines(first:50) { edges { node {' +
-            ' quantity' +
-            ' merchandise { ... on ProductVariant {' +
-              ' id title priceV2 { amount currencyCode }' +
-              ' product { title images(first:1) { edges { node { url } } } }' +
-            '} }' +
-          '} } }' +
-        '}' +
-      '}' +
-    '}';
-    var data = await shopifyFetch(q, { cartId: cartId, lines: [{ merchandiseId: variantId, quantity: 1 }] });
-
-    if (data && data.cartLinesAdd && data.cartLinesAdd.cart) {
-      var cart = data.cartLinesAdd.cart;
-      cartCount = cart.totalQuantity;
-      localStorage.setItem('ht_checkout_url', cart.checkoutUrl);
-      document.querySelector('.cart-count').textContent = cartCount;
-
-      /* Build cart lines from API response */
-      cartLines = cart.lines.edges.map(function(e) {
-        var n = e.node;
-        var merch = n.merchandise;
-        return {
-          qty: n.quantity,
-          title: merch.product.title,
-          variantTitle: merch.title !== 'Default Title' ? merch.title : '',
-          price: parseFloat(merch.priceV2.amount).toFixed(2),
-          currency: merch.priceV2.currencyCode,
-          img: merch.product.images.edges[0] ? merch.product.images.edges[0].node.url : ''
-        };
-      });
-
-      btn.textContent = '✓ Added!';
-      btn.style.background = '#2a7a40';
-      setTimeout(function() {
-        btn.textContent = 'Add to Cart';
-        btn.style.background = '';
-        btn.disabled = false;
-      }, 1800);
-
-      renderCartDrawer();
-      openCart();
-    } else {
-      btn.textContent = 'Add to Cart';
-      btn.disabled = false;
-    }
-  }
-
-  /* ── Cart Drawer ── */
-  function renderCartDrawer() {
-    var list = document.getElementById('cart-items-list');
-    var drawerCount = document.getElementById('drawer-count');
-    var subtotalEl  = document.getElementById('cart-subtotal-amount');
-    drawerCount.textContent = cartCount;
-
-    if (!cartLines.length) {
-      list.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add some products to get started!</div>';
-      subtotalEl.textContent = '$0.00';
+  if (handle === 'all') {
+    if (!data || !data.products) {
+      grid.innerHTML = '<div class="empty-msg">No products found. <a href="#" onclick="navigate(\'\')">Return home</a></div>';
       return;
     }
-
-    var total = 0;
-    list.innerHTML = cartLines.map(function(item) {
-      var lineTotal = (parseFloat(item.price) * item.qty);
-      total += lineTotal;
-      var imgHtml = item.img
-        ? '<img src="' + item.img + '" alt="' + item.title + '">'
-        : '<div style="width:64px;height:64px;background:#f5f5f5;border:1px solid #eee;border-radius:3px;"></div>';
-      return '<div class="cart-item">' +
-        imgHtml +
-        '<div class="cart-item-info">' +
-          '<div class="cart-item-name">' + item.title + (item.variantTitle ? ' – ' + item.variantTitle : '') + '</div>' +
-          '<div class="cart-item-price">' + item.currency + ' $' + parseFloat(item.price).toFixed(2) + '</div>' +
-          '<div class="cart-item-qty">Qty: ' + item.qty + '</div>' +
-        '</div>' +
-      '</div>';
-    }).join('');
-
-    subtotalEl.textContent = '$' + total.toFixed(2);
+    products = data.products.edges;
+    pageInfo  = data.products.pageInfo;
+  } else {
+    if (!data || !data.collectionByHandle) {
+      grid.innerHTML = '<div class="empty-msg">Collection not found. <a href="#" onclick="navigate(\'\')">Return home</a></div>';
+      return;
+    }
+    products = data.collectionByHandle.products.edges;
+    pageInfo  = data.collectionByHandle.products.pageInfo;
   }
 
-  function openCart(e) {
-    if (e) { e.preventDefault(); e.stopPropagation(); }
-    document.getElementById('cart-overlay').classList.add('open');
-    document.getElementById('cart-drawer').classList.add('open');
+  var cards = products.map(function(e) { return productCard(e.node); }).join('');
+
+  if (append) {
+    grid.innerHTML += cards;
+  } else {
+    grid.innerHTML = cards || '<div class="empty-msg">No products in this collection yet.</div>';
   }
 
-  function closeCart() {
-    document.getElementById('cart-overlay').classList.remove('open');
-    document.getElementById('cart-drawer').classList.remove('open');
+  if (pageInfo.hasNextPage) {
+    pageCursor = pageInfo.endCursor;
+    if (loadMoreEl) loadMoreEl.style.display = 'block';
+  } else {
+    pageCursor = null;
+    if (loadMoreEl) loadMoreEl.style.display = 'none';
+  }
+}
+
+function loadMore() {
+  if (pageHandle && pageCursor) fetchProducts(pageHandle, pageCursor, true);
+}
+
+/* ══════════════════════════════════════════════════════
+   SEARCH
+══════════════════════════════════════════════════════ */
+function doSearch() {
+  var input = document.getElementById('search-input');
+  var catEl = document.getElementById('search-cat');
+  var q     = input ? input.value.trim() : '';
+  var cat   = catEl ? catEl.value : '';
+
+  if (!q && cat) {
+    navigate('collection/' + cat);
+    return;
+  }
+  if (q) {
+    var searchQ = cat ? q + ' ' + cat : q;
+    navigate('search/' + encodeURIComponent(searchQ));
+  }
+}
+
+async function renderSearch(query) {
+  pageHandle = null;
+  pageCursor = null;
+
+  var view = document.getElementById('app-view');
+  view.innerHTML =
+    '<div class="collection-page">' +
+      '<div class="breadcrumb">' +
+        '<a href="#" onclick="navigate(\'\')">Home</a>' +
+        '<span class="breadcrumb-sep">&rsaquo;</span>' +
+        '<span>Search: &ldquo;' + query + '&rdquo;</span>' +
+      '</div>' +
+      '<div class="section-head" style="margin-bottom:24px;">' +
+        '<h2>🔍 Search: &ldquo;' + query + '&rdquo;</h2>' +
+        '<span id="prod-count" style="font-size:12px;color:#888;font-weight:500;"></span>' +
+      '</div>' +
+      '<div class="prod-grid" id="coll-grid">' +
+        '<div class="loading-full">Searching...</div>' +
+      '</div>' +
+    '</div>';
+
+  var q = '{ search(query: "' + query.replace(/"/g, '\\"') + '", types: PRODUCT, first: 24) {' +
+    ' totalCount' +
+    ' edges { node { ... on Product {' +
+      ' title handle' +
+      ' priceRange { minVariantPrice { amount currencyCode } }' +
+      ' images(first:1) { edges { node { url altText } } }' +
+      ' collections(first:1) { edges { node { title } } }' +
+      ' variants(first:1) { edges { node { id } } }' +
+    '} } }' +
+  '} }';
+
+  var data  = await shopifyFetch(q);
+  var grid  = document.getElementById('coll-grid');
+  var count = document.getElementById('prod-count');
+
+  if (!data || !data.search || !data.search.edges.length) {
+    if (grid) grid.innerHTML = '<div class="empty-msg">No products found for &ldquo;' + query + '&rdquo;.<br><a href="#" onclick="navigate(\'\')">Return home</a></div>';
+    return;
   }
 
-  function goToCheckout() {
-    var url = localStorage.getItem('ht_checkout_url');
-    if (url) { window.open(url, '_blank'); }
-    else { window.open('https://' + SHOP_DOMAIN + '/cart', '_blank'); }
-  }
+  if (count) count.textContent = data.search.totalCount + ' results';
+  if (grid) grid.innerHTML = data.search.edges.map(function(e) { return productCard(e.node); }).join('');
+}
 
-  /* ── Init ── */
-  window.addEventListener('DOMContentLoaded', function() {
-    cartId = localStorage.getItem('ht_cart_id') || null;
-    /* NOTE: loadCollections() intentionally NOT called — categories are static above */
-    loadFeatured();
-    loadPopular();
+/* ══════════════════════════════════════════════════════
+   PRODUCT CARDS
+══════════════════════════════════════════════════════ */
+function productCard(product) {
+  var price      = parseFloat(product.priceRange.minVariantPrice.amount).toFixed(2);
+  var currency   = product.priceRange.minVariantPrice.currencyCode;
+  var imgNode    = product.images.edges[0] ? product.images.edges[0].node : null;
+  var img        = imgNode ? imgNode.url : '';
+  var alt        = imgNode ? (imgNode.altText || product.title) : product.title;
+  var variantId  = product.variants.edges[0].node.id;
+  var collection = product.collections.edges[0] ? product.collections.edges[0].node.title : '';
+  var productUrl = 'https://' + SHOP_DOMAIN + '/products/' + product.handle;
+
+  var imgHtml = img
+    ? '<img src="' + img + '" alt="' + esc(alt) + '" style="width:100%;height:100%;object-fit:contain;padding:10px;">'
+    : '<div class="img-ph">' + esc(product.title) + '</div>';
+
+  return '<div class="prod-card">' +
+    '<a class="prod-card-link" href="' + productUrl + '" target="_blank">' +
+      '<div class="prod-img">' + imgHtml + '</div>' +
+      '<div class="prod-body">' +
+        '<div class="prod-cat">' + esc(collection) + '</div>' +
+        '<div class="prod-name">' + esc(product.title) + '</div>' +
+        '<div class="prod-price">' + currency + ' $' + price + '</div>' +
+      '</div>' +
+    '</a>' +
+    '<div class="prod-actions">' +
+      '<button class="add-btn"' +
+        ' data-id="' + esc(variantId) + '"' +
+        ' data-title="' + esc(product.title) + '"' +
+        ' data-price="' + price + '"' +
+        ' data-currency="' + currency + '"' +
+        ' data-img="' + esc(img) + '"' +
+        ' onclick="addToCart(this)">Add to Cart</button>' +
+    '</div>' +
+  '</div>';
+}
+
+function popularCard(product) {
+  var price      = parseFloat(product.priceRange.minVariantPrice.amount).toFixed(2);
+  var currency   = product.priceRange.minVariantPrice.currencyCode;
+  var imgNode    = product.images.edges[0] ? product.images.edges[0].node : null;
+  var img        = imgNode ? imgNode.url : '';
+  var alt        = imgNode ? (imgNode.altText || product.title) : product.title;
+  var collection = product.collections.edges[0] ? product.collections.edges[0].node.title : '';
+  var productUrl = 'https://' + SHOP_DOMAIN + '/products/' + product.handle;
+
+  var imgHtml = img
+    ? '<img src="' + img + '" alt="' + esc(alt) + '" style="width:100%;height:100%;object-fit:contain;padding:14px;">'
+    : '<div class="img-ph">' + esc(product.title) + '</div>';
+
+  return '<a class="pop-card" href="' + productUrl + '" target="_blank">' +
+    '<div class="pop-img">' + imgHtml + '</div>' +
+    '<div class="prod-cat">' + esc(collection) + '</div>' +
+    '<div class="prod-name">' + esc(product.title) + '</div>' +
+    '<div class="prod-price">' + currency + ' $' + price + '</div>' +
+  '</a>';
+}
+
+function esc(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ══════════════════════════════════════════════════════
+   LOAD FEATURED / POPULAR
+══════════════════════════════════════════════════════ */
+var PRODUCT_FIELDS =
+  ' title handle' +
+  ' priceRange { minVariantPrice { amount currencyCode } }' +
+  ' images(first:1) { edges { node { url altText } } }' +
+  ' collections(first:1) { edges { node { title } } }' +
+  ' variants(first:1) { edges { node { id } } }';
+
+async function loadFeatured() {
+  var data = await shopifyFetch('{ products(first:5, sortKey:BEST_SELLING) { edges { node {' + PRODUCT_FIELDS + '} } } }');
+  var grid = document.getElementById('featured-grid');
+  if (!grid || !data || !data.products) return;
+  grid.innerHTML = data.products.edges.map(function(e) { return productCard(e.node); }).join('');
+}
+
+async function loadPopular() {
+  var data = await shopifyFetch('{ products(first:4, sortKey:BEST_SELLING) { edges { node {' + PRODUCT_FIELDS + '} } } }');
+  var grid = document.getElementById('popular-grid');
+  if (!grid || !data || !data.products) return;
+  grid.innerHTML = data.products.edges.map(function(e) { return popularCard(e.node); }).join('');
+}
+
+/* ══════════════════════════════════════════════════════
+   LOAD COLLECTION IMAGES (for category circles)
+══════════════════════════════════════════════════════ */
+async function loadCollectionImages() {
+  /* Build one batched GraphQL query using field aliases */
+  var aliases = COLLECTIONS.map(function(c, i) {
+    return 'c' + i + ': collectionByHandle(handle: "' + c.handle + '") {' +
+      ' image { url }' +
+      ' products(first:1, sortKey:BEST_SELLING) { edges { node { images(first:1) { edges { node { url } } } } } }' +
+    '}';
+  }).join(' ');
+
+  var data = await shopifyFetch('{ ' + aliases + ' }');
+  if (!data) return;
+
+  COLLECTIONS.forEach(function(c, i) {
+    var col = data['c' + i];
+    if (!col) return;
+    /* Prefer collection image, fall back to first product image */
+    var url = (col.image && col.image.url) ||
+      (col.products.edges[0] && col.products.edges[0].node.images.edges[0]
+        ? col.products.edges[0].node.images.edges[0].node.url
+        : null);
+    if (url) {
+      collectionImages[c.handle] = url;
+      var circle = document.getElementById('circle-' + c.handle);
+      if (circle) {
+        circle.innerHTML = '<img src="' + url + '" alt="' + c.label + '" style="width:100%;height:100%;object-fit:cover;">';
+      }
+    }
   });
+}
+
+/* ══════════════════════════════════════════════════════
+   CART
+══════════════════════════════════════════════════════ */
+async function ensureCart() {
+  if (cartId) return;
+  var data = await shopifyFetch('mutation { cartCreate { cart { id checkoutUrl } } }');
+  if (data && data.cartCreate) {
+    cartId = data.cartCreate.cart.id;
+    localStorage.setItem('ht_cart_id', cartId);
+    localStorage.setItem('ht_checkout_url', data.cartCreate.cart.checkoutUrl);
+  }
+}
+
+async function addToCart(btn) {
+  var variantId = btn.getAttribute('data-id');
+  await ensureCart();
+
+  btn.textContent = 'Adding...';
+  btn.disabled = true;
+
+  var q = 'mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {' +
+    ' cartLinesAdd(cartId: $cartId, lines: $lines) {' +
+      ' cart {' +
+        ' id checkoutUrl totalQuantity' +
+        ' lines(first:50) { edges { node {' +
+          ' quantity' +
+          ' merchandise { ... on ProductVariant {' +
+            ' id title' +
+            ' priceV2 { amount currencyCode }' +
+            ' product { title images(first:1) { edges { node { url } } } }' +
+          '} }' +
+        '} } }' +
+      '}' +
+    '}' +
+  '}';
+
+  var data = await shopifyFetch(q, {
+    cartId: cartId,
+    lines: [{ merchandiseId: variantId, quantity: 1 }]
+  });
+
+  if (data && data.cartLinesAdd && data.cartLinesAdd.cart) {
+    var cart = data.cartLinesAdd.cart;
+    cartCount = cart.totalQuantity;
+    localStorage.setItem('ht_checkout_url', cart.checkoutUrl);
+    document.getElementById('cart-count-badge').textContent = cartCount;
+
+    cartLines = cart.lines.edges.map(function(e) {
+      var n = e.node;
+      var m = n.merchandise;
+      return {
+        qty: n.quantity,
+        title: m.product.title,
+        variantTitle: m.title !== 'Default Title' ? m.title : '',
+        price: parseFloat(m.priceV2.amount).toFixed(2),
+        currency: m.priceV2.currencyCode,
+        img: m.product.images.edges[0] ? m.product.images.edges[0].node.url : ''
+      };
+    });
+
+    btn.textContent = '✓ Added!';
+    btn.style.background = '#2a7a40';
+    setTimeout(function() {
+      btn.textContent = 'Add to Cart';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 1800);
+
+    renderCartDrawer();
+    openCart(null);
+  } else {
+    btn.textContent = 'Try Again';
+    btn.disabled = false;
+    setTimeout(function() { btn.textContent = 'Add to Cart'; }, 2000);
+  }
+}
+
+function renderCartDrawer() {
+  var list       = document.getElementById('cart-items-list');
+  var countEl    = document.getElementById('drawer-count');
+  var subtotalEl = document.getElementById('cart-subtotal-amount');
+
+  if (countEl) countEl.textContent = cartCount;
+
+  if (!cartLines.length) {
+    if (list) list.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add some products to get started!</div>';
+    if (subtotalEl) subtotalEl.textContent = '$0.00';
+    return;
+  }
+
+  var total = 0;
+  var html = cartLines.map(function(item) {
+    total += parseFloat(item.price) * item.qty;
+    var imgHtml = item.img
+      ? '<img src="' + item.img + '" alt="' + esc(item.title) + '">'
+      : '<div style="width:64px;height:64px;background:#f5f5f5;border:1px solid #eee;border-radius:3px;"></div>';
+    return '<div class="cart-item">' +
+      imgHtml +
+      '<div class="cart-item-info">' +
+        '<div class="cart-item-name">' + esc(item.title) + (item.variantTitle ? ' &ndash; ' + esc(item.variantTitle) : '') + '</div>' +
+        '<div class="cart-item-price">' + item.currency + ' $' + parseFloat(item.price).toFixed(2) + '</div>' +
+        '<div class="cart-item-qty">Qty: ' + item.qty + '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  if (list) list.innerHTML = html;
+  if (subtotalEl) subtotalEl.textContent = '$' + total.toFixed(2);
+}
+
+function openCart(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  renderCartDrawer();
+  document.getElementById('cart-overlay').classList.add('open');
+  document.getElementById('cart-drawer').classList.add('open');
+}
+
+function closeCart() {
+  document.getElementById('cart-overlay').classList.remove('open');
+  document.getElementById('cart-drawer').classList.remove('open');
+}
+
+function goToCheckout() {
+  var url = localStorage.getItem('ht_checkout_url');
+  window.open(url || 'https://' + SHOP_DOMAIN + '/cart', '_blank');
+}
+
+/* ══════════════════════════════════════════════════════
+   SIDEBAR ACCORDION
+══════════════════════════════════════════════════════ */
+function toggleSb(el) {
+  var children = el.nextElementSibling;
+  var arrow    = el.querySelector('.sb-arrow');
+  var isOpen   = children.classList.contains('open');
+  document.querySelectorAll('.sb-children').forEach(function(c) { c.classList.remove('open'); });
+  document.querySelectorAll('.sb-head').forEach(function(h) { h.classList.remove('open'); });
+  document.querySelectorAll('.sb-arrow').forEach(function(a) { a.classList.remove('rotated'); });
+  if (!isOpen) {
+    children.classList.add('open');
+    el.classList.add('open');
+    arrow.classList.add('rotated');
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════ */
+window.addEventListener('hashchange', router);
+
+window.addEventListener('DOMContentLoaded', function() {
+  /* Restore cart */
+  cartId = localStorage.getItem('ht_cart_id') || null;
+
+  /* Search input enter key */
+  var searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') doSearch();
+    });
+  }
+
+  /* Load category circle images from Shopify in background */
+  loadCollectionImages();
+
+  /* Kick off router */
+  router();
+});
 </script>
 
 </body>

@@ -277,6 +277,122 @@
     .sb-plain:hover { background: #edf1f6; border-left-color: #1a6fc4; color: #1a6fc4; }
     .sb-plain.featured { color: #c8102e; }
 
+    /* ─── ADD TO CART BUTTON ─── */
+    .add-btn {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 9px 0;
+      background: #0a2540;
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .add-btn:hover { background: #1a6fc4; }
+    .add-btn:disabled { background: #aaa; cursor: default; }
+
+    /* ─── CART DRAWER ─── */
+    .cart-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 9000;
+    }
+    .cart-overlay.open { display: block; }
+    .cart-drawer {
+      position: fixed;
+      top: 0; right: -420px; bottom: 0;
+      width: 400px;
+      background: #fff;
+      z-index: 9001;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -4px 0 32px rgba(0,0,0,0.15);
+      transition: right 0.3s ease;
+    }
+    .cart-drawer.open { right: 0; }
+    .cart-drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid #eee;
+    }
+    .cart-drawer-head h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .cart-close {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #666;
+      line-height: 1;
+      padding: 0 4px;
+    }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 24px;
+    }
+    .cart-empty {
+      text-align: center;
+      padding: 60px 20px;
+      font-size: 13px;
+      color: #aaa;
+      font-weight: 500;
+    }
+    .cart-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .cart-item img { width: 64px; height: 64px; object-fit: contain; border: 1px solid #eee; border-radius: 3px; }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 12.5px; font-weight: 600; color: #111; margin-bottom: 4px; }
+    .cart-item-price { font-size: 13px; font-weight: 700; color: #c8102e; }
+    .cart-item-qty { font-size: 11px; color: #888; margin-top: 3px; }
+    .cart-footer {
+      padding: 20px 24px;
+      border-top: 1px solid #eee;
+    }
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .cart-checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #c8102e;
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cart-checkout-btn:hover { background: #a50d25; }
+
     /* ─── MAIN CONTENT ─── */
     .main { flex: 1; overflow: hidden; }
 
@@ -662,14 +778,14 @@
   </div>
 
   <div class="hdr-right">
-    <a href="#" class="hdr-link">
+    <a href="https://countrydreamshop.myshopify.com/account/login" target="_blank" class="hdr-link">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       Sign In
     </a>
     <div class="hdr-divider"></div>
-    <a href="#" class="hdr-link">Register</a>
+    <a href="https://countrydreamshop.myshopify.com/account/register" target="_blank" class="hdr-link">Register</a>
     <div class="hdr-divider"></div>
-    <a href="#" class="hdr-link cart-wrap">
+    <a href="#" class="hdr-link cart-wrap" onclick="openCart(event)">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
       <span class="cart-count">0</span>
     </a>
@@ -681,116 +797,116 @@
   <div class="nav-inner">
 
     <div class="nav-item">
-      <a href="#" class="nav-link featured">⚽ FIFA World Cup 2026</a>
+      <a href="https://countrydreamshop.myshopify.com/collections/fifa-world-cup-2026" target="_blank" class="nav-link featured">⚽ FIFA World Cup 2026</a>
     </div>
 
     <div class="nav-item">
       <span class="nav-link" data-dd="dd-cat">Shop by Category <span class="caret">▾</span></span>
       <div class="dd" id="dd-cat">
-        <a href="#">Apparel</a>
-        <a href="#">Accessories</a>
-        <a href="#">Christmas</a>
-        <a href="#">Toys &amp; Collectibles</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/apparel" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/accessories" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/christmas" target="_blank">Christmas</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/toys-collectibles" target="_blank">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/kitchen-drinkware" target="_blank">Kitchen &amp; Drinkware</a>
       </div>
     </div>
 
     <div class="nav-item">
       <span class="nav-link" data-dd="dd-mlb">MLB <span class="caret">▾</span></span>
       <div class="dd wide" id="dd-mlb">
-        <a href="#">Atlanta Braves</a>
-        <a href="#">New York Mets</a>
-        <a href="#">Baltimore Orioles</a>
-        <a href="#">New York Yankees</a>
-        <a href="#">Boston Red Sox</a>
-        <a href="#">Philadelphia Phillies</a>
-        <a href="#">Chicago Cubs</a>
-        <a href="#">Pittsburgh Pirates</a>
-        <a href="#">Chicago White Sox</a>
-        <a href="#">San Diego Padres</a>
-        <a href="#">Cleveland Guardians</a>
-        <a href="#">San Francisco Giants</a>
-        <a href="#">Colorado Rockies</a>
-        <a href="#">Seattle Mariners</a>
-        <a href="#">Detroit Tigers</a>
-        <a href="#">St. Louis Cardinals</a>
-        <a href="#">Houston Astros</a>
-        <a href="#">Washington Nationals</a>
-        <a href="#">Los Angeles Dodgers</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Atlanta Braves</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">New York Mets</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Baltimore Orioles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">New York Yankees</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Boston Red Sox</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Philadelphia Phillies</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Chicago Cubs</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Pittsburgh Pirates</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Chicago White Sox</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">San Diego Padres</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Cleveland Guardians</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">San Francisco Giants</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Colorado Rockies</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Seattle Mariners</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Detroit Tigers</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">St. Louis Cardinals</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Houston Astros</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Washington Nationals</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Los Angeles Dodgers</a>
       </div>
     </div>
 
     <div class="nav-item">
       <span class="nav-link" data-dd="dd-army">Army <span class="caret">▾</span></span>
       <div class="dd" id="dd-army">
-        <a href="#">Accessories</a>
-        <a href="#">Apparel</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="nav-item">
       <span class="nav-link" data-dd="dd-hw">Hollywood <span class="caret">▾</span></span>
       <div class="dd" id="dd-hw">
-        <a href="#">Accessories</a>
-        <a href="#">Apparel</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="nav-item">
       <span class="nav-link" data-dd="dd-fdny">FDNY <span class="caret">▾</span></span>
       <div class="dd" id="dd-fdny">
-        <a href="#">Accessories</a>
-        <a href="#">Apparel</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="nav-item">
       <span class="nav-link" data-dd="dd-nasa">NASA <span class="caret">▾</span></span>
       <div class="dd" id="dd-nasa">
-        <a href="#">Apparel</a>
-        <a href="#">Toys &amp; Collectibles</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Accessories</a>
       </div>
     </div>
 
     <div class="nav-item">
       <span class="nav-link" data-dd="dd-nypd">NYPD <span class="caret">▾</span></span>
       <div class="dd" id="dd-nypd">
-        <a href="#">Accessories</a>
-        <a href="#">Apparel</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Toys &amp; Collectibles</a>
       </div>
     </div>
 
     <div class="nav-item">
       <span class="nav-link" data-dd="dd-cities">US Cities <span class="caret">▾</span></span>
       <div class="dd wide" id="dd-cities">
-        <a href="#">United States</a>
-        <a href="#">Texas</a>
-        <a href="#">California</a>
-        <a href="#">Washington D.C.</a>
-        <a href="#">Florida</a>
-        <a href="#">Georgia</a>
-        <a href="#">Illinois</a>
-        <a href="#">Massachusetts</a>
-        <a href="#">Nevada</a>
-        <a href="#">New York City</a>
-        <a href="#">Ohio</a>
-        <a href="#">Pennsylvania</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">United States</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Texas</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">California</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Washington D.C.</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Florida</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Georgia</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Illinois</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Massachusetts</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Nevada</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">New York City</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Ohio</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Pennsylvania</a>
       </div>
     </div>
 
-    <div class="nav-item"><a href="#" class="nav-link">Best Sellers</a></div>
-    <div class="nav-item"><a href="#" class="nav-link">About Us</a></div>
-    <div class="nav-item"><a href="#" class="nav-link">Contact Us</a></div>
+    <div class="nav-item"><a href="https://countrydreamshop.myshopify.com/collections/all?sort_by=best-selling" target="_blank" class="nav-link">Best Sellers</a></div>
+    <div class="nav-item"><a href="https://countrydreamshop.myshopify.com/pages/about-us" target="_blank" class="nav-link">About Us</a></div>
+    <div class="nav-item"><a href="https://countrydreamshop.myshopify.com/pages/contact-us" target="_blank" class="nav-link">Contact Us</a></div>
 
   </div>
 </div>
@@ -807,42 +923,42 @@
         Shop by Category <span class="sb-arrow">▶</span>
       </div>
       <div class="sb-children">
-        <a href="#">Apparel</a>
-        <a href="#">Accessories</a>
-        <a href="#">Christmas</a>
-        <a href="#">Toys &amp; Collectibles</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/apparel" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/accessories" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/christmas" target="_blank">Christmas</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/toys-collectibles" target="_blank">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/kitchen-drinkware" target="_blank">Kitchen &amp; Drinkware</a>
       </div>
     </div>
 
     <div class="sb-divider"></div>
 
-    <a class="sb-plain featured" href="#">⚽ FIFA World Cup 2026</a>
+    <a class="sb-plain featured" href="https://countrydreamshop.myshopify.com/collections/fifa-world-cup-2026" target="_blank">⚽ FIFA World Cup 2026</a>
 
     <div class="sb-group">
       <div class="sb-head" onclick="toggleSb(this)">
         MLB <span class="sb-arrow">▶</span>
       </div>
       <div class="sb-children">
-        <a href="#">Atlanta Braves</a>
-        <a href="#">Baltimore Orioles</a>
-        <a href="#">Boston Red Sox</a>
-        <a href="#">Chicago Cubs</a>
-        <a href="#">Chicago White Sox</a>
-        <a href="#">Cleveland Guardians</a>
-        <a href="#">Colorado Rockies</a>
-        <a href="#">Detroit Tigers</a>
-        <a href="#">Houston Astros</a>
-        <a href="#">Los Angeles Dodgers</a>
-        <a href="#">New York Mets</a>
-        <a href="#">New York Yankees</a>
-        <a href="#">Philadelphia Phillies</a>
-        <a href="#">Pittsburgh Pirates</a>
-        <a href="#">San Diego Padres</a>
-        <a href="#">San Francisco Giants</a>
-        <a href="#">Seattle Mariners</a>
-        <a href="#">St. Louis Cardinals</a>
-        <a href="#">Washington Nationals</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Atlanta Braves</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Baltimore Orioles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Boston Red Sox</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Chicago Cubs</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Chicago White Sox</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Cleveland Guardians</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Colorado Rockies</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Detroit Tigers</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Houston Astros</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Los Angeles Dodgers</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">New York Mets</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">New York Yankees</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Philadelphia Phillies</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Pittsburgh Pirates</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">San Diego Padres</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">San Francisco Giants</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Seattle Mariners</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">St. Louis Cardinals</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">Washington Nationals</a>
       </div>
     </div>
 
@@ -851,10 +967,10 @@
         Army <span class="sb-arrow">▶</span>
       </div>
       <div class="sb-children">
-        <a href="#">Accessories</a>
-        <a href="#">Apparel</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Toys &amp; Collectibles</a>
       </div>
     </div>
 
@@ -863,10 +979,10 @@
         Hollywood <span class="sb-arrow">▶</span>
       </div>
       <div class="sb-children">
-        <a href="#">Accessories</a>
-        <a href="#">Apparel</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Toys &amp; Collectibles</a>
       </div>
     </div>
 
@@ -875,10 +991,10 @@
         FDNY <span class="sb-arrow">▶</span>
       </div>
       <div class="sb-children">
-        <a href="#">Accessories</a>
-        <a href="#">Apparel</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">Toys &amp; Collectibles</a>
       </div>
     </div>
 
@@ -887,10 +1003,10 @@
         NASA <span class="sb-arrow">▶</span>
       </div>
       <div class="sb-children">
-        <a href="#">Apparel</a>
-        <a href="#">Toys &amp; Collectibles</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">Accessories</a>
       </div>
     </div>
 
@@ -899,10 +1015,10 @@
         NYPD <span class="sb-arrow">▶</span>
       </div>
       <div class="sb-children">
-        <a href="#">Accessories</a>
-        <a href="#">Apparel</a>
-        <a href="#">Kitchen &amp; Drinkware</a>
-        <a href="#">Toys &amp; Collectibles</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Accessories</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Apparel</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Kitchen &amp; Drinkware</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">Toys &amp; Collectibles</a>
       </div>
     </div>
 
@@ -911,25 +1027,25 @@
         US Cities <span class="sb-arrow">▶</span>
       </div>
       <div class="sb-children">
-        <a href="#">United States</a>
-        <a href="#">California</a>
-        <a href="#">Florida</a>
-        <a href="#">Georgia</a>
-        <a href="#">Illinois</a>
-        <a href="#">Massachusetts</a>
-        <a href="#">Nevada</a>
-        <a href="#">New York City</a>
-        <a href="#">Ohio</a>
-        <a href="#">Pennsylvania</a>
-        <a href="#">Texas</a>
-        <a href="#">Washington D.C.</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">United States</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">California</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Florida</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Georgia</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Illinois</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Massachusetts</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Nevada</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">New York City</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Ohio</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Pennsylvania</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Texas</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">Washington D.C.</a>
       </div>
     </div>
 
     <div class="sb-divider"></div>
-    <a class="sb-plain" href="#">Best Sellers</a>
-    <a class="sb-plain" href="#">About Us</a>
-    <a class="sb-plain" href="#">Contact Us</a>
+    <a class="sb-plain" href="https://countrydreamshop.myshopify.com/collections/all?sort_by=best-selling" target="_blank">Best Sellers</a>
+    <a class="sb-plain" href="https://countrydreamshop.myshopify.com/pages/about-us" target="_blank">About Us</a>
+    <a class="sb-plain" href="https://countrydreamshop.myshopify.com/pages/contact-us" target="_blank">Contact Us</a>
   </aside>
 
   <!-- MAIN -->
@@ -941,11 +1057,10 @@
         <div class="hero-tag">Official Licensed Products</div>
         <h1>USA Souvenirs<br>&amp; <span>Merchandise</span></h1>
         <p>MLB, FDNY, NYPD, NASA, Army, Hollywood and more. Quality products shipped fast.</p>
-        <a href="#" class="hero-btn">Shop Now &rarr;</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/all" target="_blank" class="hero-btn">Shop Now &rarr;</a>
       </div>
       <div class="hero-img-side">
-        <div class="img-ph">Add your<br>hero image here<br><br>images/hero.jpg</div>
-        <!-- REPLACE: <img src="images/hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover"> -->
+        <img src="images/hero.jpg" alt="Happy Travelers Products" style="width:100%;height:100%;object-fit:cover;">
       </div>
     </section>
 
@@ -953,17 +1068,22 @@
     <section class="section">
       <div class="section-head">
         <h2>Shop by Category</h2>
-        <a href="#">View All</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/all" target="_blank">View All</a>
       </div>
       <div class="cat-strip" id="cat-strip">
-        <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">Apparel</div></div><span class="cat-label">Apparel</span></a>
-        <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">Accessories</div></div><span class="cat-label">Accessories</span></a>
-        <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">Christmas</div></div><span class="cat-label">Christmas</span></a>
-        <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">Toys &amp; Collectibles</div></div><span class="cat-label">Toys &amp; Collectibles</span></a>
-        <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">Kitchen &amp; Drinkware</div></div><span class="cat-label">Kitchen &amp; Drinkware</span></a>
-        <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">MLB</div></div><span class="cat-label">MLB</span></a>
-        <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">US Cities</div></div><span class="cat-label">US Cities</span></a>
-        <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">FIFA 2026</div></div><span class="cat-label">FIFA 2026</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/fifa-world-cup-2026" target="_blank"><div class="cat-circle" style="background:#fff3e0;border-color:#f0c040;"><div class="cat-ph" style="color:#c8102e;">⚽ FIFA<br>2026</div></div><span class="cat-label">FIFA 2026</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/apparel" target="_blank"><div class="cat-circle"><div class="cat-ph">Apparel</div></div><span class="cat-label">Apparel</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/accessories" target="_blank"><div class="cat-circle"><div class="cat-ph">Accessories</div></div><span class="cat-label">Accessories</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/christmas" target="_blank"><div class="cat-circle"><div class="cat-ph">Christmas</div></div><span class="cat-label">Christmas</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/toys-collectibles" target="_blank"><div class="cat-circle"><div class="cat-ph">Toys &amp; Collectibles</div></div><span class="cat-label">Toys &amp; Collectibles</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/kitchen-drinkware" target="_blank"><div class="cat-circle"><div class="cat-ph">Kitchen &amp; Drinkware</div></div><span class="cat-label">Kitchen &amp; Drinkware</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank"><div class="cat-circle"><div class="cat-ph">MLB</div></div><span class="cat-label">MLB</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/army" target="_blank"><div class="cat-circle"><div class="cat-ph">Army</div></div><span class="cat-label">Army</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank"><div class="cat-circle"><div class="cat-ph">Hollywood</div></div><span class="cat-label">Hollywood</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank"><div class="cat-circle"><div class="cat-ph">FDNY</div></div><span class="cat-label">FDNY</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank"><div class="cat-circle"><div class="cat-ph">NASA</div></div><span class="cat-label">NASA</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank"><div class="cat-circle"><div class="cat-ph">NYPD</div></div><span class="cat-label">NYPD</span></a>
+        <a class="cat-item" href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank"><div class="cat-circle"><div class="cat-ph">US Cities</div></div><span class="cat-label">US Cities</span></a>
       </div>
     </section>
 
@@ -973,7 +1093,7 @@
     <section class="section">
       <div class="section-head">
         <h2>Featured Products</h2>
-        <a href="#">View All</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/all" target="_blank">View All</a>
       </div>
       <div class="prod-grid" id="featured-grid">
         <div class="prod-card" style="border:none;background:#f7f8fa;display:flex;align-items:center;justify-content:center;font-size:12px;color:#bbb;font-weight:600;letter-spacing:0.5px;">Loading products...</div>
@@ -982,13 +1102,13 @@
 
     <!-- PROMO BANNERS -->
     <div class="promo-row">
-      <a class="promo-card" href="#">
+      <a class="promo-card" href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">
         <div class="promo-tag">New Collection</div>
         <h3><span>FDNY</span><br>Collection</h3>
         <p>Officially licensed FDNY apparel, accessories &amp; gifts</p>
         <span class="promo-link">Shop Now →</span>
       </a>
-      <a class="promo-card" href="#">
+      <a class="promo-card" href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">
         <div class="promo-tag">Travel &amp; City Gifts</div>
         <h3><span>US Cities</span><br>Souvenirs</h3>
         <p>New York, California, Florida &amp; more — all in one place</p>
@@ -1000,7 +1120,7 @@
     <section class="section" style="padding-top:0">
       <div class="section-head">
         <h2>Most Popular</h2>
-        <a href="#">View All</a>
+        <a href="https://countrydreamshop.myshopify.com/collections/all?sort_by=best-selling" target="_blank">View All</a>
       </div>
       <div class="pop-grid" id="popular-grid">
         <div style="grid-column:1/-1;text-align:center;font-size:12px;color:#bbb;font-weight:600;letter-spacing:0.5px;padding:40px;">Loading products...</div>
@@ -1008,6 +1128,25 @@
     </section>
 
   </main>
+</div>
+
+<!-- ══ CART DRAWER ══ -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-drawer-head">
+    <h3>Your Cart (<span id="drawer-count">0</span>)</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-list">
+    <div class="cart-empty">Your cart is empty.<br>Add some products to get started!</div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cart-subtotal-amount">$0.00</span>
+    </div>
+    <button class="cart-checkout-btn" onclick="goToCheckout()">Proceed to Checkout →</button>
+  </div>
 </div>
 
 <!-- ══ FOOTER ══ -->
@@ -1020,33 +1159,33 @@
     <div>
       <h4>Categories</h4>
       <ul>
-        <li><a href="#">Apparel</a></li>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Christmas</a></li>
-        <li><a href="#">Toys &amp; Collectibles</a></li>
-        <li><a href="#">Kitchen &amp; Drinkware</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/apparel" target="_blank">Apparel</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/accessories" target="_blank">Accessories</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/christmas" target="_blank">Christmas</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/toys-collectibles" target="_blank">Toys &amp; Collectibles</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/kitchen-drinkware" target="_blank">Kitchen &amp; Drinkware</a></li>
       </ul>
     </div>
     <div>
       <h4>Brands</h4>
       <ul>
-        <li><a href="#">MLB</a></li>
-        <li><a href="#">Army</a></li>
-        <li><a href="#">Hollywood</a></li>
-        <li><a href="#">FDNY</a></li>
-        <li><a href="#">NASA</a></li>
-        <li><a href="#">NYPD</a></li>
-        <li><a href="#">US Cities</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/mlb" target="_blank">MLB</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/army" target="_blank">Army</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/hollywood" target="_blank">Hollywood</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/fdny" target="_blank">FDNY</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/nasa" target="_blank">NASA</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/nypd" target="_blank">NYPD</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/collections/us-cities" target="_blank">US Cities</a></li>
       </ul>
     </div>
     <div>
       <h4>Help</h4>
       <ul>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Shipping Policy</a></li>
-        <li><a href="#">Returns</a></li>
-        <li><a href="#">FAQ</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/pages/contact-us" target="_blank">Contact Us</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/pages/about-us" target="_blank">About Us</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/policies/shipping-policy" target="_blank">Shipping Policy</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/policies/refund-policy" target="_blank">Returns</a></li>
+        <li><a href="https://countrydreamshop.myshopify.com/pages/faq" target="_blank">FAQ</a></li>
       </ul>
     </div>
   </div>
@@ -1069,6 +1208,23 @@
     }
   }
 
+  /* ── SEARCH ── */
+  document.addEventListener('DOMContentLoaded', function() {
+    var searchBtn = document.querySelector('.search-go');
+    var searchInput = document.querySelector('.searchbar input');
+    var searchSelect = document.querySelector('.searchbar select');
+    function doSearch() {
+      var q = searchInput.value.trim();
+      if (!q) return;
+      var url = 'https://countrydreamshop.myshopify.com/search?q=' + encodeURIComponent(q);
+      window.open(url, '_blank');
+    }
+    if (searchBtn) searchBtn.addEventListener('click', doSearch);
+    if (searchInput) searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') doSearch();
+    });
+  });
+
   /* ══════════════════════════════════
      SHOPIFY STOREFRONT API
   ══════════════════════════════════ */
@@ -1077,8 +1233,9 @@
   const SHOP_API_URL = 'https://' + SHOP_DOMAIN + '/api/2024-10/graphql.json';
 
   /* Cart state */
-  var cartId   = null;
+  var cartId    = null;
   var cartCount = 0;
+  var cartLines = []; /* { title, price, currency, img, qty } */
 
   async function shopifyFetch(query, variables) {
     try {
@@ -1106,18 +1263,29 @@
     var alt = product.images.edges[0] ? product.images.edges[0].node.altText || product.title : product.title;
     var collection = product.collections.edges[0] ? product.collections.edges[0].node.title : '';
     var url = 'https://' + SHOP_DOMAIN + '/products/' + product.handle;
+    var variantId = product.variants.edges[0].node.id;
     var imgHtml = img
       ? '<img src="' + img + '" alt="' + alt + '" style="width:100%;height:100%;object-fit:contain;padding:10px;">'
       : '<div class="img-ph">' + product.title + '</div>';
-    return '<a class="prod-card" href="' + url + '" target="_blank">' +
-      '<div class="prod-img">' + imgHtml + '</div>' +
-      '<div class="prod-body">' +
-        '<div class="prod-cat">' + collection + '</div>' +
-        '<div class="prod-name">' + product.title + '</div>' +
-        '<div class="prod-price">' + currency + ' $' + price + '</div>' +
-        '<button class="add-btn" data-id="' + product.variants.edges[0].node.id + '" onclick="addToCart(this, event)">Add to Cart</button>' +
+    return '<div class="prod-card">' +
+      '<a href="' + url + '" target="_blank" style="text-decoration:none;color:inherit;">' +
+        '<div class="prod-img">' + imgHtml + '</div>' +
+        '<div class="prod-body">' +
+          '<div class="prod-cat">' + collection + '</div>' +
+          '<div class="prod-name">' + product.title + '</div>' +
+          '<div class="prod-price">' + currency + ' $' + price + '</div>' +
+        '</div>' +
+      '</a>' +
+      '<div style="padding:0 14px 14px;">' +
+        '<button class="add-btn"' +
+          ' data-id="' + variantId + '"' +
+          ' data-title="' + product.title.replace(/"/g,'&quot;') + '"' +
+          ' data-price="' + price + '"' +
+          ' data-currency="' + currency + '"' +
+          ' data-img="' + img + '"' +
+          ' onclick="addToCart(this)">Add to Cart</button>' +
       '</div>' +
-    '</a>';
+    '</div>';
   }
 
   /* ── Render popular card ── */
@@ -1171,26 +1339,6 @@
     grid.innerHTML = data.products.edges.map(function(e) { return popularCard(e.node); }).join('');
   }
 
-  /* ── Load collections into category circles ── */
-  async function loadCollections() {
-    var q = '{ collections(first:8) { edges { node { title handle image { url } } } } }';
-    var data = await shopifyFetch(q);
-    if (!data || !data.collections) return;
-    var strip = document.getElementById('cat-strip');
-    if (!strip) return;
-    strip.innerHTML = data.collections.edges.map(function(e) {
-      var c = e.node;
-      var url = 'https://' + SHOP_DOMAIN + '/collections/' + c.handle;
-      var imgHtml = c.image
-        ? '<img src="' + c.image.url + '" alt="' + c.title + '" style="width:100%;height:100%;object-fit:cover;">'
-        : '<div class="cat-ph">' + c.title + '</div>';
-      return '<a class="cat-item" href="' + url + '" target="_blank">' +
-        '<div class="cat-circle">' + imgHtml + '</div>' +
-        '<span class="cat-label">' + c.title + '</span>' +
-      '</a>';
-    }).join('');
-  }
-
   /* ── Cart: create cart ── */
   async function createCart() {
     var q = 'mutation { cartCreate { cart { id checkoutUrl } } }';
@@ -1203,48 +1351,122 @@
   }
 
   /* ── Cart: add item ── */
-  async function addToCart(btn, event) {
-    event.preventDefault();
-    event.stopPropagation();
+  async function addToCart(btn) {
     var variantId = btn.getAttribute('data-id');
+    var title     = btn.getAttribute('data-title');
+    var price     = btn.getAttribute('data-price');
+    var currency  = btn.getAttribute('data-currency');
+    var img       = btn.getAttribute('data-img');
+
     if (!cartId) await createCart();
     btn.textContent = 'Adding...';
     btn.disabled = true;
+
     var q = 'mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {' +
       'cartLinesAdd(cartId: $cartId, lines: $lines) {' +
-        'cart { totalQuantity }' +
+        'cart { id checkoutUrl totalQuantity' +
+          ' lines(first:50) { edges { node {' +
+            ' quantity' +
+            ' merchandise { ... on ProductVariant {' +
+              ' id title priceV2 { amount currencyCode }' +
+              ' product { title images(first:1) { edges { node { url } } } }' +
+            '} }' +
+          '} } }' +
+        '}' +
       '}' +
     '}';
     var data = await shopifyFetch(q, { cartId: cartId, lines: [{ merchandiseId: variantId, quantity: 1 }] });
-    if (data && data.cartLinesAdd) {
-      cartCount = data.cartLinesAdd.cart.totalQuantity;
+
+    if (data && data.cartLinesAdd && data.cartLinesAdd.cart) {
+      var cart = data.cartLinesAdd.cart;
+      cartCount = cart.totalQuantity;
+      localStorage.setItem('ht_checkout_url', cart.checkoutUrl);
       document.querySelector('.cart-count').textContent = cartCount;
+
+      /* Build cart lines from API response */
+      cartLines = cart.lines.edges.map(function(e) {
+        var n = e.node;
+        var merch = n.merchandise;
+        return {
+          qty: n.quantity,
+          title: merch.product.title,
+          variantTitle: merch.title !== 'Default Title' ? merch.title : '',
+          price: parseFloat(merch.priceV2.amount).toFixed(2),
+          currency: merch.priceV2.currencyCode,
+          img: merch.product.images.edges[0] ? merch.product.images.edges[0].node.url : ''
+        };
+      });
+
       btn.textContent = '✓ Added!';
       btn.style.background = '#2a7a40';
       setTimeout(function() {
         btn.textContent = 'Add to Cart';
         btn.style.background = '';
         btn.disabled = false;
-      }, 2000);
+      }, 1800);
+
+      renderCartDrawer();
+      openCart();
     } else {
       btn.textContent = 'Add to Cart';
       btn.disabled = false;
     }
   }
 
-  /* ── Cart: go to checkout ── */
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('.cart-wrap')) {
-      var url = localStorage.getItem('ht_checkout_url');
-      if (url) window.open(url, '_blank');
+  /* ── Cart Drawer ── */
+  function renderCartDrawer() {
+    var list = document.getElementById('cart-items-list');
+    var drawerCount = document.getElementById('drawer-count');
+    var subtotalEl  = document.getElementById('cart-subtotal-amount');
+    drawerCount.textContent = cartCount;
+
+    if (!cartLines.length) {
+      list.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Add some products to get started!</div>';
+      subtotalEl.textContent = '$0.00';
+      return;
     }
-  });
+
+    var total = 0;
+    list.innerHTML = cartLines.map(function(item) {
+      var lineTotal = (parseFloat(item.price) * item.qty);
+      total += lineTotal;
+      var imgHtml = item.img
+        ? '<img src="' + item.img + '" alt="' + item.title + '">'
+        : '<div style="width:64px;height:64px;background:#f5f5f5;border:1px solid #eee;border-radius:3px;"></div>';
+      return '<div class="cart-item">' +
+        imgHtml +
+        '<div class="cart-item-info">' +
+          '<div class="cart-item-name">' + item.title + (item.variantTitle ? ' – ' + item.variantTitle : '') + '</div>' +
+          '<div class="cart-item-price">' + item.currency + ' $' + parseFloat(item.price).toFixed(2) + '</div>' +
+          '<div class="cart-item-qty">Qty: ' + item.qty + '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    subtotalEl.textContent = '$' + total.toFixed(2);
+  }
+
+  function openCart(e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    document.getElementById('cart-overlay').classList.add('open');
+    document.getElementById('cart-drawer').classList.add('open');
+  }
+
+  function closeCart() {
+    document.getElementById('cart-overlay').classList.remove('open');
+    document.getElementById('cart-drawer').classList.remove('open');
+  }
+
+  function goToCheckout() {
+    var url = localStorage.getItem('ht_checkout_url');
+    if (url) { window.open(url, '_blank'); }
+    else { window.open('https://' + SHOP_DOMAIN + '/cart', '_blank'); }
+  }
 
   /* ── Init ── */
   window.addEventListener('DOMContentLoaded', function() {
-    /* restore cart id if exists */
     cartId = localStorage.getItem('ht_cart_id') || null;
-    loadCollections();
+    /* NOTE: loadCollections() intentionally NOT called — categories are static above */
     loadFeatured();
     loadPopular();
   });

@@ -955,7 +955,7 @@
         <h2>Shop by Category</h2>
         <a href="#">View All</a>
       </div>
-      <div class="cat-strip">
+      <div class="cat-strip" id="cat-strip">
         <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">Apparel</div></div><span class="cat-label">Apparel</span></a>
         <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">Accessories</div></div><span class="cat-label">Accessories</span></a>
         <a class="cat-item" href="#"><div class="cat-circle"><div class="cat-ph">Christmas</div></div><span class="cat-label">Christmas</span></a>
@@ -975,12 +975,8 @@
         <h2>Featured Products</h2>
         <a href="#">View All</a>
       </div>
-      <div class="prod-grid">
-        <a class="prod-card" href="#"><div class="prod-img"><div class="img-ph">images/<br>product-1.jpg</div></div><div class="prod-body"><div class="prod-cat">Apparel</div><div class="prod-name">Classic USA T-Shirt</div><div class="prod-price">$12.99</div></div></a>
-        <a class="prod-card" href="#"><div class="prod-img"><div class="img-ph">images/<br>product-2.jpg</div></div><div class="prod-body"><div class="prod-cat">Accessories</div><div class="prod-name">NYC Souvenir Keychain</div><div class="prod-price">$3.99</div></div></a>
-        <a class="prod-card" href="#"><div class="prod-img"><div class="img-ph">images/<br>product-3.jpg</div></div><div class="prod-body"><div class="prod-cat">Kitchen &amp; Drinkware</div><div class="prod-name">FDNY Coffee Mug</div><div class="prod-price">$9.99</div></div></a>
-        <a class="prod-card" href="#"><div class="prod-img"><div class="img-ph">images/<br>product-4.jpg</div></div><div class="prod-body"><div class="prod-cat">MLB — NY Yankees</div><div class="prod-name">Yankees Baseball Cap</div><div class="prod-price">$24.99</div></div></a>
-        <a class="prod-card" href="#"><div class="prod-img"><div class="img-ph">images/<br>product-5.jpg</div></div><div class="prod-body"><div class="prod-cat">Toys &amp; Collectibles</div><div class="prod-name">NASA Collectible Figure</div><div class="prod-price">$16.99</div></div></a>
+      <div class="prod-grid" id="featured-grid">
+        <div class="prod-card" style="border:none;background:#f7f8fa;display:flex;align-items:center;justify-content:center;font-size:12px;color:#bbb;font-weight:600;letter-spacing:0.5px;">Loading products...</div>
       </div>
     </section>
 
@@ -1006,11 +1002,8 @@
         <h2>Most Popular</h2>
         <a href="#">View All</a>
       </div>
-      <div class="pop-grid">
-        <a class="pop-card" href="#"><div class="pop-img"><div class="img-ph">images/popular-1.jpg</div></div><div class="prod-cat">Kitchen &amp; Drinkware</div><div class="prod-name">Travel Coffee Mug</div><div class="prod-price">$9.99</div></a>
-        <a class="pop-card" href="#"><div class="pop-img"><div class="img-ph">images/popular-2.jpg</div></div><div class="prod-cat">Accessories — NYPD</div><div class="prod-name">NYPD Souvenir Pin</div><div class="prod-price">$4.99</div></a>
-        <a class="pop-card" href="#"><div class="pop-img"><div class="img-ph">images/popular-3.jpg</div></div><div class="prod-cat">Apparel — Army</div><div class="prod-name">Army Hoodie</div><div class="prod-price">$34.99</div></a>
-        <a class="pop-card" href="#"><div class="pop-img"><div class="img-ph">images/popular-4.jpg</div></div><div class="prod-cat">Toys &amp; Collectibles</div><div class="prod-name">Hollywood Star Figure</div><div class="prod-price">$18.99</div></a>
+      <div class="pop-grid" id="popular-grid">
+        <div style="grid-column:1/-1;text-align:center;font-size:12px;color:#bbb;font-weight:600;letter-spacing:0.5px;padding:40px;">Loading products...</div>
       </div>
     </section>
 
@@ -1066,17 +1059,195 @@
     var children = el.nextElementSibling;
     var arrow = el.querySelector('.sb-arrow');
     var isOpen = children.classList.contains('open');
-
     document.querySelectorAll('.sb-children').forEach(function(c) { c.classList.remove('open'); });
     document.querySelectorAll('.sb-head').forEach(function(h) { h.classList.remove('open'); });
     document.querySelectorAll('.sb-arrow').forEach(function(a) { a.classList.remove('rotated'); });
-
     if (!isOpen) {
       children.classList.add('open');
       el.classList.add('open');
       arrow.classList.add('rotated');
     }
   }
+
+  /* ══════════════════════════════════
+     SHOPIFY STOREFRONT API
+  ══════════════════════════════════ */
+  const SHOP_DOMAIN  = 'countrydreamshop.myshopify.com';
+  const SHOP_TOKEN   = 'ee2398e9ca5ab23e274f02d5fd21f8a2';
+  const SHOP_API_URL = 'https://' + SHOP_DOMAIN + '/api/2024-10/graphql.json';
+
+  /* Cart state */
+  var cartId   = null;
+  var cartCount = 0;
+
+  async function shopifyFetch(query, variables) {
+    try {
+      var res = await fetch(SHOP_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': SHOP_TOKEN
+        },
+        body: JSON.stringify({ query: query, variables: variables || {} })
+      });
+      var json = await res.json();
+      return json.data;
+    } catch(e) {
+      console.error('Shopify API error:', e);
+      return null;
+    }
+  }
+
+  /* ── Render product card ── */
+  function productCard(product) {
+    var price = parseFloat(product.priceRange.minVariantPrice.amount).toFixed(2);
+    var currency = product.priceRange.minVariantPrice.currencyCode;
+    var img = product.images.edges[0] ? product.images.edges[0].node.url : '';
+    var alt = product.images.edges[0] ? product.images.edges[0].node.altText || product.title : product.title;
+    var collection = product.collections.edges[0] ? product.collections.edges[0].node.title : '';
+    var url = 'https://' + SHOP_DOMAIN + '/products/' + product.handle;
+    var imgHtml = img
+      ? '<img src="' + img + '" alt="' + alt + '" style="width:100%;height:100%;object-fit:contain;padding:10px;">'
+      : '<div class="img-ph">' + product.title + '</div>';
+    return '<a class="prod-card" href="' + url + '" target="_blank">' +
+      '<div class="prod-img">' + imgHtml + '</div>' +
+      '<div class="prod-body">' +
+        '<div class="prod-cat">' + collection + '</div>' +
+        '<div class="prod-name">' + product.title + '</div>' +
+        '<div class="prod-price">' + currency + ' $' + price + '</div>' +
+        '<button class="add-btn" data-id="' + product.variants.edges[0].node.id + '" onclick="addToCart(this, event)">Add to Cart</button>' +
+      '</div>' +
+    '</a>';
+  }
+
+  /* ── Render popular card ── */
+  function popularCard(product) {
+    var price = parseFloat(product.priceRange.minVariantPrice.amount).toFixed(2);
+    var currency = product.priceRange.minVariantPrice.currencyCode;
+    var img = product.images.edges[0] ? product.images.edges[0].node.url : '';
+    var alt = product.images.edges[0] ? product.images.edges[0].node.altText || product.title : product.title;
+    var collection = product.collections.edges[0] ? product.collections.edges[0].node.title : '';
+    var url = 'https://' + SHOP_DOMAIN + '/products/' + product.handle;
+    var imgHtml = img
+      ? '<img src="' + img + '" alt="' + alt + '" style="width:100%;height:100%;object-fit:contain;padding:14px;">'
+      : '<div class="img-ph">' + product.title + '</div>';
+    return '<a class="pop-card" href="' + url + '" target="_blank">' +
+      '<div class="pop-img">' + imgHtml + '</div>' +
+      '<div class="prod-cat">' + collection + '</div>' +
+      '<div class="prod-name">' + product.title + '</div>' +
+      '<div class="prod-price">' + currency + ' $' + price + '</div>' +
+    '</a>';
+  }
+
+  /* ── Load featured products ── */
+  async function loadFeatured() {
+    var q = '{ products(first:5, sortKey:BEST_SELLING) { edges { node {' +
+      'title handle' +
+      ' priceRange { minVariantPrice { amount currencyCode } }' +
+      ' images(first:1) { edges { node { url altText } } }' +
+      ' collections(first:1) { edges { node { title } } }' +
+      ' variants(first:1) { edges { node { id } } }' +
+    '} } } }';
+    var data = await shopifyFetch(q);
+    if (!data || !data.products) return;
+    var grid = document.getElementById('featured-grid');
+    if (!grid) return;
+    grid.innerHTML = data.products.edges.map(function(e) { return productCard(e.node); }).join('');
+  }
+
+  /* ── Load popular products ── */
+  async function loadPopular() {
+    var q = '{ products(first:4, sortKey:BEST_SELLING, reverse:false) { edges { node {' +
+      'title handle' +
+      ' priceRange { minVariantPrice { amount currencyCode } }' +
+      ' images(first:1) { edges { node { url altText } } }' +
+      ' collections(first:1) { edges { node { title } } }' +
+      ' variants(first:1) { edges { node { id } } }' +
+    '} } } }';
+    var data = await shopifyFetch(q);
+    if (!data || !data.products) return;
+    var grid = document.getElementById('popular-grid');
+    if (!grid) return;
+    grid.innerHTML = data.products.edges.map(function(e) { return popularCard(e.node); }).join('');
+  }
+
+  /* ── Load collections into category circles ── */
+  async function loadCollections() {
+    var q = '{ collections(first:8) { edges { node { title handle image { url } } } } }';
+    var data = await shopifyFetch(q);
+    if (!data || !data.collections) return;
+    var strip = document.getElementById('cat-strip');
+    if (!strip) return;
+    strip.innerHTML = data.collections.edges.map(function(e) {
+      var c = e.node;
+      var url = 'https://' + SHOP_DOMAIN + '/collections/' + c.handle;
+      var imgHtml = c.image
+        ? '<img src="' + c.image.url + '" alt="' + c.title + '" style="width:100%;height:100%;object-fit:cover;">'
+        : '<div class="cat-ph">' + c.title + '</div>';
+      return '<a class="cat-item" href="' + url + '" target="_blank">' +
+        '<div class="cat-circle">' + imgHtml + '</div>' +
+        '<span class="cat-label">' + c.title + '</span>' +
+      '</a>';
+    }).join('');
+  }
+
+  /* ── Cart: create cart ── */
+  async function createCart() {
+    var q = 'mutation { cartCreate { cart { id checkoutUrl } } }';
+    var data = await shopifyFetch(q);
+    if (data && data.cartCreate) {
+      cartId = data.cartCreate.cart.id;
+      localStorage.setItem('ht_cart_id', cartId);
+      localStorage.setItem('ht_checkout_url', data.cartCreate.cart.checkoutUrl);
+    }
+  }
+
+  /* ── Cart: add item ── */
+  async function addToCart(btn, event) {
+    event.preventDefault();
+    event.stopPropagation();
+    var variantId = btn.getAttribute('data-id');
+    if (!cartId) await createCart();
+    btn.textContent = 'Adding...';
+    btn.disabled = true;
+    var q = 'mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {' +
+      'cartLinesAdd(cartId: $cartId, lines: $lines) {' +
+        'cart { totalQuantity }' +
+      '}' +
+    '}';
+    var data = await shopifyFetch(q, { cartId: cartId, lines: [{ merchandiseId: variantId, quantity: 1 }] });
+    if (data && data.cartLinesAdd) {
+      cartCount = data.cartLinesAdd.cart.totalQuantity;
+      document.querySelector('.cart-count').textContent = cartCount;
+      btn.textContent = '✓ Added!';
+      btn.style.background = '#2a7a40';
+      setTimeout(function() {
+        btn.textContent = 'Add to Cart';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 2000);
+    } else {
+      btn.textContent = 'Add to Cart';
+      btn.disabled = false;
+    }
+  }
+
+  /* ── Cart: go to checkout ── */
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.cart-wrap')) {
+      var url = localStorage.getItem('ht_checkout_url');
+      if (url) window.open(url, '_blank');
+    }
+  });
+
+  /* ── Init ── */
+  window.addEventListener('DOMContentLoaded', function() {
+    /* restore cart id if exists */
+    cartId = localStorage.getItem('ht_cart_id') || null;
+    loadCollections();
+    loadFeatured();
+    loadPopular();
+  });
 </script>
 
 </body>

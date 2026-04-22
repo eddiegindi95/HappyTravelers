@@ -1006,34 +1006,19 @@ function renderHome() {
       +'<div class="prod-grid" id="featured-grid">'+skels(4)+'</div>'
     +'</section>'
 
-    +(function(){
-      var fifaImg = circleImages['fifa-world-cup-2026'] || '';
-      var fifaBg  = fifaImg
-        ? 'position:relative;overflow:hidden;background:linear-gradient(135deg,#003d1a 0%,#006400 100%);'
-        : 'background:linear-gradient(135deg,#f0fff4 0%,#e8f5e9 100%);border:1.5px solid #b2dfdb;';
-      var fifaImgHtml = fifaImg
-        ? '<img src="'+fifaImg+'" alt="FIFA World Cup 2026" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;border-radius:inherit;">'
-        : '';
-      var fifaTitleColor = fifaImg ? '#fff' : '#009000';
-      var fifaTagBg      = fifaImg ? 'background:rgba(0,144,0,.85)' : 'background:#009000';
-      var fifaLinkColor  = fifaImg ? '#90ee90' : '#009000';
-      var fifaTextColor  = fifaImg ? 'color:#e0ffe0' : 'color:#555';
-      return '<div class="promo-row">'
-        +'<a class="promo-card" href="#collection/fifa-world-cup-2026" style="'+fifaBg+'">'
-          +fifaImgHtml
-          +'<div style="position:relative;z-index:1;">'
-            +'<div class="promo-tag" style="'+fifaTagBg+';color:#fff;">New Collection</div>'
-            +'<h3><span style="color:'+fifaTitleColor+';">FIFA</span><br>World Cup 2026</h3>'
-            +'<p style="'+fifaTextColor+';">Official FIFA World Cup 2026 merchandise &amp; souvenirs</p>'
-            +'<span class="promo-link" style="color:'+fifaLinkColor+';">Shop Now &rarr;</span>'
-          +'</div>'
-        +'</a>'
-        +'<a class="promo-card" href="#collection/us-cities">'
-          +'<div class="promo-tag">Travel &amp; City Gifts</div><h3><span>US Cities</span><br>Souvenirs</h3>'
-          +'<p>New York, California, Florida &amp; more</p>'
-          +'<span class="promo-link">Shop Now &rarr;</span></a>'
-      +'</div>';
-    })()
+    +'<div class="promo-row">'
+      +'<a class="promo-card" href="#collection/fifa-world-cup-2026" style="background:linear-gradient(135deg,#004d1a 0%,#006b22 60%,#005018 100%);">'
+        +'<div class="promo-tag" style="background:#fff;color:#006b22;font-weight:800;letter-spacing:.5px;">NEW COLLECTION</div>'
+        +'<h3 style="margin:.6rem 0 .3rem;"><span style="color:#fff;font-size:2rem;letter-spacing:1px;">FIFA</span><br><span style="color:#c8f5c8;font-size:1.1rem;font-weight:600;">World Cup 2026</span></h3>'
+        +'<p style="color:#d4f5d4;font-size:.9rem;margin:.3rem 0 1rem;">Official FIFA World Cup 2026 merchandise &amp; souvenirs</p>'
+        +'<span class="promo-link" style="color:#90ee90;font-weight:700;">Shop Now &rarr;</span>'
+      +'</a>'
+      +'<a class="promo-card" href="#collection/us-cities">'
+        +'<div class="promo-tag">Travel &amp; City Gifts</div><h3><span>US Cities</span><br>Souvenirs</h3>'
+        +'<p>New York, California, Florida &amp; more</p>'
+        +'<span class="promo-link">Shop Now &rarr;</span>'
+      +'</a>'
+    +'</div>'
 
     +'<section class="section" style="padding-top:0">'
       +'<div class="section-head"><h2>New Arrivals</h2><a href="#collection/all">View All</a></div>'

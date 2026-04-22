@@ -410,7 +410,6 @@
     <div class="mobile-nav-link" onclick="toggleMobileSub('msub-fdny')">&#x1F692; FDNY <span>&#x25BE;</span></div>
     <div class="mobile-sub" id="msub-fdny">
       <a href="#collection/fdny" onclick="closeMobileNav()">All FDNY</a>
-      <a href="#collection/fdny-apparel" onclick="closeMobileNav()">FDNY Apparel</a>
       <a href="#collection/fdny-accessories" onclick="closeMobileNav()">FDNY Accessories</a>
       <a href="#collection/fdny-drinkware" onclick="closeMobileNav()">FDNY Drinkware</a>
       <a href="#collection/fdny-collectibles" onclick="closeMobileNav()">FDNY Collectibles</a>
@@ -419,7 +418,6 @@
     <div class="mobile-nav-link" onclick="toggleMobileSub('msub-nypd')">&#x1F46E; NYPD <span>&#x25BE;</span></div>
     <div class="mobile-sub" id="msub-nypd">
       <a href="#collection/nypd" onclick="closeMobileNav()">All NYPD</a>
-      <a href="#collection/nypd-apparel" onclick="closeMobileNav()">NYPD Apparel</a>
       <a href="#collection/nypd-accessories" onclick="closeMobileNav()">NYPD Accessories</a>
       <a href="#collection/nypd-drinkware" onclick="closeMobileNav()">NYPD Drinkware</a>
       <a href="#collection/nypd-collectibles" onclick="closeMobileNav()">NYPD Collectibles</a>
@@ -516,7 +514,6 @@
       <a href="#collection/fdny" class="nav-link">FDNY <span class="caret">&#x25BE;</span></a>
       <div class="dd">
         <a href="#collection/fdny">All FDNY</a>
-        <a href="#collection/fdny-apparel">Apparel</a>
         <a href="#collection/fdny-accessories">Accessories</a>
         <a href="#collection/fdny-drinkware">Drinkware</a>
         <a href="#collection/fdny-collectibles">Collectibles</a>
@@ -536,7 +533,6 @@
       <a href="#collection/nypd" class="nav-link">NYPD <span class="caret">&#x25BE;</span></a>
       <div class="dd">
         <a href="#collection/nypd">All NYPD</a>
-        <a href="#collection/nypd-apparel">Apparel</a>
         <a href="#collection/nypd-accessories">Accessories</a>
         <a href="#collection/nypd-drinkware">Drinkware</a>
         <a href="#collection/nypd-collectibles">Collectibles</a>
@@ -622,7 +618,6 @@
       <div class="sb-head" onclick="toggleSb(this)">&#x1F692; FDNY <span class="sb-arrow">&#x25B6;</span></div>
       <div class="sb-children">
         <a href="#collection/fdny">All FDNY</a>
-        <a href="#collection/fdny-apparel">Apparel</a>
         <a href="#collection/fdny-accessories">Accessories</a>
         <a href="#collection/fdny-drinkware">Drinkware</a>
         <a href="#collection/fdny-collectibles">Collectibles</a>
@@ -632,7 +627,6 @@
       <div class="sb-head" onclick="toggleSb(this)">&#x1F46E; NYPD <span class="sb-arrow">&#x25B6;</span></div>
       <div class="sb-children">
         <a href="#collection/nypd">All NYPD</a>
-        <a href="#collection/nypd-apparel">Apparel</a>
         <a href="#collection/nypd-accessories">Accessories</a>
         <a href="#collection/nypd-drinkware">Drinkware</a>
         <a href="#collection/nypd-collectibles">Collectibles</a>
@@ -780,7 +774,7 @@ var COL_DESCS = {
   'army':'Officially licensed US Army apparel and accessories.',
   'hollywood':'Movie and entertainment merchandise.',
   'fdny':'Officially licensed FDNY Fire Department merchandise.',
-  'nasa':'Official NASA rockets, space exploration merchandise.',
+  'nasa':'Official NASA space exploration merchandise.',
   'nypd':'Official NYPD New York Police Department merchandise.',
   'us-cities':'Souvenirs from New York, California, Florida and more.',
   'i-love-ny':'I Love NY gifts, souvenirs, and merchandise celebrating New York.',
@@ -790,6 +784,8 @@ var COL_DESCS = {
 /* ── Virtual "search handles" — no Shopify collection needed, uses search API ── */
 /* ── Virtual "search handles" — no Shopify collection needed, uses search API ── */
 var SEARCH_HANDLES = {
+  /* Top-level filtered collections */
+  'nasa':                 {l:'NASA',                    q:'NASA',                       parent:null,        e:'&#x1F680;'},
   /* Apparel subcategories */
   'apparel-tshirts':      {l:'T-Shirts',                q:'shirt',                      parent:'apparel',   e:'&#x1F455;'},
   'apparel-hoodies':      {l:'Hoodies & Sweatshirts',   q:'hoodie sweatshirt',          parent:'apparel',   e:'&#x1F9E5;'},
@@ -835,12 +831,10 @@ var SEARCH_HANDLES = {
   'mlb-cardinals':        {l:'St. Louis Cardinals',     q:'Cardinals',                  parent:'mlb',       e:'&#x26BE;'},
   'mlb-nationals':        {l:'Washington Nationals',    q:'Nationals',                  parent:'mlb',       e:'&#x26BE;'},
   /* FDNY subcategories */
-  'fdny-apparel':         {l:'FDNY Apparel',            q:'FDNY shirt hoodie',          parent:'fdny',      e:'&#x1F692;'},
   'fdny-accessories':     {l:'FDNY Accessories',        q:'FDNY keychain pin',          parent:'fdny',      e:'&#x1F692;'},
   'fdny-drinkware':       {l:'FDNY Drinkware',          q:'FDNY mug cup',               parent:'fdny',      e:'&#x1F692;'},
   'fdny-collectibles':    {l:'FDNY Collectibles',       q:'FDNY collectible',           parent:'fdny',      e:'&#x1F692;'},
   /* NYPD subcategories */
-  'nypd-apparel':         {l:'NYPD Apparel',            q:'NYPD shirt hoodie',          parent:'nypd',      e:'&#x1F46E;'},
   'nypd-accessories':     {l:'NYPD Accessories',        q:'NYPD keychain pin',          parent:'nypd',      e:'&#x1F46E;'},
   'nypd-drinkware':       {l:'NYPD Drinkware',          q:'NYPD mug cup',               parent:'nypd',      e:'&#x1F46E;'},
   'nypd-collectibles':    {l:'NYPD Collectibles',       q:'NYPD collectible',           parent:'nypd',      e:'&#x1F46E;'},
@@ -850,10 +844,10 @@ var SEARCH_HANDLES = {
   'army-drinkware':       {l:'Army Drinkware',          q:'Army mug cup',               parent:'army',      e:'&#x1F396;'},
   'army-toys':            {l:'Army Toys & Collectibles',q:'Army collectible figure',    parent:'army',      e:'&#x1F396;'},
   /* NASA subcategories */
-  'nasa-apparel':         {l:'NASA Apparel',            q:'NASA shirt hoodie',          parent:'nasa',      e:'&#x1F680;'},
-  'nasa-accessories':     {l:'NASA Accessories',        q:'NASA keychain pin',          parent:'nasa',      e:'&#x1F680;'},
-  'nasa-drinkware':       {l:'NASA Drinkware',          q:'NASA mug cup',               parent:'nasa',      e:'&#x1F680;'},
-  'nasa-toys':            {l:'NASA Toys & Collectibles',q:'NASA rocket model',          parent:'nasa',      e:'&#x1F680;'},
+  'nasa-apparel':         {l:'NASA Apparel',            q:'NASA shirt NASA hoodie NASA tee', parent:'nasa', e:'&#x1F680;'},
+  'nasa-accessories':     {l:'NASA Accessories',        q:'NASA keychain NASA pin NASA patch', parent:'nasa', e:'&#x1F680;'},
+  'nasa-drinkware':       {l:'NASA Drinkware',          q:'NASA mug NASA cup NASA bottle', parent:'nasa',  e:'&#x1F680;'},
+  'nasa-toys':            {l:'NASA Toys & Collectibles',q:'NASA rocket NASA model NASA figurine', parent:'nasa', e:'&#x1F680;'},
   /* Hollywood subcategories */
   'hollywood-apparel':    {l:'Hollywood Apparel',       q:'Hollywood shirt hoodie',     parent:'hollywood', e:'&#x1F3AC;'},
   'hollywood-accessories':{l:'Hollywood Accessories',   q:'Hollywood keychain pin bag', parent:'hollywood', e:'&#x1F3AC;'},

@@ -301,6 +301,9 @@
 <body>
 
 <!-- HEADER -->
+<div style="background:#0a2540;color:#8ab4d4;font-size:11px;font-weight:500;text-align:center;padding:5px 16px;letter-spacing:.3px;">
+  📍 40 West 34th Street, New York, NY 10001 &nbsp;|&nbsp; Daily 9:00 AM – 9:00 PM
+</div>
 <header class="header">
   <button class="hamburger" id="hamburger" onclick="openMobileNav()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -473,11 +476,56 @@
         <a href="#collection/mlb-dodgers">Los Angeles Dodgers</a>
       </div>
     </div>
-    <div class="nav-item"><a href="#collection/army" class="nav-link">Army</a></div>
-    <div class="nav-item"><a href="#collection/hollywood" class="nav-link">Hollywood</a></div>
-    <div class="nav-item"><a href="#collection/fdny" class="nav-link">FDNY</a></div>
-    <div class="nav-item"><a href="#collection/nasa" class="nav-link">NASA</a></div>
-    <div class="nav-item"><a href="#collection/nypd" class="nav-link">NYPD</a></div>
+    <div class="nav-item">
+      <a href="#collection/army" class="nav-link">Army <span class="caret">&#x25BE;</span></a>
+      <div class="dd">
+        <a href="#collection/army">All Army</a>
+        <a href="#collection/army-apparel">Apparel</a>
+        <a href="#collection/army-accessories">Accessories</a>
+        <a href="#collection/army-drinkware">Drinkware</a>
+        <a href="#collection/army-toys">Toys &amp; Collectibles</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#collection/hollywood" class="nav-link">Hollywood <span class="caret">&#x25BE;</span></a>
+      <div class="dd">
+        <a href="#collection/hollywood">All Hollywood</a>
+        <a href="#collection/hollywood-apparel">Apparel</a>
+        <a href="#collection/hollywood-accessories">Accessories</a>
+        <a href="#collection/hollywood-drinkware">Drinkware</a>
+        <a href="#collection/hollywood-toys">Collectibles</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#collection/fdny" class="nav-link">FDNY <span class="caret">&#x25BE;</span></a>
+      <div class="dd">
+        <a href="#collection/fdny">All FDNY</a>
+        <a href="#collection/fdny-apparel">Apparel</a>
+        <a href="#collection/fdny-accessories">Accessories</a>
+        <a href="#collection/fdny-drinkware">Drinkware</a>
+        <a href="#collection/fdny-collectibles">Collectibles</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#collection/nasa" class="nav-link">NASA <span class="caret">&#x25BE;</span></a>
+      <div class="dd">
+        <a href="#collection/nasa">All NASA</a>
+        <a href="#collection/nasa-apparel">Apparel</a>
+        <a href="#collection/nasa-accessories">Accessories</a>
+        <a href="#collection/nasa-drinkware">Drinkware</a>
+        <a href="#collection/nasa-toys">Toys &amp; Collectibles</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#collection/nypd" class="nav-link">NYPD <span class="caret">&#x25BE;</span></a>
+      <div class="dd">
+        <a href="#collection/nypd">All NYPD</a>
+        <a href="#collection/nypd-apparel">Apparel</a>
+        <a href="#collection/nypd-accessories">Accessories</a>
+        <a href="#collection/nypd-drinkware">Drinkware</a>
+        <a href="#collection/nypd-collectibles">Collectibles</a>
+      </div>
+    </div>
     <div class="nav-item">
       <a href="#collection/us-cities" class="nav-link">US Cities <span class="caret">&#x25BE;</span></a>
       <div class="dd wide">
@@ -492,6 +540,7 @@
     <div class="nav-item"><a href="#collection/all" class="nav-link">Best Sellers</a></div>
     <div class="nav-item"><a href="#about" class="nav-link">About Us</a></div>
     <div class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></div>
+    <div class="nav-item"><a href="#login" class="nav-link" style="color:#1a6fc4;font-weight:800;">&#x1F464; Sign In</a></div>
   </div>
 </div>
 
@@ -732,74 +781,75 @@ var COL_DESCS = {
 };
 
 /* ── Virtual "search handles" — no Shopify collection needed, uses search API ── */
+/* ── Virtual "search handles" — no Shopify collection needed, uses search API ── */
 var SEARCH_HANDLES = {
   /* Apparel subcategories */
-  'apparel-tshirts':      {l:'T-Shirts',                q:'t-shirt tshirt',            parent:'apparel',   e:'&#x1F455;'},
+  'apparel-tshirts':      {l:'T-Shirts',                q:'shirt',                      parent:'apparel',   e:'&#x1F455;'},
   'apparel-hoodies':      {l:'Hoodies & Sweatshirts',   q:'hoodie sweatshirt',          parent:'apparel',   e:'&#x1F9E5;'},
   'apparel-hats':         {l:'Hats & Caps',             q:'hat cap',                    parent:'apparel',   e:'&#x1F9E2;'},
   'apparel-jackets':      {l:'Jackets & Outerwear',     q:'jacket coat',                parent:'apparel',   e:'&#x1F9E5;'},
   /* Accessories subcategories */
-  'accessories-keychains':{l:'Keychains',               q:'keychain key chain',         parent:'accessories',e:'&#x1F511;'},
-  'accessories-pins':     {l:'Pins & Patches',          q:'pin patch badge button',     parent:'accessories',e:'&#x1F4CC;'},
+  'accessories-keychains':{l:'Keychains',               q:'keychain',                   parent:'accessories',e:'&#x1F511;'},
+  'accessories-pins':     {l:'Pins & Patches',          q:'pin patch badge',            parent:'accessories',e:'&#x1F4CC;'},
   'accessories-bags':     {l:'Bags & Totes',            q:'bag tote backpack',          parent:'accessories',e:'&#x1F45C;'},
-  'accessories-magnets':  {l:'Magnets',                 q:'magnet souvenir',            parent:'accessories',e:'&#x1FA9D;'},
+  'accessories-magnets':  {l:'Magnets',                 q:'magnet',                     parent:'accessories',e:'&#x1FA9D;'},
   /* US Cities */
-  'city-new-york':        {l:'New York City',           q:'New York City NYC',          parent:'us-cities', e:'&#x1F5FD;'},
-  'city-california':      {l:'California',              q:'California Los Angeles Hollywood',parent:'us-cities',e:'&#x1F33A;'},
-  'city-florida':         {l:'Florida',                 q:'Florida Miami Orlando',      parent:'us-cities', e:'&#x1F334;'},
-  'city-texas':           {l:'Texas',                   q:'Texas Dallas Houston',       parent:'us-cities', e:'&#x2B50;'},
-  'city-washington-dc':   {l:'Washington D.C.',         q:'Washington DC Capitol',      parent:'us-cities', e:'&#x1F3DB;'},
-  'city-chicago':         {l:'Chicago',                 q:'Chicago Illinois',           parent:'us-cities', e:'&#x1F32C;'},
-  'city-las-vegas':       {l:'Las Vegas',               q:'Las Vegas Nevada',           parent:'us-cities', e:'&#x1F3B0;'},
+  'city-new-york':        {l:'New York City',           q:'New York',                   parent:'us-cities', e:'&#x1F5FD;'},
+  'city-california':      {l:'California',              q:'California',                 parent:'us-cities', e:'&#x1F33A;'},
+  'city-florida':         {l:'Florida',                 q:'Florida',                    parent:'us-cities', e:'&#x1F334;'},
+  'city-texas':           {l:'Texas',                   q:'Texas',                      parent:'us-cities', e:'&#x2B50;'},
+  'city-washington-dc':   {l:'Washington DC',           q:'Washington DC',              parent:'us-cities', e:'&#x1F3DB;'},
+  'city-chicago':         {l:'Chicago',                 q:'Chicago',                    parent:'us-cities', e:'&#x1F32C;'},
+  'city-las-vegas':       {l:'Las Vegas',               q:'Las Vegas',                  parent:'us-cities', e:'&#x1F3B0;'},
   'city-georgia':         {l:'Georgia',                 q:'Georgia Atlanta',            parent:'us-cities', e:'&#x1F338;'},
   'city-massachusetts':   {l:'Massachusetts',           q:'Boston Massachusetts',       parent:'us-cities', e:'&#x1F3DB;'},
-  'city-ohio':            {l:'Ohio',                    q:'Ohio Cleveland Columbus',    parent:'us-cities', e:'&#x1F331;'},
+  'city-ohio':            {l:'Ohio',                    q:'Ohio Cleveland',             parent:'us-cities', e:'&#x1F331;'},
   'city-pennsylvania':    {l:'Pennsylvania',            q:'Philadelphia Pennsylvania',  parent:'us-cities', e:'&#x1F3C9;'},
   /* MLB Teams */
-  'mlb-braves':           {l:'Atlanta Braves',          q:'Atlanta Braves',             parent:'mlb',       e:'&#x26BE;'},
-  'mlb-orioles':          {l:'Baltimore Orioles',       q:'Baltimore Orioles',          parent:'mlb',       e:'&#x26BE;'},
-  'mlb-red-sox':          {l:'Boston Red Sox',          q:'Boston Red Sox',             parent:'mlb',       e:'&#x26BE;'},
-  'mlb-cubs':             {l:'Chicago Cubs',            q:'Chicago Cubs',               parent:'mlb',       e:'&#x26BE;'},
-  'mlb-sox':              {l:'Chicago White Sox',       q:'Chicago White Sox',          parent:'mlb',       e:'&#x26BE;'},
-  'mlb-guardians':        {l:'Cleveland Guardians',     q:'Cleveland Guardians',        parent:'mlb',       e:'&#x26BE;'},
-  'mlb-rockies':          {l:'Colorado Rockies',        q:'Colorado Rockies',           parent:'mlb',       e:'&#x26BE;'},
-  'mlb-tigers':           {l:'Detroit Tigers',          q:'Detroit Tigers',             parent:'mlb',       e:'&#x26BE;'},
-  'mlb-astros':           {l:'Houston Astros',          q:'Houston Astros',             parent:'mlb',       e:'&#x26BE;'},
-  'mlb-dodgers':          {l:'Los Angeles Dodgers',     q:'Los Angeles Dodgers',        parent:'mlb',       e:'&#x26BE;'},
-  'mlb-mets':             {l:'New York Mets',           q:'New York Mets',              parent:'mlb',       e:'&#x26BE;'},
-  'mlb-yankees':          {l:'New York Yankees',        q:'New York Yankees',           parent:'mlb',       e:'&#x26BE;'},
-  'mlb-phillies':         {l:'Philadelphia Phillies',   q:'Philadelphia Phillies',      parent:'mlb',       e:'&#x26BE;'},
-  'mlb-pirates':          {l:'Pittsburgh Pirates',      q:'Pittsburgh Pirates',         parent:'mlb',       e:'&#x26BE;'},
-  'mlb-padres':           {l:'San Diego Padres',        q:'San Diego Padres',           parent:'mlb',       e:'&#x26BE;'},
-  'mlb-sf-giants':        {l:'San Francisco Giants',    q:'San Francisco Giants',       parent:'mlb',       e:'&#x26BE;'},
-  'mlb-mariners':         {l:'Seattle Mariners',        q:'Seattle Mariners',           parent:'mlb',       e:'&#x26BE;'},
-  'mlb-cardinals':        {l:'St. Louis Cardinals',     q:'St. Louis Cardinals',        parent:'mlb',       e:'&#x26BE;'},
-  'mlb-nationals':        {l:'Washington Nationals',    q:'Washington Nationals',       parent:'mlb',       e:'&#x26BE;'},
+  'mlb-braves':           {l:'Atlanta Braves',          q:'Braves',                     parent:'mlb',       e:'&#x26BE;'},
+  'mlb-orioles':          {l:'Baltimore Orioles',       q:'Orioles',                    parent:'mlb',       e:'&#x26BE;'},
+  'mlb-red-sox':          {l:'Boston Red Sox',          q:'Red Sox',                    parent:'mlb',       e:'&#x26BE;'},
+  'mlb-cubs':             {l:'Chicago Cubs',            q:'Cubs',                       parent:'mlb',       e:'&#x26BE;'},
+  'mlb-sox':              {l:'Chicago White Sox',       q:'White Sox',                  parent:'mlb',       e:'&#x26BE;'},
+  'mlb-guardians':        {l:'Cleveland Guardians',     q:'Guardians Cleveland',        parent:'mlb',       e:'&#x26BE;'},
+  'mlb-rockies':          {l:'Colorado Rockies',        q:'Rockies',                    parent:'mlb',       e:'&#x26BE;'},
+  'mlb-tigers':           {l:'Detroit Tigers',          q:'Tigers',                     parent:'mlb',       e:'&#x26BE;'},
+  'mlb-astros':           {l:'Houston Astros',          q:'Astros',                     parent:'mlb',       e:'&#x26BE;'},
+  'mlb-dodgers':          {l:'Los Angeles Dodgers',     q:'Dodgers',                    parent:'mlb',       e:'&#x26BE;'},
+  'mlb-mets':             {l:'New York Mets',           q:'Mets',                       parent:'mlb',       e:'&#x26BE;'},
+  'mlb-yankees':          {l:'New York Yankees',        q:'Yankees',                    parent:'mlb',       e:'&#x26BE;'},
+  'mlb-phillies':         {l:'Philadelphia Phillies',   q:'Phillies',                   parent:'mlb',       e:'&#x26BE;'},
+  'mlb-pirates':          {l:'Pittsburgh Pirates',      q:'Pirates',                    parent:'mlb',       e:'&#x26BE;'},
+  'mlb-padres':           {l:'San Diego Padres',        q:'Padres',                     parent:'mlb',       e:'&#x26BE;'},
+  'mlb-sf-giants':        {l:'San Francisco Giants',    q:'Giants',                     parent:'mlb',       e:'&#x26BE;'},
+  'mlb-mariners':         {l:'Seattle Mariners',        q:'Mariners',                   parent:'mlb',       e:'&#x26BE;'},
+  'mlb-cardinals':        {l:'St. Louis Cardinals',     q:'Cardinals',                  parent:'mlb',       e:'&#x26BE;'},
+  'mlb-nationals':        {l:'Washington Nationals',    q:'Nationals',                  parent:'mlb',       e:'&#x26BE;'},
   /* FDNY subcategories */
-  'fdny-apparel':         {l:'FDNY Apparel',            q:'FDNY apparel shirt hoodie',  parent:'fdny',      e:'&#x1F692;'},
-  'fdny-accessories':     {l:'FDNY Accessories',        q:'FDNY accessories keychain pin',parent:'fdny',    e:'&#x1F692;'},
-  'fdny-drinkware':       {l:'FDNY Drinkware',          q:'FDNY mug cup drinkware',     parent:'fdny',      e:'&#x1F692;'},
-  'fdny-collectibles':    {l:'FDNY Collectibles',       q:'FDNY toy collectible figurine',parent:'fdny',    e:'&#x1F692;'},
+  'fdny-apparel':         {l:'FDNY Apparel',            q:'FDNY shirt hoodie',          parent:'fdny',      e:'&#x1F692;'},
+  'fdny-accessories':     {l:'FDNY Accessories',        q:'FDNY keychain pin',          parent:'fdny',      e:'&#x1F692;'},
+  'fdny-drinkware':       {l:'FDNY Drinkware',          q:'FDNY mug cup',               parent:'fdny',      e:'&#x1F692;'},
+  'fdny-collectibles':    {l:'FDNY Collectibles',       q:'FDNY collectible',           parent:'fdny',      e:'&#x1F692;'},
   /* NYPD subcategories */
-  'nypd-apparel':         {l:'NYPD Apparel',            q:'NYPD apparel shirt hoodie',  parent:'nypd',      e:'&#x1F46E;'},
-  'nypd-accessories':     {l:'NYPD Accessories',        q:'NYPD accessories keychain',  parent:'nypd',      e:'&#x1F46E;'},
-  'nypd-drinkware':       {l:'NYPD Drinkware',          q:'NYPD mug cup drinkware',     parent:'nypd',      e:'&#x1F46E;'},
-  'nypd-collectibles':    {l:'NYPD Collectibles',       q:'NYPD toy collectible',       parent:'nypd',      e:'&#x1F46E;'},
+  'nypd-apparel':         {l:'NYPD Apparel',            q:'NYPD shirt hoodie',          parent:'nypd',      e:'&#x1F46E;'},
+  'nypd-accessories':     {l:'NYPD Accessories',        q:'NYPD keychain pin',          parent:'nypd',      e:'&#x1F46E;'},
+  'nypd-drinkware':       {l:'NYPD Drinkware',          q:'NYPD mug cup',               parent:'nypd',      e:'&#x1F46E;'},
+  'nypd-collectibles':    {l:'NYPD Collectibles',       q:'NYPD collectible',           parent:'nypd',      e:'&#x1F46E;'},
   /* Army subcategories */
-  'army-apparel':         {l:'Army Apparel',            q:'Army apparel shirt hoodie',  parent:'army',      e:'&#x1F396;'},
-  'army-accessories':     {l:'Army Accessories',        q:'Army accessories keychain',  parent:'army',      e:'&#x1F396;'},
-  'army-drinkware':       {l:'Army Drinkware',          q:'Army mug cup drinkware',     parent:'army',      e:'&#x1F396;'},
-  'army-toys':            {l:'Army Toys & Collectibles',q:'Army toy collectible figure',parent:'army',      e:'&#x1F396;'},
+  'army-apparel':         {l:'Army Apparel',            q:'Army shirt hoodie',          parent:'army',      e:'&#x1F396;'},
+  'army-accessories':     {l:'Army Accessories',        q:'Army keychain pin',          parent:'army',      e:'&#x1F396;'},
+  'army-drinkware':       {l:'Army Drinkware',          q:'Army mug cup',               parent:'army',      e:'&#x1F396;'},
+  'army-toys':            {l:'Army Toys & Collectibles',q:'Army collectible figure',    parent:'army',      e:'&#x1F396;'},
   /* NASA subcategories */
-  'nasa-apparel':         {l:'NASA Apparel',            q:'NASA apparel shirt hoodie',  parent:'nasa',      e:'&#x1F680;'},
-  'nasa-accessories':     {l:'NASA Accessories',        q:'NASA accessories keychain',  parent:'nasa',      e:'&#x1F680;'},
-  'nasa-drinkware':       {l:'NASA Drinkware',          q:'NASA mug cup drinkware',     parent:'nasa',      e:'&#x1F680;'},
-  'nasa-toys':            {l:'NASA Toys & Collectibles',q:'NASA toy rocket model',      parent:'nasa',      e:'&#x1F680;'},
+  'nasa-apparel':         {l:'NASA Apparel',            q:'NASA shirt hoodie',          parent:'nasa',      e:'&#x1F680;'},
+  'nasa-accessories':     {l:'NASA Accessories',        q:'NASA keychain pin',          parent:'nasa',      e:'&#x1F680;'},
+  'nasa-drinkware':       {l:'NASA Drinkware',          q:'NASA mug cup',               parent:'nasa',      e:'&#x1F680;'},
+  'nasa-toys':            {l:'NASA Toys & Collectibles',q:'NASA rocket model',          parent:'nasa',      e:'&#x1F680;'},
   /* Hollywood subcategories */
-  'hollywood-apparel':    {l:'Hollywood Apparel',       q:'Hollywood apparel shirt',    parent:'hollywood', e:'&#x1F3AC;'},
-  'hollywood-accessories':{l:'Hollywood Accessories',   q:'Hollywood accessories',      parent:'hollywood', e:'&#x1F3AC;'},
+  'hollywood-apparel':    {l:'Hollywood Apparel',       q:'Hollywood shirt hoodie',     parent:'hollywood', e:'&#x1F3AC;'},
+  'hollywood-accessories':{l:'Hollywood Accessories',   q:'Hollywood keychain pin bag', parent:'hollywood', e:'&#x1F3AC;'},
   'hollywood-drinkware':  {l:'Hollywood Drinkware',     q:'Hollywood mug cup',          parent:'hollywood', e:'&#x1F3AC;'},
-  'hollywood-toys':       {l:'Hollywood Collectibles',  q:'Hollywood toy collectible',  parent:'hollywood', e:'&#x1F3AC;'}
+  'hollywood-toys':       {l:'Hollywood Collectibles',  q:'Hollywood collectible',      parent:'hollywood', e:'&#x1F3AC;'}
 };
 
 /* ── State ── */
@@ -855,6 +905,8 @@ function router() {
   if (!hash || hash==='home') renderHome();
   else if (hash==='about') renderAbout();
   else if (hash==='contact') renderContact();
+  else if (hash==='login') renderLogin();
+  else if (hash==='register') renderRegister();
   else if (hash.startsWith('product/')) renderProduct(hash.replace('product/',''));
   else if (hash.startsWith('collection/')) renderCollection(hash.replace('collection/',''));
   else if (hash.startsWith('search/')) renderSearch(decodeURIComponent(hash.replace('search/','')));
@@ -1151,7 +1203,7 @@ async function renderProduct(handle) {
           +'<div id="pd-price" style="font-size:26px;font-weight:800;color:#c8102e;margin-bottom:20px;">'+dispCur+' $'+dispPrice+'</div>'
           + varHtml
           +(inStock
-            ? '<button id="pd-add-btn" data-id="'+esc(dispVid)+'" data-title="'+esc(p.title)+'" data-price="'+dispPrice+'" data-cur="'+dispCur+'" data-img="'+esc(mainImg)+'" onclick="addToCart(this)" style="width:100%;padding:15px;background:#0a2540;color:#fff;border:none;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;margin-bottom:12px;transition:background .2s;">Add to Cart</button>'
+            ? '<button id="pd-add-btn" data-id="'+esc(dispVid)+'" data-title="'+esc(p.title)+'" data-variant="'+(firstAvail&&firstAvail.node.title!=='Default Title'?esc(firstAvail.node.title):'')+'" data-price="'+dispPrice+'" data-cur="'+dispCur+'" data-img="'+esc(mainImg)+'" onclick="addToCart(this)" style="width:100%;padding:15px;background:#0a2540;color:#fff;border:none;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;margin-bottom:12px;transition:background .2s;">Add to Cart</button>'
             : '<button disabled style="width:100%;padding:15px;background:#ccc;color:#fff;border:none;border-radius:3px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:not-allowed;margin-bottom:12px;">Out of Stock</button>')
           +'<div style="border-top:1px solid #eee;padding-top:24px;">'
             +'<div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;margin-bottom:12px;">Description</div>'
@@ -1163,7 +1215,7 @@ async function renderProduct(handle) {
     +'</div>';
 }
 
-function pdSelectVariant(btn, vid, price, cur, title) {
+function pdSelectVariant(btn, vid, price, cur, variantTitle) {
   /* Update selection styles */
   document.querySelectorAll('#pd-variants button').forEach(function(b){
     b.style.background = '#f5f5f5';
@@ -1182,6 +1234,121 @@ function pdSelectVariant(btn, vid, price, cur, title) {
     addBtn.setAttribute('data-id', vid);
     addBtn.setAttribute('data-price', parseFloat(price).toFixed(2));
     addBtn.setAttribute('data-cur', cur);
+    addBtn.setAttribute('data-variant', variantTitle !== 'Default Title' ? variantTitle : '');
+  }
+}
+
+/* ════════════════════════════════
+   LOGIN & REGISTER PAGES
+════════════════════════════════ */
+function renderLogin() {
+  document.title = 'Sign In — Happy Travelers';
+  var SHOP_URL = 'https://' + SHOP;
+  document.getElementById('app-view').innerHTML =
+    '<div class="coll-banner" style="background:linear-gradient(110deg,#0a2540 0%,#1a6fc4 100%)">'
+      +'<div class="coll-banner-bc"><a href="#" onclick="navigate()">Home</a> &rsaquo; Sign In</div>'
+      +'<h1>&#x1F464; Sign In</h1>'
+      +'<p>Access your Happy Travelers account.</p>'
+    +'</div>'
+    +'<div style="max-width:480px;margin:0 auto;padding:48px 24px;">'
+      +'<div style="background:#fff;border:1px solid #e8ecf0;border-radius:8px;padding:36px 32px;box-shadow:0 2px 16px rgba(0,0,0,.06);">'
+        +'<h2 style="font-size:20px;font-weight:800;color:#0a2540;margin-bottom:6px;">Welcome back</h2>'
+        +'<p style="font-size:12px;color:#888;margin-bottom:28px;">Sign in to your Happy Travelers account to track orders and manage your preferences.</p>'
+        +'<div style="display:flex;flex-direction:column;gap:14px;">'
+          +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Email Address</label>'
+          +'<input type="email" id="li-email" placeholder="your@email.com" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
+          +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Password</label>'
+          +'<input type="password" id="li-pass" placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
+          +'<button onclick="doShopifyLogin()" style="padding:13px;background:#0a2540;color:#fff;border:none;border-radius:3px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background .2s;width:100%;">Sign In &rarr;</button>'
+          +'<div id="li-status" style="display:none;padding:10px 14px;border-radius:4px;font-size:12px;font-weight:600;text-align:center;"></div>'
+          +'<div style="text-align:center;font-size:12px;color:#888;margin-top:4px;">'
+            +'<a href="'+SHOP_URL+'/account/login#recover" target="_blank" style="color:#1a6fc4;">Forgot password?</a>'
+          +'</div>'
+        +'</div>'
+        +'<div style="border-top:1px solid #f0f0f0;margin-top:24px;padding-top:20px;text-align:center;">'
+          +'<p style="font-size:12px;color:#888;margin-bottom:12px;">Don\x27t have an account?</p>'
+          +'<a href="#register" style="display:inline-block;padding:10px 24px;border:1.5px solid #0a2540;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0a2540;text-decoration:none;">Create Account</a>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+}
+
+async function doShopifyLogin() {
+  var email = (document.getElementById('li-email')||{}).value || '';
+  var pass  = (document.getElementById('li-pass')||{}).value || '';
+  var status = document.getElementById('li-status');
+  if (!email || !pass) {
+    if (status) { status.style.display='block'; status.style.background='#fff3f3'; status.style.color='#c8102e'; status.textContent='Please enter your email and password.'; }
+    return;
+  }
+  /* Use Shopify Customer Account API */
+  var q = 'mutation($input:CustomerAccessTokenCreateInput!){customerAccessTokenCreate(input:$input){customerAccessToken{accessToken expiresAt}customerUserErrors{message}}}';
+  var d = await gql(q, {input:{email:email,password:pass}});
+  if (d && d.customerAccessTokenCreate && d.customerAccessTokenCreate.customerAccessToken) {
+    var token = d.customerAccessTokenCreate.customerAccessToken.accessToken;
+    localStorage.setItem('ht_cust_token', token);
+    if (status) { status.style.display='block'; status.style.background='#f0fff4'; status.style.color='#1a7a30'; status.textContent='\u2713 Signed in! Redirecting\u2026'; }
+    setTimeout(function(){ window.open('https://'+SHOP+'/account','_blank'); }, 1200);
+  } else {
+    var errs = (d&&d.customerAccessTokenCreate&&d.customerAccessTokenCreate.customerUserErrors)||[];
+    var msg = errs[0] ? errs[0].message : 'Sign in failed. Please check your credentials.';
+    if (status) { status.style.display='block'; status.style.background='#fff3f3'; status.style.color='#c8102e'; status.textContent=msg; }
+  }
+}
+
+function renderRegister() {
+  document.title = 'Create Account — Happy Travelers';
+  document.getElementById('app-view').innerHTML =
+    '<div class="coll-banner" style="background:linear-gradient(110deg,#0a2540 0%,#1a6fc4 100%)">'
+      +'<div class="coll-banner-bc"><a href="#" onclick="navigate()">Home</a> &rsaquo; Create Account</div>'
+      +'<h1>Create Account</h1>'
+      +'<p>Join Happy Travelers to track orders and save your preferences.</p>'
+    +'</div>'
+    +'<div style="max-width:480px;margin:0 auto;padding:48px 24px;">'
+      +'<div style="background:#fff;border:1px solid #e8ecf0;border-radius:8px;padding:36px 32px;box-shadow:0 2px 16px rgba(0,0,0,.06);">'
+        +'<h2 style="font-size:20px;font-weight:800;color:#0a2540;margin-bottom:6px;">Create your account</h2>'
+        +'<p style="font-size:12px;color:#888;margin-bottom:28px;">Fill in your details to get started with Happy Travelers.</p>'
+        +'<div style="display:flex;flex-direction:column;gap:14px;">'
+          +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">'
+            +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">First Name</label>'
+            +'<input type="text" id="reg-first" placeholder="Jane" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
+            +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Last Name</label>'
+            +'<input type="text" id="reg-last" placeholder="Smith" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
+          +'</div>'
+          +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Email Address</label>'
+          +'<input type="email" id="reg-email" placeholder="your@email.com" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
+          +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Password</label>'
+          +'<input type="password" id="reg-pass" placeholder="Min. 5 characters" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
+          +'<button onclick="doShopifyRegister()" style="padding:13px;background:#0a2540;color:#fff;border:none;border-radius:3px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background .2s;width:100%;">Create Account &rarr;</button>'
+          +'<div id="reg-status" style="display:none;padding:10px 14px;border-radius:4px;font-size:12px;font-weight:600;text-align:center;"></div>'
+        +'</div>'
+        +'<div style="border-top:1px solid #f0f0f0;margin-top:24px;padding-top:20px;text-align:center;">'
+          +'<p style="font-size:12px;color:#888;margin-bottom:12px;">Already have an account?</p>'
+          +'<a href="#login" style="display:inline-block;padding:10px 24px;border:1.5px solid #0a2540;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0a2540;text-decoration:none;">Sign In</a>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+}
+
+async function doShopifyRegister() {
+  var first = (document.getElementById('reg-first')||{}).value||'';
+  var last  = (document.getElementById('reg-last')||{}).value||'';
+  var email = (document.getElementById('reg-email')||{}).value||'';
+  var pass  = (document.getElementById('reg-pass')||{}).value||'';
+  var status = document.getElementById('reg-status');
+  if (!email || !pass || pass.length < 5) {
+    if (status) { status.style.display='block'; status.style.background='#fff3f3'; status.style.color='#c8102e'; status.textContent='Please fill in all fields. Password must be at least 5 characters.'; }
+    return;
+  }
+  var q = 'mutation($input:CustomerCreateInput!){customerCreate(input:$input){customer{id email}customerUserErrors{message}}}';
+  var d = await gql(q, {input:{firstName:first,lastName:last,email:email,password:pass,acceptsMarketing:false}});
+  if (d && d.customerCreate && d.customerCreate.customer) {
+    if (status) { status.style.display='block'; status.style.background='#f0fff4'; status.style.color='#1a7a30'; status.textContent='\u2713 Account created! Please sign in.'; }
+    setTimeout(function(){ navigate('login'); }, 1500);
+  } else {
+    var errs = (d&&d.customerCreate&&d.customerCreate.customerUserErrors)||[];
+    var msg = errs[0] ? errs[0].message : 'Registration failed. Please try again.';
+    if (status) { status.style.display='block'; status.style.background='#fff3f3'; status.style.color='#c8102e'; status.textContent=msg; }
   }
 }
 
@@ -1507,6 +1674,7 @@ function prodCard(p){
 
   var addLabel = vid ? 'Add to Cart' : 'Out of Stock';
   var addDisabled = vid ? '' : ' disabled';
+  var vLabel = variantNode && variantNode.node.title !== 'Default Title' ? variantNode.node.title : '';
 
   return '<div class="prod-card">'
     +'<a class="prod-card-link" href="'+purl+'">'
@@ -1516,7 +1684,7 @@ function prodCard(p){
         +'<div class="prod-price">'+vCur+' $'+vPrice+'</div>'
       +'</div></a>'
     +'<div class="prod-actions">'
-      +'<button class="add-btn"'+addDisabled+' data-id="'+esc(vid)+'" data-title="'+esc(p.title)+'" data-price="'+vPrice+'" data-cur="'+vCur+'" data-img="'+esc(img)+'" onclick="addToCart(this)">'+addLabel+'</button>'
+      +'<button class="add-btn"'+addDisabled+' data-id="'+esc(vid)+'" data-title="'+esc(p.title)+'" data-variant="'+esc(vLabel)+'" data-price="'+vPrice+'" data-cur="'+vCur+'" data-img="'+esc(img)+'" onclick="addToCart(this)">'+addLabel+'</button>'
     +'</div>'
   +'</div>';
 }
@@ -1565,11 +1733,12 @@ async function ensureCart(){
 function numericId(gid){ return (gid||'').split('/').pop(); }
 
 async function addToCart(btn){
-  var vid   = btn.getAttribute('data-id');
-  var title = btn.getAttribute('data-title');
-  var price = btn.getAttribute('data-price');
-  var cur   = btn.getAttribute('data-cur');
-  var img   = btn.getAttribute('data-img');
+  var vid     = btn.getAttribute('data-id');
+  var title   = btn.getAttribute('data-title');
+  var variantLabel = btn.getAttribute('data-variant') || '';
+  var price   = btn.getAttribute('data-price');
+  var cur     = btn.getAttribute('data-cur');
+  var img     = btn.getAttribute('data-img');
 
   if (!vid) { console.warn('No variant ID on button'); return; }
 
@@ -1586,7 +1755,7 @@ async function addToCart(btn){
       /* Track locally so the badge still updates */
       cartCount++;
       document.getElementById('cart-count-badge').textContent=cartCount;
-      cartLines.push({qty:1,title:title,vt:'',price:parseFloat(price||0).toFixed(2),cur:cur||'USD',img:img||''});
+      cartLines.push({qty:1,title:title,vt:variantLabel,price:parseFloat(price||0).toFixed(2),cur:cur||'USD',img:img||''});
       drawCart();
       btn.textContent='✓ Added!';
       btn.style.background='#2a7a40';
@@ -1643,7 +1812,7 @@ async function addToCart(btn){
     if (nid2) {
       cartCount++;
       document.getElementById('cart-count-badge').textContent=cartCount;
-      cartLines.push({qty:1,title:title,vt:'',price:parseFloat(price||0).toFixed(2),cur:cur||'USD',img:img||''});
+      cartLines.push({qty:1,title:title,vt:variantLabel,price:parseFloat(price||0).toFixed(2),cur:cur||'USD',img:img||''});
       drawCart();
       localStorage.setItem('ht_curl','https://'+SHOP+'/cart/'+nid2+':1');
       localStorage.setItem('ht_ccnt',String(cartCount));
@@ -1678,7 +1847,24 @@ function drawCart(){
 
 function openCart(e){ if(e){e.preventDefault();e.stopPropagation();} drawCart(); document.getElementById('cart-overlay').classList.add('open'); document.getElementById('cart-drawer').classList.add('open'); }
 function closeCart(){ document.getElementById('cart-overlay').classList.remove('open'); document.getElementById('cart-drawer').classList.remove('open'); }
-function goToCheckout(){ var u=localStorage.getItem('ht_curl'); if(u) window.open(u,'_blank'); else window.open('https://'+SHOP+'/cart','_blank'); }
+function goToCheckout(){
+  var u=localStorage.getItem('ht_curl');
+  if(u && u.indexOf('/checkout')!==-1){
+    /* Real Shopify checkout URL from Cart API */
+    window.open(u,'_blank');
+  } else if(cartLines.length>0){
+    /* Build Shopify /cart URL from tracked lines */
+    var items=cartLines.map(function(l){
+      /* Try to extract numeric ID if we have the GID-format variant ID stored */
+      var stored=l.variantId||'';
+      return stored ? stored.split('/').pop()+':'+l.qty : '';
+    }).filter(Boolean).join(',');
+    var cartUrl=items ? 'https://'+SHOP+'/cart/'+items : 'https://'+SHOP+'/cart';
+    window.open(cartUrl,'_blank');
+  } else {
+    window.open('https://'+SHOP+'/cart','_blank');
+  }
+}
 
 /* ════════════════════════════════
    SIDEBAR ACCORDION

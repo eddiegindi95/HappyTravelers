@@ -27,7 +27,7 @@
     .hdr-link:hover{color:#1a6fc4}
     .hdr-divider{width:1px;height:18px;background:#e0e0e0}
     .cart-wrap{position:relative}
-    .cart-count{position:absolute;top:-7px;right:-10px;background:#c8102e;color:#fff;border-radius:10px;font-size:10px;font-weight:700;padding:1px 5px;line-height:1.5;min-width:18px;text-align:center}
+    .cart-count{position:absolute;top:-7px;right:-10px;background:#c8102e;color:#fff;border-radius:10px;font-size:10px;font-weight:700;padding:1px 5px;line-height:1.5;min-width:18px;text-align:center;display:none}
     .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-shrink:0}
     .hamburger span{display:block;width:22px;height:2px;background:#333;margin:5px 0;border-radius:2px;transition:all .2s}
 
@@ -314,18 +314,20 @@
   <div class="searchbar">
     <select id="search-cat">
       <option value="">All Categories</option>
+      <option value="fifa-world-cup-2026">FIFA 2026</option>
+      <option value="us-cities">US Cities</option>
+      <option value="i-love-ny">I Love NY</option>
+      <option value="mlb">MLB</option>
       <option value="apparel">Apparel</option>
       <option value="accessories">Accessories</option>
       <option value="christmas">Christmas</option>
       <option value="toys-collectibles">Toys &amp; Collectibles</option>
       <option value="kitchen-drinkware">Kitchen &amp; Drinkware</option>
-      <option value="mlb">MLB</option>
       <option value="army">Army</option>
       <option value="hollywood">Hollywood</option>
       <option value="fdny">FDNY</option>
       <option value="nasa">NASA</option>
       <option value="nypd">NYPD</option>
-      <option value="us-cities">US Cities</option>
     </select>
     <input type="text" id="search-input" placeholder="Search products..."/>
     <button class="search-go" onclick="doSearch()">
@@ -356,6 +358,34 @@
   </div>
   <div class="mobile-nav-section">
     <div class="mobile-nav-link featured-mob" onclick="mobileNav('collection/fifa-world-cup-2026')">&#x26BD; FIFA World Cup 2026</div>
+    <div class="mobile-nav-link" onclick="toggleMobileSub('msub-cities')">&#x1F5FD; US Cities <span>&#x25BE;</span></div>
+    <div class="mobile-sub" id="msub-cities">
+      <a href="#collection/us-cities" onclick="closeMobileNav()">All US Cities</a>
+      <a href="#collection/city-new-york" onclick="closeMobileNav()">New York City</a>
+      <a href="#collection/city-california" onclick="closeMobileNav()">California</a>
+      <a href="#collection/city-florida" onclick="closeMobileNav()">Florida</a>
+      <a href="#collection/city-texas" onclick="closeMobileNav()">Texas</a>
+      <a href="#collection/city-washington-dc" onclick="closeMobileNav()">Washington D.C.</a>
+      <a href="#collection/city-chicago" onclick="closeMobileNav()">Chicago</a>
+      <a href="#collection/city-las-vegas" onclick="closeMobileNav()">Las Vegas</a>
+      <a href="#collection/city-georgia" onclick="closeMobileNav()">Georgia</a>
+      <a href="#collection/city-massachusetts" onclick="closeMobileNav()">Massachusetts</a>
+      <a href="#collection/city-ohio" onclick="closeMobileNav()">Ohio</a>
+      <a href="#collection/city-pennsylvania" onclick="closeMobileNav()">Pennsylvania</a>
+    </div>
+    <div class="mobile-nav-link" onclick="mobileNav('collection/i-love-ny')">&#x2764; I Love NY</div>
+    <div class="mobile-nav-link" onclick="toggleMobileSub('msub-mlb')">&#x26BE; MLB <span>&#x25BE;</span></div>
+    <div class="mobile-sub" id="msub-mlb">
+      <a href="#collection/mlb" onclick="closeMobileNav()">All MLB Teams</a>
+      <a href="#collection/mlb-yankees" onclick="closeMobileNav()">New York Yankees</a>
+      <a href="#collection/mlb-mets" onclick="closeMobileNav()">New York Mets</a>
+      <a href="#collection/mlb-red-sox" onclick="closeMobileNav()">Boston Red Sox</a>
+      <a href="#collection/mlb-dodgers" onclick="closeMobileNav()">Los Angeles Dodgers</a>
+      <a href="#collection/mlb-cubs" onclick="closeMobileNav()">Chicago Cubs</a>
+      <a href="#collection/mlb-braves" onclick="closeMobileNav()">Atlanta Braves</a>
+      <a href="#collection/mlb-astros" onclick="closeMobileNav()">Houston Astros</a>
+      <a href="#collection/mlb-phillies" onclick="closeMobileNav()">Philadelphia Phillies</a>
+    </div>
     <div class="mobile-nav-link" onclick="toggleMobileSub('msub-apparel')">&#x1F455; Apparel <span>&#x25BE;</span></div>
     <div class="mobile-sub" id="msub-apparel">
       <a href="#collection/apparel" onclick="closeMobileNav()">All Apparel</a>
@@ -372,18 +402,11 @@
       <a href="#collection/accessories-bags" onclick="closeMobileNav()">Bags &amp; Totes</a>
       <a href="#collection/accessories-magnets" onclick="closeMobileNav()">Magnets</a>
     </div>
-    <div class="mobile-nav-link" onclick="toggleMobileSub('msub-mlb')">&#x26BE; MLB <span>&#x25BE;</span></div>
-    <div class="mobile-sub" id="msub-mlb">
-      <a href="#collection/mlb" onclick="closeMobileNav()">All MLB Teams</a>
-      <a href="#collection/mlb-yankees" onclick="closeMobileNav()">New York Yankees</a>
-      <a href="#collection/mlb-mets" onclick="closeMobileNav()">New York Mets</a>
-      <a href="#collection/mlb-red-sox" onclick="closeMobileNav()">Boston Red Sox</a>
-      <a href="#collection/mlb-dodgers" onclick="closeMobileNav()">Los Angeles Dodgers</a>
-      <a href="#collection/mlb-cubs" onclick="closeMobileNav()">Chicago Cubs</a>
-      <a href="#collection/mlb-braves" onclick="closeMobileNav()">Atlanta Braves</a>
-      <a href="#collection/mlb-astros" onclick="closeMobileNav()">Houston Astros</a>
-      <a href="#collection/mlb-phillies" onclick="closeMobileNav()">Philadelphia Phillies</a>
-    </div>
+    <div class="mobile-nav-link" onclick="mobileNav('collection/christmas')">&#x1F384; Christmas</div>
+    <div class="mobile-nav-link" onclick="mobileNav('collection/toys-collectibles')">&#x1F9F8; Toys &amp; Collectibles</div>
+    <div class="mobile-nav-link" onclick="mobileNav('collection/kitchen-drinkware')">&#x2615; Kitchen &amp; Drinkware</div>
+    <div class="mobile-nav-link" onclick="mobileNav('collection/army')">&#x1F396; Army</div>
+    <div class="mobile-nav-link" onclick="mobileNav('collection/hollywood')">&#x1F3AC; Hollywood</div>
     <div class="mobile-nav-link" onclick="toggleMobileSub('msub-fdny')">&#x1F692; FDNY <span>&#x25BE;</span></div>
     <div class="mobile-sub" id="msub-fdny">
       <a href="#collection/fdny" onclick="closeMobileNav()">All FDNY</a>
@@ -392,6 +415,7 @@
       <a href="#collection/fdny-drinkware" onclick="closeMobileNav()">FDNY Drinkware</a>
       <a href="#collection/fdny-collectibles" onclick="closeMobileNav()">FDNY Collectibles</a>
     </div>
+    <div class="mobile-nav-link" onclick="mobileNav('collection/nasa')">&#x1F680; NASA</div>
     <div class="mobile-nav-link" onclick="toggleMobileSub('msub-nypd')">&#x1F46E; NYPD <span>&#x25BE;</span></div>
     <div class="mobile-sub" id="msub-nypd">
       <a href="#collection/nypd" onclick="closeMobileNav()">All NYPD</a>
@@ -399,27 +423,6 @@
       <a href="#collection/nypd-accessories" onclick="closeMobileNav()">NYPD Accessories</a>
       <a href="#collection/nypd-drinkware" onclick="closeMobileNav()">NYPD Drinkware</a>
       <a href="#collection/nypd-collectibles" onclick="closeMobileNav()">NYPD Collectibles</a>
-    </div>
-    <div class="mobile-nav-link" onclick="mobileNav('collection/army')">&#x1F396; Army</div>
-    <div class="mobile-nav-link" onclick="mobileNav('collection/nasa')">&#x1F680; NASA</div>
-    <div class="mobile-nav-link" onclick="mobileNav('collection/hollywood')">&#x1F3AC; Hollywood</div>
-    <div class="mobile-nav-link" onclick="mobileNav('collection/christmas')">&#x1F384; Christmas</div>
-    <div class="mobile-nav-link" onclick="mobileNav('collection/toys-collectibles')">&#x1F9F8; Toys &amp; Collectibles</div>
-    <div class="mobile-nav-link" onclick="mobileNav('collection/kitchen-drinkware')">&#x2615; Kitchen &amp; Drinkware</div>
-    <div class="mobile-nav-link" onclick="toggleMobileSub('msub-cities')">&#x1F5FD; US Cities <span>&#x25BE;</span></div>
-    <div class="mobile-sub" id="msub-cities">
-      <a href="#collection/us-cities" onclick="closeMobileNav()">All US Cities</a>
-      <a href="#collection/city-new-york" onclick="closeMobileNav()">New York City</a>
-      <a href="#collection/city-california" onclick="closeMobileNav()">California</a>
-      <a href="#collection/city-florida" onclick="closeMobileNav()">Florida</a>
-      <a href="#collection/city-texas" onclick="closeMobileNav()">Texas</a>
-      <a href="#collection/city-washington-dc" onclick="closeMobileNav()">Washington D.C.</a>
-      <a href="#collection/city-chicago" onclick="closeMobileNav()">Chicago</a>
-      <a href="#collection/city-las-vegas" onclick="closeMobileNav()">Las Vegas</a>
-      <a href="#collection/city-georgia" onclick="closeMobileNav()">Georgia</a>
-      <a href="#collection/city-massachusetts" onclick="closeMobileNav()">Massachusetts</a>
-      <a href="#collection/city-ohio" onclick="closeMobileNav()">Ohio</a>
-      <a href="#collection/city-pennsylvania" onclick="closeMobileNav()">Pennsylvania</a>
     </div>
     <div class="mobile-nav-link" onclick="mobileNav('collection/all')">&#x2B50; Best Sellers</div>
     <div class="mobile-nav-link" onclick="mobileNav('about')">&#x2139; About Us</div>
@@ -459,6 +462,20 @@
         <a href="#collection/toys-collectibles">&#x1F9F8; Toys &amp; Collectibles</a>
         <a href="#collection/kitchen-drinkware">&#x2615; Kitchen &amp; Drinkware</a>
       </div>
+    </div>
+    <div class="nav-item">
+      <a href="#collection/us-cities" class="nav-link">US Cities <span class="caret">&#x25BE;</span></a>
+      <div class="dd wide">
+        <a href="#collection/us-cities">&#x1F1FA;&#x1F1F8; All US Cities</a><a href="#collection/city-new-york">&#x1F5FD; New York City</a>
+        <a href="#collection/city-california">&#x1F33A; California</a><a href="#collection/city-texas">&#x2B50; Texas</a>
+        <a href="#collection/city-florida">&#x1F334; Florida</a><a href="#collection/city-washington-dc">&#x1F3DB; Washington D.C.</a>
+        <a href="#collection/city-chicago">&#x1F32C; Chicago</a><a href="#collection/city-las-vegas">&#x1F3B0; Las Vegas</a>
+        <a href="#collection/city-georgia">&#x1F338; Georgia</a><a href="#collection/city-massachusetts">&#x1F3DB; Massachusetts</a>
+        <a href="#collection/city-ohio">&#x1F331; Ohio</a><a href="#collection/city-pennsylvania">&#x1F3C9; Pennsylvania</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#collection/i-love-ny" class="nav-link">&#x2764; I Love NY</a>
     </div>
     <div class="nav-item">
       <a href="#collection/mlb" class="nav-link">MLB <span class="caret">&#x25BE;</span></a>
@@ -525,21 +542,11 @@
         <a href="#collection/nypd-collectibles">Collectibles</a>
       </div>
     </div>
-    <div class="nav-item">
-      <a href="#collection/us-cities" class="nav-link">US Cities <span class="caret">&#x25BE;</span></a>
-      <div class="dd wide">
-        <a href="#collection/us-cities">&#x1F1FA;&#x1F1F8; All US Cities</a><a href="#collection/city-new-york">&#x1F5FD; New York City</a>
-        <a href="#collection/city-california">&#x1F33A; California</a><a href="#collection/city-texas">&#x2B50; Texas</a>
-        <a href="#collection/city-florida">&#x1F334; Florida</a><a href="#collection/city-washington-dc">&#x1F3DB; Washington D.C.</a>
-        <a href="#collection/city-chicago">&#x1F32C; Chicago</a><a href="#collection/city-las-vegas">&#x1F3B0; Las Vegas</a>
-        <a href="#collection/city-georgia">&#x1F338; Georgia</a><a href="#collection/city-massachusetts">&#x1F3DB; Massachusetts</a>
-        <a href="#collection/city-ohio">&#x1F331; Ohio</a><a href="#collection/city-pennsylvania">&#x1F3C9; Pennsylvania</a>
-      </div>
-    </div>
     <div class="nav-item"><a href="#collection/all" class="nav-link">Best Sellers</a></div>
     <div class="nav-item"><a href="#about" class="nav-link">About Us</a></div>
     <div class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></div>
-    <div class="nav-item"><a href="#login" class="nav-link" style="color:#1a6fc4;font-weight:800;">&#x1F464; Sign In</a></div>
+    <div class="nav-item"><a href="https://countrydreamshop.myshopify.com/account/login" target="_blank" class="nav-link" style="color:#1a6fc4;font-weight:800;">&#x1F464; Sign In</a></div>
+    <div class="nav-item"><a href="https://countrydreamshop.myshopify.com/account/register" target="_blank" class="nav-link">Register</a></div>
   </div>
 </div>
 
@@ -577,6 +584,24 @@
     </div>
     <div class="sb-divider"></div>
     <a class="sb-plain featured" href="#collection/fifa-world-cup-2026">&#x26BD; FIFA World Cup 2026</a>
+    <div class="sb-group">
+      <div class="sb-head" onclick="toggleSb(this)">&#x1F5FD; US Cities <span class="sb-arrow">&#x25B6;</span></div>
+      <div class="sb-children">
+        <a href="#collection/us-cities">All US Cities</a>
+        <a href="#collection/city-new-york">New York City</a>
+        <a href="#collection/city-california">California</a>
+        <a href="#collection/city-florida">Florida</a>
+        <a href="#collection/city-texas">Texas</a>
+        <a href="#collection/city-washington-dc">Washington D.C.</a>
+        <a href="#collection/city-chicago">Chicago</a>
+        <a href="#collection/city-las-vegas">Las Vegas</a>
+        <a href="#collection/city-georgia">Georgia</a>
+        <a href="#collection/city-massachusetts">Massachusetts</a>
+        <a href="#collection/city-ohio">Ohio</a>
+        <a href="#collection/city-pennsylvania">Pennsylvania</a>
+      </div>
+    </div>
+    <a class="sb-plain" href="#collection/i-love-ny">&#x2764; I Love NY</a>
     <div class="sb-group">
       <div class="sb-head" onclick="toggleSb(this)">&#x26BE; MLB <span class="sb-arrow">&#x25B6;</span></div>
       <div class="sb-children">
@@ -643,23 +668,6 @@
         <a href="#collection/hollywood-toys">Collectibles</a>
       </div>
     </div>
-    <div class="sb-group">
-      <div class="sb-head" onclick="toggleSb(this)">&#x1F5FD; US Cities <span class="sb-arrow">&#x25B6;</span></div>
-      <div class="sb-children">
-        <a href="#collection/us-cities">All US Cities</a>
-        <a href="#collection/city-new-york">New York City</a>
-        <a href="#collection/city-california">California</a>
-        <a href="#collection/city-florida">Florida</a>
-        <a href="#collection/city-texas">Texas</a>
-        <a href="#collection/city-washington-dc">Washington D.C.</a>
-        <a href="#collection/city-chicago">Chicago</a>
-        <a href="#collection/city-las-vegas">Las Vegas</a>
-        <a href="#collection/city-georgia">Georgia</a>
-        <a href="#collection/city-massachusetts">Massachusetts</a>
-        <a href="#collection/city-ohio">Ohio</a>
-        <a href="#collection/city-pennsylvania">Pennsylvania</a>
-      </div>
-    </div>
     <div class="sb-divider"></div>
     <a class="sb-plain" href="#collection/all">Best Sellers</a>
     <a class="sb-plain" href="#about">About Us</a>
@@ -712,24 +720,22 @@
     <div>
       <h4>Brands</h4>
       <ul>
-        <li><a href="#collection/mlb">MLB</a></li>
-        <li><a href="#collection/army">Army</a></li>
-        <li><a href="#collection/hollywood">Hollywood</a></li>
-        <li><a href="#collection/fdny">FDNY</a></li>
-        <li><a href="#collection/nasa">NASA</a></li>
-        <li><a href="#collection/nypd">NYPD</a></li>
-        <li><a href="#collection/us-cities">US Cities</a></li>
         <li><a href="#collection/fifa-world-cup-2026">FIFA 2026</a></li>
+        <li><a href="#collection/us-cities">US Cities</a></li>
+        <li><a href="#collection/i-love-ny">I Love NY</a></li>
+        <li><a href="#collection/mlb">MLB</a></li>
+        <li><a href="#collection/fdny">FDNY</a></li>
+        <li><a href="#collection/nypd">NYPD</a></li>
+        <li><a href="#collection/army">Army</a></li>
+        <li><a href="#collection/nasa">NASA</a></li>
+        <li><a href="#collection/hollywood">Hollywood</a></li>
       </ul>
     </div>
     <div>
       <h4>Help</h4>
       <ul>
         <li><a href="#contact">Contact Us</a></li>
-        <li><a href="mailto:Tetiana@citymerchandise.com">Email Us</a></li>
         <li><a href="#about">About Us</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/policies/shipping-policy" target="_blank">Shipping Policy</a></li>
-        <li><a href="https://countrydreamshop.myshopify.com/policies/refund-policy" target="_blank">Returns</a></li>
         <li><a href="https://countrydreamshop.myshopify.com/account/login" target="_blank">Sign In</a></li>
         <li><a href="https://countrydreamshop.myshopify.com/account/register" target="_blank">Register</a></li>
       </ul>
@@ -748,18 +754,19 @@ var HERO   = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgo
 
 var COLS = [
   {h:'fifa-world-cup-2026', l:'FIFA 2026',          e:'&#x26BD;', featured:true},
+  {h:'us-cities',           l:'US Cities',           e:'&#x1F5FD;'},
+  {h:'i-love-ny',           l:'I Love NY',           e:'&#x2764;'},
+  {h:'mlb',                 l:'MLB',                 e:'&#x26BE;'},
   {h:'apparel',             l:'Apparel',             e:'&#x1F455;'},
   {h:'accessories',         l:'Accessories',         e:'&#x1F392;'},
   {h:'christmas',           l:'Christmas',           e:'&#x1F384;'},
   {h:'toys-collectibles',   l:'Toys & Collectibles', e:'&#x1F9F8;'},
   {h:'kitchen-drinkware',   l:'Kitchen & Drinkware', e:'&#x2615;'},
-  {h:'mlb',                 l:'MLB',                 e:'&#x26BE;'},
   {h:'army',                l:'Army',                e:'&#x1F396;'},
   {h:'hollywood',           l:'Hollywood',           e:'&#x1F3AC;'},
   {h:'fdny',                l:'FDNY',                e:'&#x1F692;'},
   {h:'nasa',                l:'NASA',                e:'&#x1F680;'},
-  {h:'nypd',                l:'NYPD',                e:'&#x1F46E;'},
-  {h:'us-cities',           l:'US Cities',           e:'&#x1F5FD;'}
+  {h:'nypd',                l:'NYPD',                e:'&#x1F46E;'}
 ];
 
 var COL_DESCS = {
@@ -776,6 +783,7 @@ var COL_DESCS = {
   'nasa':'Official NASA rockets, space exploration merchandise.',
   'nypd':'Official NYPD New York Police Department merchandise.',
   'us-cities':'Souvenirs from New York, California, Florida and more.',
+  'i-love-ny':'I Love NY gifts, souvenirs, and merchandise celebrating New York.',
   'all':'Browse all USA souvenirs and licensed merchandise.'
 };
 
@@ -792,6 +800,8 @@ var SEARCH_HANDLES = {
   'accessories-pins':     {l:'Pins & Patches',          q:'pin patch badge',            parent:'accessories',e:'&#x1F4CC;'},
   'accessories-bags':     {l:'Bags & Totes',            q:'bag tote backpack',          parent:'accessories',e:'&#x1F45C;'},
   'accessories-magnets':  {l:'Magnets',                 q:'magnet',                     parent:'accessories',e:'&#x1FA9D;'},
+  /* I Love NY */
+  'i-love-ny':            {l:'I Love NY',               q:'I Love NY New York souvenir gift', parent:null, e:'&#x2764;'},
   /* US Cities */
   'city-new-york':        {l:'New York City',           q:'New York',                   parent:'us-cities', e:'&#x1F5FD;'},
   'city-california':      {l:'California',              q:'California',                 parent:'us-cities', e:'&#x1F33A;'},
@@ -887,6 +897,51 @@ async function gql(query, vars) {
   } catch(e) {
     console.error('Shopify fetch error:', e.message || e);
     return null;
+  }
+}
+
+/* ════════════════════════════════
+   CART BADGE HELPERS
+════════════════════════════════ */
+function updateBadge(n) {
+  cartCount = (n >= 0) ? n : 0;
+  var badge = document.getElementById('cart-count-badge');
+  if (badge) {
+    if (cartCount > 0) {
+      badge.textContent = cartCount;
+      badge.style.display = '';
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+  var dc = document.getElementById('drawer-count');
+  if (dc) dc.textContent = cartCount;
+}
+
+async function syncCartFromShopify() {
+  /* Read cartId from localStorage */
+  cartId = localStorage.getItem('ht_cid') || null;
+  if (!cartId) {
+    updateBadge(0);
+    return;
+  }
+  try {
+    var q = 'query($id:ID!){cart(id:$id){totalQuantity}}';
+    var d = await gql(q, {id: cartId});
+    if (d && d.cart && typeof d.cart.totalQuantity === 'number') {
+      updateBadge(d.cart.totalQuantity);
+      localStorage.setItem('ht_ccnt', String(d.cart.totalQuantity));
+    } else {
+      /* Cart expired or not found — clear stale data */
+      cartId = null;
+      localStorage.removeItem('ht_cid');
+      localStorage.removeItem('ht_curl');
+      localStorage.removeItem('ht_ccnt');
+      updateBadge(0);
+    }
+  } catch(e) {
+    /* Network error — fall back to 0 to avoid showing stale count */
+    updateBadge(0);
   }
 }
 
@@ -1299,7 +1354,7 @@ function renderAbout() {
     '<div class="coll-banner" style="background:linear-gradient(110deg,#0a2540 0%,#1a6fc4 100%)">'
       +'<div class="coll-banner-bc"><a href="#" onclick="navigate()">Home</a> &rsaquo; About Us</div>'
       +'<h1>About Us</h1>'
-      +'<p>Comfortable, versatile clothing made for people always on the move.</p>'
+      +'<p>Your destination for official USA souvenirs and licensed merchandise in New York City.</p>'
     +'</div>'
     +'<div style="max-width:820px;margin:0 auto;padding:48px 32px;">'
 
@@ -1312,9 +1367,11 @@ function renderAbout() {
           +'<p style="font-size:13px;color:#555;line-height:1.9;">Customer satisfaction is important to us. If you ever have questions about an order or a product, our support team is available through our <a href="#contact" style="color:#1a6fc4;font-weight:600;">Contact page</a> and will be happy to assist.</p>'
         +'</div>'
         +'<div style="flex-shrink:0;background:linear-gradient(135deg,#eef4fb 0%,#f5eeee 100%);border-radius:12px;padding:32px 28px;text-align:center;min-width:200px;">'
-          +'<div style="font-size:48px;margin-bottom:12px;">&#x2708;&#xFE0F;</div>'
+          +'<div style="font-size:42px;margin-bottom:12px;">&#x1F5FD;</div>'
+          +'<div style="font-size:13px;font-weight:700;color:#0a2540;margin-bottom:4px;">Visit Our Store</div>'
+          +'<div style="font-size:12px;color:#666;line-height:1.7;margin-bottom:12px;">40 West 34th Street<br>New York, NY 10001</div>'
           +'<div style="font-size:13px;font-weight:700;color:#0a2540;margin-bottom:4px;">Hours of Operation</div>'
-          +'<div style="font-size:13px;color:#666;line-height:1.7;">Daily<br>9:00 AM – 9:00 PM</div>'
+          +'<div style="font-size:13px;color:#666;line-height:1.7;">Daily<br>9:00 AM \u2013 9:00 PM</div>'
           +'<a href="#contact" style="display:inline-block;margin-top:20px;padding:9px 20px;background:#c8102e;color:#fff;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;">Contact Us</a>'
         +'</div>'
       +'</div>'
@@ -1475,6 +1532,50 @@ function doSearch(){
   }
 }
 
+/* Expand user search term with related keywords for better matching */
+function expandSearchQuery(raw) {
+  var term = raw.trim().toLowerCase();
+  var extras = [];
+  /* Category keyword expansions */
+  var expansions = {
+    'shirt':   ['t-shirt','tshirt','tee'],
+    'hat':     ['cap','beanie'],
+    'mug':     ['cup','drinkware'],
+    'bag':     ['tote','backpack'],
+    'new york':['NY','NYC','Manhattan'],
+    'ny':      ['New York','NYC'],
+    'nyc':     ['New York','NY'],
+    'souvenir':['gift','keepsake'],
+    'gift':    ['souvenir'],
+    'yankees': ['NY Yankees','New York Yankees'],
+    'mets':    ['NY Mets','New York Mets'],
+    'soccer':  ['football','FIFA','World Cup'],
+    'football':['soccer','FIFA'],
+    'fifa':    ['World Cup 2026','soccer'],
+    'world cup':['FIFA 2026','soccer'],
+    'fdny':    ['fire department','fire fighter'],
+    'nypd':    ['police','police department'],
+    'army':    ['military','soldier','US Army'],
+    'nasa':    ['space','astronaut','rocket'],
+    'hollywood':['movie','film','entertainment'],
+    'christmas':['holiday','xmas','ornament'],
+    'toy':     ['collectible','figure','bobblehead'],
+    'keychain':['key chain','keyring'],
+    'magnet':  ['fridge magnet'],
+    'pin':     ['button badge','patch'],
+    'hoodie':  ['sweatshirt','sweater'],
+    'jacket':  ['coat','outerwear']
+  };
+  Object.keys(expansions).forEach(function(k){
+    if (term.indexOf(k) !== -1) extras = extras.concat(expansions[k]);
+  });
+  /* Build Shopify query: title or tag match */
+  var parts = [raw];
+  extras.forEach(function(e){ parts.push(e); });
+  /* Use Shopify search with OR logic by concatenating terms */
+  return parts.slice(0,4).join(' OR ');
+}
+
 async function renderSearch(query) {
   pageHandle = null; pageCursor = null;
   document.title = '"' + query + '" — Happy Travelers';
@@ -1487,15 +1588,27 @@ async function renderSearch(query) {
       +'<div class="prod-grid" id="coll-grid">'+skels(8)+'</div>'
     +'</div>';
 
-  var q = '{search(query:"'+query.replace(/"/g,'\"')+'",types:PRODUCT,first:24){totalCount edges{node{...on Product{'+PFIELDS+'}}}}}';
+  var expanded = expandSearchQuery(query);
+  var sq = expanded.replace(/"/g, '\\"');
+  var q = '{search(query:"'+sq+'",types:PRODUCT,first:24){totalCount edges{node{...on Product{'+PFIELDS+'}}}}}';
   var d = await gql(q);
   var grid = document.getElementById('coll-grid');
   if (!grid) return;
-  if (!d || !d.search || !d.search.edges.length) {
-    grid.innerHTML = '<div class="msg-full">No results for &ldquo;'+esc(query)+'&rdquo;.<br><a href="#" onclick="navigate()">Return home</a></div>';
+
+  var items = (d && d.search && d.search.edges) ? d.search.edges : [];
+
+  /* If expanded search yields nothing, try the raw query */
+  if (!items.length && expanded !== query) {
+    var raw2 = query.replace(/"/g, '\\"');
+    var d2 = await gql('{search(query:"'+raw2+'",types:PRODUCT,first:24){edges{node{...on Product{'+PFIELDS+'}}}}}');
+    items = (d2 && d2.search && d2.search.edges) ? d2.search.edges : [];
+  }
+
+  if (!items.length) {
+    grid.innerHTML = '<div class="msg-full">No results for &ldquo;'+esc(query)+'&rdquo;.<br>Try different keywords or <a href="#" onclick="navigate()">browse categories</a>.</div>';
     return;
   }
-  grid.innerHTML = d.search.edges.map(function(e){ return prodCard(e.node); }).join('');
+  grid.innerHTML = items.map(function(e){ return prodCard(e.node); }).join('');
 }
 
 /* ════════════════════════════════
@@ -1691,8 +1804,7 @@ async function addToCart(btn){
     var nid = numericId(vid);
     if (nid) {
       /* Track locally so the badge still updates */
-      cartCount++;
-      document.getElementById('cart-count-badge').textContent=cartCount;
+      updateBadge(cartCount + 1);
       cartLines.push({qty:1,title:title,vt:variantLabel,price:parseFloat(price||0).toFixed(2),cur:cur||'USD',img:img||''});
       drawCart();
       btn.textContent='✓ Added!';
@@ -1714,10 +1826,9 @@ async function addToCart(btn){
 
   if (d&&d.cartLinesAdd&&d.cartLinesAdd.cart){
     var cart=d.cartLinesAdd.cart;
-    cartCount=cart.totalQuantity;
     localStorage.setItem('ht_curl',cart.checkoutUrl);
-    localStorage.setItem('ht_ccnt',String(cartCount));
-    document.getElementById('cart-count-badge').textContent=cartCount;
+    localStorage.setItem('ht_ccnt',String(cart.totalQuantity));
+    updateBadge(cart.totalQuantity);
 
     cartLines=cart.lines.edges.map(function(e){
       var n=e.node,m=n.merchandise;
@@ -1748,8 +1859,7 @@ async function addToCart(btn){
     /* Last resort: direct Shopify cart URL */
     var nid2 = numericId(vid);
     if (nid2) {
-      cartCount++;
-      document.getElementById('cart-count-badge').textContent=cartCount;
+      updateBadge(cartCount + 1);
       cartLines.push({qty:1,title:title,vt:variantLabel,price:parseFloat(price||0).toFixed(2),cur:cur||'USD',img:img||''});
       drawCart();
       localStorage.setItem('ht_curl','https://'+SHOP+'/cart/'+nid2+':1');
@@ -1836,12 +1946,8 @@ function toggleMobileSub(id){
    INIT
 ════════════════════════════════ */
 window.addEventListener('DOMContentLoaded', function(){
-  cartId    = localStorage.getItem('ht_cid') || null;
-  cartCount = parseInt(localStorage.getItem('ht_ccnt') || '0', 10);
-  if (cartCount > 0) {
-    var badge = document.getElementById('cart-count-badge');
-    if (badge) badge.textContent = cartCount;
-  }
+  /* Badge starts hidden — syncCartFromShopify will show it if cart has items */
+  updateBadge(0);
 
   var sinp=document.getElementById('search-input');
   if(sinp) sinp.addEventListener('keydown',function(e){if(e.key==='Enter')doSearch();});
@@ -1851,11 +1957,10 @@ window.addEventListener('DOMContentLoaded', function(){
     if(e.target===this) closeMobileNav();
   });
 
-  /* Test API + load circle images in parallel */
-  loadCircleImages();  /* api status indicator removed */
-
-  /* Route */
-  router();
+  /* Sync real cart count from Shopify, load circle images, then route */
+  Promise.all([syncCartFromShopify(), loadCircleImages()]).then(function(){
+    router();
+  });
 });
 </script>
 </body>

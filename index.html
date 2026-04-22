@@ -813,14 +813,20 @@ var CATEGORY_FILTERS = {
   'apparel':            ['shirt','t-shirt','tee','hoodie','sweatshirt','jacket','hat','cap','beanie','sweater','vest','jersey']
 };
 
-/* Filter products so only category-relevant ones show */
+/* Filter products so only category-relevant ones show.
+   Checks title, tags, vendor and productType for a keyword match. */
 function filterByCategory(prods, handle) {
   var keywords = CATEGORY_FILTERS[handle];
   if (!keywords) return prods; /* no filter for broad/all categories */
   return prods.filter(function(e){
     var node = e.node || e;
-    var title = (node.title || '').toLowerCase();
-    return keywords.some(function(kw){ return title.indexOf(kw) !== -1; });
+    var searchable = [
+      (node.title       || ''),
+      (node.vendor      || ''),
+      (node.productType || ''),
+      (Array.isArray(node.tags) ? node.tags.join(' ') : (node.tags || ''))
+    ].join(' ').toLowerCase();
+    return keywords.some(function(kw){ return searchable.indexOf(kw) !== -1; });
   });
 }
 
@@ -1133,7 +1139,7 @@ function cap(s){ return s.replace(/-/g,' ').replace(/\b\w/g,function(l){return l
 /* ════════════════════════════════
    LOAD COLLECTION PRODUCTS
 ════════════════════════════════ */
-var PFIELDS = 'title handle priceRange{minVariantPrice{amount currencyCode}} images(first:1){edges{node{url altText}}} variants(first:3){edges{node{id title price{amount currencyCode} availableForSale}}}';
+var PFIELDS = 'title handle tags vendor productType priceRange{minVariantPrice{amount currencyCode}} images(first:1){edges{node{url altText}}} variants(first:3){edges{node{id title price{amount currencyCode} availableForSale}}}';
 
 async function loadCollProducts(handle, cursor, append) {
   var grid = document.getElementById('coll-grid');

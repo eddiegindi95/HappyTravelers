@@ -33,10 +33,10 @@
 
     /* ── NAV ── */
     .nav-bar{background:#fff;border-bottom:1px solid #e0e0e0;position:sticky;top:0;z-index:200}
-    .nav-inner{display:flex;padding:0 32px;overflow-x:auto;scrollbar-width:none}
+    .nav-inner{display:flex;padding:0 24px;overflow-x:visible;scrollbar-width:none;flex-wrap:nowrap}
     .nav-inner::-webkit-scrollbar{display:none}
     .nav-item{position:relative;flex-shrink:0}
-    .nav-link{display:flex;align-items:center;gap:4px;padding:13px 12px;font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:#333;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;user-select:none;transition:color .15s,border-color .15s;text-decoration:none}
+    .nav-link{display:flex;align-items:center;gap:3px;padding:11px 8px;font-size:10.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:#333;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;user-select:none;transition:color .15s,border-color .15s;text-decoration:none}
     .nav-link:hover,.nav-link.active{color:#1a6fc4;border-bottom-color:#1a6fc4}
     .nav-link.featured{color:#c8102e;font-weight:800}
     .nav-link.featured:hover{color:#a50d25;border-bottom-color:#c8102e}
@@ -210,8 +210,7 @@
     /* ── LOADING / EMPTY ── */
     .msg-full{grid-column:1/-1;text-align:center;padding:60px 20px;font-size:13px;color:#bbb;font-weight:600}
     .msg-full a{color:#1a6fc4}
-    .api-status{font-size:10px;font-weight:600;padding:4px 10px;border-radius:12px;background:#f0f9f0;color:#2a7a40;border:1px solid #c3e6cb;white-space:nowrap}
-    .api-status.error{background:#fff0f0;color:#c8102e;border-color:#f5c6cb}
+    
 
     /* ── CART DRAWER ── */
     .cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9000}
@@ -1041,7 +1040,7 @@ async function loadCollProducts(handle, cursor, append) {
 
   if (sh) {
     /* Virtual handle — first try the exact collection handle in Shopify */
-    data = await gql('{collectionByHandle(handle:"'+handle+'"){products(first:12,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}}');
+    data = await gql('{collectionByHandle(handle:"'+handle+'"){products(first:24,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}}');
     if (data && data.collectionByHandle && data.collectionByHandle.products && data.collectionByHandle.products.edges.length) {
       prods = data.collectionByHandle.products.edges;
       pi    = data.collectionByHandle.products.pageInfo;
@@ -1050,14 +1049,14 @@ async function loadCollProducts(handle, cursor, append) {
       var parentLabel = sh.parent ? sh.parent.replace(/-/g,' ') : '';
       var subLabel    = sh.l || '';
       /* Use quoted phrase for exact match, then also try individual words */
-      var sq = '{search(query:"\"'+subLabel+'\"",types:PRODUCT,first:12'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
+      var sq = '{search(query:"\"'+subLabel+'\"",types:PRODUCT,first:24'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
       data = await gql(sq);
       if (data && data.search && data.search.edges.length) {
         prods = data.search.edges;
         pi    = data.search.pageInfo;
       } else {
         /* Second fallback: use the original query keywords */
-        var sq2 = '{search(query:"'+sh.q+'",types:PRODUCT,first:12'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
+        var sq2 = '{search(query:"'+sh.q+'",types:PRODUCT,first:24'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
         data = await gql(sq2);
         if (data && data.search && data.search.edges.length) {
           prods = data.search.edges;
@@ -1066,14 +1065,14 @@ async function loadCollProducts(handle, cursor, append) {
       }
     }
   } else if (handle === 'all') {
-    data = await gql('{products(first:12,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}');
+    data = await gql('{products(first:24,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}');
     if (data && data.products && data.products.edges.length) {
       prods = data.products.edges;
       pi    = data.products.pageInfo;
     }
   } else {
     /* Try collectionByHandle first */
-    data = await gql('{collectionByHandle(handle:"'+handle+'"){products(first:12,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}}');
+    data = await gql('{collectionByHandle(handle:"'+handle+'"){products(first:24,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}}');
     if (data && data.collectionByHandle && data.collectionByHandle.products && data.collectionByHandle.products.edges.length) {
       prods = data.collectionByHandle.products.edges;
       pi    = data.collectionByHandle.products.pageInfo;
@@ -1081,7 +1080,7 @@ async function loadCollProducts(handle, cursor, append) {
       /* Fallback: search by label */
       var cfg2 = COLS.find(function(c){return c.h===handle;});
       var term = cfg2 ? cfg2.l : cap(handle);
-      var sq2  = '{search(query:"'+term+'",types:PRODUCT,first:12'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
+      var sq2  = '{search(query:"'+term+'",types:PRODUCT,first:24'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
       var sd   = await gql(sq2);
       if (sd && sd.search && sd.search.edges.length) {
         prods = sd.search.edges;
@@ -1243,29 +1242,21 @@ function pdSelectVariant(btn, vid, price, cur, variantTitle) {
 ════════════════════════════════ */
 function renderLogin() {
   document.title = 'Sign In — Happy Travelers';
-  var SHOP_URL = 'https://' + SHOP;
+  /* Redirect straight to Shopify account — most reliable approach */
+  window.open('https://'+SHOP+'/account/login', '_blank');
   document.getElementById('app-view').innerHTML =
     '<div class="coll-banner" style="background:linear-gradient(110deg,#0a2540 0%,#1a6fc4 100%)">'
       +'<div class="coll-banner-bc"><a href="#" onclick="navigate()">Home</a> &rsaquo; Sign In</div>'
       +'<h1>&#x1F464; Sign In</h1>'
-      +'<p>Access your Happy Travelers account.</p>'
     +'</div>'
-    +'<div style="max-width:480px;margin:0 auto;padding:48px 24px;">'
-      +'<div style="background:#fff;border:1px solid #e8ecf0;border-radius:8px;padding:36px 32px;box-shadow:0 2px 16px rgba(0,0,0,.06);">'
-        +'<h2 style="font-size:20px;font-weight:800;color:#0a2540;margin-bottom:6px;">Welcome back</h2>'
-        +'<p style="font-size:12px;color:#888;margin-bottom:28px;">Sign in to your Happy Travelers account to track orders and manage your preferences.</p>'
-        +'<div style="display:flex;flex-direction:column;gap:14px;">'
-          +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Email Address</label>'
-          +'<input type="email" id="li-email" placeholder="your@email.com" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
-          +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Password</label>'
-          +'<input type="password" id="li-pass" placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
-          +'<button onclick="doShopifyLogin()" style="padding:13px;background:#0a2540;color:#fff;border:none;border-radius:3px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background .2s;width:100%;">Sign In &rarr;</button>'
-          +'<div id="li-status" style="display:none;padding:10px 14px;border-radius:4px;font-size:12px;font-weight:600;text-align:center;"></div>'
-          +'<div style="text-align:center;font-size:12px;color:#888;margin-top:4px;">'
-            +'<a href="'+SHOP_URL+'/account/login#recover" target="_blank" style="color:#1a6fc4;">Forgot password?</a>'
-          +'</div>'
-        +'</div>'
-        +'<div style="border-top:1px solid #f0f0f0;margin-top:24px;padding-top:20px;text-align:center;">'
+    +'<div style="max-width:480px;margin:0 auto;padding:48px 24px;text-align:center;">'
+      +'<div style="background:#fff;border:1px solid #e8ecf0;border-radius:8px;padding:40px 32px;box-shadow:0 2px 16px rgba(0,0,0,.06);">'
+        +'<div style="font-size:48px;margin-bottom:16px;">&#x1F464;</div>'
+        +'<h2 style="font-size:20px;font-weight:800;color:#0a2540;margin-bottom:10px;">Sign In to Your Account</h2>'
+        +'<p style="font-size:13px;color:#666;line-height:1.7;margin-bottom:28px;">A new tab has opened to the secure Shopify sign-in page. If it didn\x27t open, click the button below.</p>'
+        +'<a href="https://'+SHOP+'/account/login" target="_blank" style="display:inline-block;width:100%;padding:14px;background:#0a2540;color:#fff;border-radius:3px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;box-sizing:border-box;margin-bottom:12px;">Sign In &rarr;</a>'
+        +'<a href="https://'+SHOP+'/account/login#recover" target="_blank" style="font-size:12px;color:#1a6fc4;display:block;margin-bottom:20px;">Forgot password?</a>'
+        +'<div style="border-top:1px solid #f0f0f0;padding-top:20px;">'
           +'<p style="font-size:12px;color:#888;margin-bottom:12px;">Don\x27t have an account?</p>'
           +'<a href="#register" style="display:inline-block;padding:10px 24px;border:1.5px solid #0a2540;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0a2540;text-decoration:none;">Create Account</a>'
         +'</div>'
@@ -1273,56 +1264,23 @@ function renderLogin() {
     +'</div>';
 }
 
-async function doShopifyLogin() {
-  var email = (document.getElementById('li-email')||{}).value || '';
-  var pass  = (document.getElementById('li-pass')||{}).value || '';
-  var status = document.getElementById('li-status');
-  if (!email || !pass) {
-    if (status) { status.style.display='block'; status.style.background='#fff3f3'; status.style.color='#c8102e'; status.textContent='Please enter your email and password.'; }
-    return;
-  }
-  /* Use Shopify Customer Account API */
-  var q = 'mutation($input:CustomerAccessTokenCreateInput!){customerAccessTokenCreate(input:$input){customerAccessToken{accessToken expiresAt}customerUserErrors{message}}}';
-  var d = await gql(q, {input:{email:email,password:pass}});
-  if (d && d.customerAccessTokenCreate && d.customerAccessTokenCreate.customerAccessToken) {
-    var token = d.customerAccessTokenCreate.customerAccessToken.accessToken;
-    localStorage.setItem('ht_cust_token', token);
-    if (status) { status.style.display='block'; status.style.background='#f0fff4'; status.style.color='#1a7a30'; status.textContent='\u2713 Signed in! Redirecting\u2026'; }
-    setTimeout(function(){ window.open('https://'+SHOP+'/account','_blank'); }, 1200);
-  } else {
-    var errs = (d&&d.customerAccessTokenCreate&&d.customerAccessTokenCreate.customerUserErrors)||[];
-    var msg = errs[0] ? errs[0].message : 'Sign in failed. Please check your credentials.';
-    if (status) { status.style.display='block'; status.style.background='#fff3f3'; status.style.color='#c8102e'; status.textContent=msg; }
-  }
-}
+function doShopifyLogin() { renderLogin(); }
 
 function renderRegister() {
   document.title = 'Create Account — Happy Travelers';
+  window.open('https://'+SHOP+'/account/register', '_blank');
   document.getElementById('app-view').innerHTML =
     '<div class="coll-banner" style="background:linear-gradient(110deg,#0a2540 0%,#1a6fc4 100%)">'
       +'<div class="coll-banner-bc"><a href="#" onclick="navigate()">Home</a> &rsaquo; Create Account</div>'
       +'<h1>Create Account</h1>'
-      +'<p>Join Happy Travelers to track orders and save your preferences.</p>'
     +'</div>'
-    +'<div style="max-width:480px;margin:0 auto;padding:48px 24px;">'
-      +'<div style="background:#fff;border:1px solid #e8ecf0;border-radius:8px;padding:36px 32px;box-shadow:0 2px 16px rgba(0,0,0,.06);">'
-        +'<h2 style="font-size:20px;font-weight:800;color:#0a2540;margin-bottom:6px;">Create your account</h2>'
-        +'<p style="font-size:12px;color:#888;margin-bottom:28px;">Fill in your details to get started with Happy Travelers.</p>'
-        +'<div style="display:flex;flex-direction:column;gap:14px;">'
-          +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">'
-            +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">First Name</label>'
-            +'<input type="text" id="reg-first" placeholder="Jane" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
-            +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Last Name</label>'
-            +'<input type="text" id="reg-last" placeholder="Smith" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
-          +'</div>'
-          +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Email Address</label>'
-          +'<input type="email" id="reg-email" placeholder="your@email.com" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
-          +'<div><label style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;display:block;margin-bottom:5px;">Password</label>'
-          +'<input type="password" id="reg-pass" placeholder="Min. 5 characters" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor=\x27#1a6fc4\x27" onblur="this.style.borderColor=\x27#ddd\x27"></div>'
-          +'<button onclick="doShopifyRegister()" style="padding:13px;background:#0a2540;color:#fff;border:none;border-radius:3px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background .2s;width:100%;">Create Account &rarr;</button>'
-          +'<div id="reg-status" style="display:none;padding:10px 14px;border-radius:4px;font-size:12px;font-weight:600;text-align:center;"></div>'
-        +'</div>'
-        +'<div style="border-top:1px solid #f0f0f0;margin-top:24px;padding-top:20px;text-align:center;">'
+    +'<div style="max-width:480px;margin:0 auto;padding:48px 24px;text-align:center;">'
+      +'<div style="background:#fff;border:1px solid #e8ecf0;border-radius:8px;padding:40px 32px;box-shadow:0 2px 16px rgba(0,0,0,.06);">'
+        +'<div style="font-size:48px;margin-bottom:16px;">&#x1F4DD;</div>'
+        +'<h2 style="font-size:20px;font-weight:800;color:#0a2540;margin-bottom:10px;">Create Your Account</h2>'
+        +'<p style="font-size:13px;color:#666;line-height:1.7;margin-bottom:28px;">A new tab has opened to the secure Shopify registration page. If it didn\x27t open, click the button below.</p>'
+        +'<a href="https://'+SHOP+'/account/register" target="_blank" style="display:inline-block;width:100%;padding:14px;background:#0a2540;color:#fff;border-radius:3px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;box-sizing:border-box;margin-bottom:20px;">Create Account &rarr;</a>'
+        +'<div style="border-top:1px solid #f0f0f0;padding-top:20px;">'
           +'<p style="font-size:12px;color:#888;margin-bottom:12px;">Already have an account?</p>'
           +'<a href="#login" style="display:inline-block;padding:10px 24px;border:1.5px solid #0a2540;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0a2540;text-decoration:none;">Sign In</a>'
         +'</div>'
@@ -1330,27 +1288,7 @@ function renderRegister() {
     +'</div>';
 }
 
-async function doShopifyRegister() {
-  var first = (document.getElementById('reg-first')||{}).value||'';
-  var last  = (document.getElementById('reg-last')||{}).value||'';
-  var email = (document.getElementById('reg-email')||{}).value||'';
-  var pass  = (document.getElementById('reg-pass')||{}).value||'';
-  var status = document.getElementById('reg-status');
-  if (!email || !pass || pass.length < 5) {
-    if (status) { status.style.display='block'; status.style.background='#fff3f3'; status.style.color='#c8102e'; status.textContent='Please fill in all fields. Password must be at least 5 characters.'; }
-    return;
-  }
-  var q = 'mutation($input:CustomerCreateInput!){customerCreate(input:$input){customer{id email}customerUserErrors{message}}}';
-  var d = await gql(q, {input:{firstName:first,lastName:last,email:email,password:pass,acceptsMarketing:false}});
-  if (d && d.customerCreate && d.customerCreate.customer) {
-    if (status) { status.style.display='block'; status.style.background='#f0fff4'; status.style.color='#1a7a30'; status.textContent='\u2713 Account created! Please sign in.'; }
-    setTimeout(function(){ navigate('login'); }, 1500);
-  } else {
-    var errs = (d&&d.customerCreate&&d.customerCreate.customerUserErrors)||[];
-    var msg = errs[0] ? errs[0].message : 'Registration failed. Please try again.';
-    if (status) { status.style.display='block'; status.style.background='#fff3f3'; status.style.color='#c8102e'; status.textContent=msg; }
-  }
-}
+function doShopifyRegister() { renderRegister(); }
 
 /* ════════════════════════════════
    ABOUT US PAGE
@@ -1892,18 +1830,7 @@ function toggleMobileSub(id){
   if(!isOpen) el.classList.add('open');
 }
 
-/* ════════════════════════════════
-   API TEST
-════════════════════════════════ */
-async function testAPI(){
-  var el=document.getElementById('api-status');
-  var d=await gql('{shop{name}}');
-  if(d&&d.shop){
-    if(el){el.style.display='';el.textContent='&#x25CF; Shopify Connected';el.className='api-status';}
-  } else {
-    if(el){el.style.display='';el.textContent='&#x25CF; Shopify Offline';el.className='api-status error';}
-  }
-}
+/* testAPI removed */
 
 /* ════════════════════════════════
    INIT

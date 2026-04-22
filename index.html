@@ -795,6 +795,35 @@ var COL_DESCS = {
   'all':'Browse all USA souvenirs and licensed merchandise.'
 };
 
+/* ── Category keyword filters — products must contain at least one keyword in title ── */
+var CATEGORY_FILTERS = {
+  'fdny':               ['fdny','fire department','fireman','firefighter'],
+  'nypd':               ['nypd','new york police'],
+  'nasa':               ['nasa'],
+  'army':               ['army','military','u.s. army','us army','united states army'],
+  'mlb':                ['mlb','baseball','yankees','mets','red sox','dodgers','cubs','cardinals','braves','astros','phillies','giants','padres','mariners','nationals','pirates','rangers','tigers','reds','brewers','twins','athletics','orioles','royals','white sox','indians','guardians','marlins','rays','blue jays'],
+  'hollywood':          ['hollywood','movie','film','cinema','warner','disney','universal'],
+  'christmas':          ['christmas','holiday','xmas','ornament','santa','snowman','reindeer','festive'],
+  'fifa-world-cup-2026':['fifa','world cup','soccer','football'],
+  'i-love-ny':          ['i love ny','love ny','i ❤ ny'],
+  'us-cities':          ['new york','california','florida','texas','chicago','boston','miami','seattle','las vegas','washington','san francisco','los angeles','new orleans','nashville','atlanta'],
+  'toys-collectibles':  ['toy','collectible','figurine','bobblehead','action figure','doll','statue','replica','model'],
+  'kitchen-drinkware':  ['mug','cup','shot glass','bottle','tumbler','flask','drinkware','kitchen','glass','stein'],
+  'accessories':        ['keychain','key chain','pin','patch','badge','magnet','bag','tote','lanyard','wallet','bracelet','necklace'],
+  'apparel':            ['shirt','t-shirt','tee','hoodie','sweatshirt','jacket','hat','cap','beanie','sweater','vest','jersey']
+};
+
+/* Filter products so only category-relevant ones show */
+function filterByCategory(prods, handle) {
+  var keywords = CATEGORY_FILTERS[handle];
+  if (!keywords) return prods; /* no filter for broad/all categories */
+  return prods.filter(function(e){
+    var node = e.node || e;
+    var title = (node.title || '').toLowerCase();
+    return keywords.some(function(kw){ return title.indexOf(kw) !== -1; });
+  });
+}
+
 /* ── Virtual "search handles" — no Shopify collection needed, uses search API ── */
 /* ── Virtual "search handles" — no Shopify collection needed, uses search API ── */
 var SEARCH_HANDLES = {
@@ -1117,26 +1146,23 @@ async function loadCollProducts(handle, cursor, append) {
 
   if (sh) {
     /* Virtual handle — first try the exact collection handle in Shopify */
-    data = await gql('{collectionByHandle(handle:"'+handle+'"){products(first:24,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}}');
+    data = await gql('{collectionByHandle(handle:"'+handle+'"){products(first:48,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}}');
     if (data && data.collectionByHandle && data.collectionByHandle.products && data.collectionByHandle.products.edges.length) {
-      prods = data.collectionByHandle.products.edges;
+      prods = filterByCategory(data.collectionByHandle.products.edges, handle);
       pi    = data.collectionByHandle.products.pageInfo;
     } else {
-      /* Fallback: search with parent category + label for precision */
-      var parentLabel = sh.parent ? sh.parent.replace(/-/g,' ') : '';
-      var subLabel    = sh.l || '';
-      /* Use quoted phrase for exact match, then also try individual words */
-      var sq = '{search(query:"\"'+subLabel+'\"",types:PRODUCT,first:24'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
+      /* Fallback: search with quoted exact phrase */
+      var subLabel = sh.l || '';
+      var sq = '{search(query:"\"'+subLabel+'\"",types:PRODUCT,first:48'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
       data = await gql(sq);
       if (data && data.search && data.search.edges.length) {
-        prods = data.search.edges;
+        prods = filterByCategory(data.search.edges, handle);
         pi    = data.search.pageInfo;
       } else {
-        /* Second fallback: use the original query keywords */
-        var sq2 = '{search(query:"'+sh.q+'",types:PRODUCT,first:24'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
+        var sq2 = '{search(query:"'+sh.q+'",types:PRODUCT,first:48'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
         data = await gql(sq2);
         if (data && data.search && data.search.edges.length) {
-          prods = data.search.edges;
+          prods = filterByCategory(data.search.edges, handle);
           pi    = data.search.pageInfo;
         }
       }
@@ -1148,19 +1174,19 @@ async function loadCollProducts(handle, cursor, append) {
       pi    = data.products.pageInfo;
     }
   } else {
-    /* Try collectionByHandle first */
-    data = await gql('{collectionByHandle(handle:"'+handle+'"){products(first:24,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}}');
+    /* Try collectionByHandle first — fetch extra to account for filtering */
+    data = await gql('{collectionByHandle(handle:"'+handle+'"){products(first:48,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}}');
     if (data && data.collectionByHandle && data.collectionByHandle.products && data.collectionByHandle.products.edges.length) {
-      prods = data.collectionByHandle.products.edges;
+      prods = filterByCategory(data.collectionByHandle.products.edges, handle);
       pi    = data.collectionByHandle.products.pageInfo;
     } else {
-      /* Fallback: search by label */
+      /* Fallback: search by label with strict keyword */
       var cfg2 = COLS.find(function(c){return c.h===handle;});
       var term = cfg2 ? cfg2.l : cap(handle);
-      var sq2  = '{search(query:"'+term+'",types:PRODUCT,first:24'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
+      var sq2  = '{search(query:"\"'+term+'\"",types:PRODUCT,first:48'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
       var sd   = await gql(sq2);
       if (sd && sd.search && sd.search.edges.length) {
-        prods = sd.search.edges;
+        prods = filterByCategory(sd.search.edges, handle);
         pi    = sd.search.pageInfo;
       }
     }

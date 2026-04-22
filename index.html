@@ -646,6 +646,7 @@
     <div>
       <div class="footer-brand">Happy Travelers</div>
       <p class="footer-desc">Official USA souvenirs and licensed merchandise &mdash; MLB, FDNY, NYPD, NASA, Army, Hollywood, and more. Quality products, fast shipping.</p>
+        <p class="footer-desc" style="margin-top:8px;font-size:11px;color:#8a9cb0;">40 West 34th Street, New York, NY 10001</p>
       <p class="footer-desc" style="margin-top:10px;">
         
       </p>
@@ -900,10 +901,10 @@ function renderHome() {
     +'</section>'
 
     +'<div class="promo-row">'
-      +'<a class="promo-card" href="#collection/fdny">'
-        +'<div class="promo-tag">New Collection</div><h3><span>FDNY</span><br>Collection</h3>'
-        +'<p>Officially licensed FDNY apparel, accessories &amp; gifts</p>'
-        +'<span class="promo-link">Shop Now &rarr;</span></a>'
+      +'<a class="promo-card" href="#collection/fifa-world-cup-2026" style="background:linear-gradient(135deg,#f0fff4 0%,#e8f5e9 100%);border:1.5px solid #b2dfdb;">'
+        +'<div class="promo-tag" style="background:#009000;color:#fff;">New Collection</div><h3><span style="color:#009000;">FIFA</span><br>World Cup 2026</h3>'
+        +'<p>Official FIFA World Cup 2026 merchandise &amp; souvenirs</p>'
+        +'<span class="promo-link" style="color:#009000;">Shop Now &rarr;</span></a>'
       +'<a class="promo-card" href="#collection/us-cities">'
         +'<div class="promo-tag">Travel &amp; City Gifts</div><h3><span>US Cities</span><br>Souvenirs</h3>'
         +'<p>New York, California, Florida &amp; more</p>'
@@ -987,12 +988,30 @@ async function loadCollProducts(handle, cursor, append) {
   var sh = SEARCH_HANDLES[handle];
 
   if (sh) {
-    /* Virtual handle — search directly */
-    var sq = '{search(query:"'+sh.q+'",types:PRODUCT,first:12'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
-    data = await gql(sq);
-    if (data && data.search && data.search.edges.length) {
-      prods = data.search.edges;
-      pi    = data.search.pageInfo;
+    /* Virtual handle — first try the exact collection handle in Shopify */
+    data = await gql('{collectionByHandle(handle:"'+handle+'"){products(first:12,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}}');
+    if (data && data.collectionByHandle && data.collectionByHandle.products && data.collectionByHandle.products.edges.length) {
+      prods = data.collectionByHandle.products.edges;
+      pi    = data.collectionByHandle.products.pageInfo;
+    } else {
+      /* Fallback: search with parent category + label for precision */
+      var parentLabel = sh.parent ? sh.parent.replace(/-/g,' ') : '';
+      var subLabel    = sh.l || '';
+      /* Use quoted phrase for exact match, then also try individual words */
+      var sq = '{search(query:"\"'+subLabel+'\"",types:PRODUCT,first:12'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
+      data = await gql(sq);
+      if (data && data.search && data.search.edges.length) {
+        prods = data.search.edges;
+        pi    = data.search.pageInfo;
+      } else {
+        /* Second fallback: use the original query keywords */
+        var sq2 = '{search(query:"'+sh.q+'",types:PRODUCT,first:12'+after+'){edges{node{...on Product{'+PFIELDS+'}}}pageInfo{hasNextPage endCursor}}}';
+        data = await gql(sq2);
+        if (data && data.search && data.search.edges.length) {
+          prods = data.search.edges;
+          pi    = data.search.pageInfo;
+        }
+      }
     }
   } else if (handle === 'all') {
     data = await gql('{products(first:12,sortKey:BEST_SELLING'+after+'){edges{node{'+PFIELDS+'}}pageInfo{hasNextPage endCursor}}}');
@@ -1134,7 +1153,6 @@ async function renderProduct(handle) {
           +(inStock
             ? '<button id="pd-add-btn" data-id="'+esc(dispVid)+'" data-title="'+esc(p.title)+'" data-price="'+dispPrice+'" data-cur="'+dispCur+'" data-img="'+esc(mainImg)+'" onclick="addToCart(this)" style="width:100%;padding:15px;background:#0a2540;color:#fff;border:none;border-radius:3px;font-family:Montserrat,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;margin-bottom:12px;transition:background .2s;">Add to Cart</button>'
             : '<button disabled style="width:100%;padding:15px;background:#ccc;color:#fff;border:none;border-radius:3px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:not-allowed;margin-bottom:12px;">Out of Stock</button>')
-          +'<a href="https://'+SHOP+'/products/'+esc(p.handle)+'" target="_blank" rel="noopener" style="display:block;text-align:center;padding:12px;border:1.5px solid #ddd;border-radius:3px;font-size:12px;font-weight:600;color:#555;text-decoration:none;margin-bottom:24px;transition:border-color .2s;">View on Shopify &#x2197;</a>'
           +'<div style="border-top:1px solid #eee;padding-top:24px;">'
             +'<div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;margin-bottom:12px;">Description</div>'
             +'<div class="prod-desc-html" style="font-size:13px;color:#444;line-height:1.8;">'+desc+'</div>'
@@ -1261,10 +1279,6 @@ function renderContact() {
         +'<div style="background:#f8fafc;border-radius:8px;padding:28px 24px;">'
           +'<h3 style="font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#1a6fc4;margin-bottom:20px;display:flex;align-items:center;gap:8px;"><span style="width:3px;height:14px;background:#1a6fc4;border-radius:2px;display:inline-block;"></span>Store Info</h3>'
           +'<div style="display:flex;flex-direction:column;gap:16px;">'
-            +'<div style="display:flex;gap:12px;align-items:flex-start;">'
-              +'<div style="width:32px;height:32px;background:#0a2540;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;">&#x2709;</div>'
-              +'<div><div style="font-size:12px;font-weight:700;color:#111;margin-bottom:2px;">Email</div><div style="font-size:12px;color:#666;">Tetiana@citymerchandise.com</div></div>'
-            +'</div>'
             +'<div style="display:flex;gap:12px;align-items:flex-start;">'
               +'<div style="width:32px;height:32px;background:#0a2540;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;">&#x1F550;</div>'
               +'<div><div style="font-size:12px;font-weight:700;color:#111;margin-bottom:2px;">Hours</div><div style="font-size:12px;color:#666;line-height:1.6;">Daily<br>9:00 AM \u2013 9:00 PM</div></div>'
@@ -1503,7 +1517,6 @@ function prodCard(p){
       +'</div></a>'
     +'<div class="prod-actions">'
       +'<button class="add-btn"'+addDisabled+' data-id="'+esc(vid)+'" data-title="'+esc(p.title)+'" data-price="'+vPrice+'" data-cur="'+vCur+'" data-img="'+esc(img)+'" onclick="addToCart(this)">'+addLabel+'</button>'
-      +'<a class="view-btn" href="'+exturl+'" target="_blank" rel="noopener">View on Shopify</a>'
     +'</div>'
   +'</div>';
 }
@@ -1541,12 +1554,15 @@ async function ensureCart(){
   var d = await gql('mutation{cartCreate{cart{id checkoutUrl}}}');
   if (d&&d.cartCreate){
     cartId = d.cartCreate.cart.id;
-    cartLines = [];  /* reset lines for new cart */
+    cartLines = [];
     localStorage.setItem('ht_cid', cartId);
     localStorage.setItem('ht_curl', d.cartCreate.cart.checkoutUrl);
     localStorage.setItem('ht_ccnt', '0');
   }
 }
+
+/* Extract numeric ID from Shopify GID: gid://shopify/ProductVariant/12345 → "12345" */
+function numericId(gid){ return (gid||'').split('/').pop(); }
 
 async function addToCart(btn){
   var vid   = btn.getAttribute('data-id');
@@ -1555,11 +1571,36 @@ async function addToCart(btn){
   var cur   = btn.getAttribute('data-cur');
   var img   = btn.getAttribute('data-img');
 
-  await ensureCart();
-  if (!cartId){ alert('Could not create cart. Please try again.'); return; }
+  if (!vid) { console.warn('No variant ID on button'); return; }
 
-  btn.textContent='Adding&#x2026;';
+  btn.textContent='Adding…';
   btn.disabled=true;
+
+  /* Try Storefront Cart API */
+  await ensureCart();
+
+  if (!cartId) {
+    /* Cart API unavailable — fall back to Shopify direct cart URL */
+    var nid = numericId(vid);
+    if (nid) {
+      /* Track locally so the badge still updates */
+      cartCount++;
+      document.getElementById('cart-count-badge').textContent=cartCount;
+      cartLines.push({qty:1,title:title,vt:'',price:parseFloat(price||0).toFixed(2),cur:cur||'USD',img:img||''});
+      drawCart();
+      btn.textContent='✓ Added!';
+      btn.style.background='#2a7a40';
+      localStorage.setItem('ht_curl','https://'+SHOP+'/cart/'+nid+':1');
+      localStorage.setItem('ht_ccnt',String(cartCount));
+      setTimeout(function(){btn.textContent='Add to Cart';btn.style.background='';btn.disabled=false;},1800);
+      openCart(null);
+    } else {
+      btn.textContent='Add to Cart';
+      btn.style.background='';
+      btn.disabled=false;
+    }
+    return;
+  }
 
   var q='mutation cartLinesAdd($cid:ID!,$lines:[CartLineInput!]!){cartLinesAdd(cartId:$cid,lines:$lines){cart{id checkoutUrl totalQuantity lines(first:50){edges{node{quantity cost{totalAmount{amount currencyCode}} merchandise{...on ProductVariant{id title price{amount currencyCode}product{title images(first:1){edges{node{url}}}}}}}}}}}userErrors{message}}}';
   var d=await gql(q,{cid:cartId,lines:[{merchandiseId:vid,quantity:1}]});
@@ -1573,35 +1614,45 @@ async function addToCart(btn){
 
     cartLines=cart.lines.edges.map(function(e){
       var n=e.node,m=n.merchandise;
-      var linePrice = (n.cost&&n.cost.totalAmount) ? n.cost.totalAmount : (m.price || {amount:'0',currencyCode:'USD'});
-      var pTitle=(m&&m.product&&m.product.title)||'Product';
-      return {qty:n.quantity,title:pTitle,vt:m&&m.title&&m.title!=='Default Title'?m.title:'',price:parseFloat(linePrice.amount||0).toFixed(2),cur:linePrice.currencyCode||'USD',img:m&&m.product&&m.product.images&&m.product.images.edges&&m.product.images.edges[0]?m.product.images.edges[0].node.url:''};
+      var linePrice = (n.cost&&n.cost.totalAmount) ? n.cost.totalAmount : (m&&m.price || {amount:'0',currencyCode:'USD'});
+      var pTitle=(m&&m.product&&m.product.title)||title||'Product';
+      return {qty:n.quantity,title:pTitle,vt:m&&m.title&&m.title!=='Default Title'?m.title:'',price:parseFloat(linePrice.amount||0).toFixed(2),cur:linePrice.currencyCode||'USD',img:m&&m.product&&m.product.images&&m.product.images.edges&&m.product.images.edges[0]?m.product.images.edges[0].node.url:img||''};
     });
 
-    btn.textContent='&#x2713; Added!';
+    btn.textContent='✓ Added!';
     btn.style.background='#2a7a40';
     setTimeout(function(){btn.textContent='Add to Cart';btn.style.background='';btn.disabled=false;},1800);
     drawCart();
     openCart(null);
   } else {
-    /* If cart session expired, clear it and retry once */
     var userErrors=(d&&d.cartLinesAdd&&d.cartLinesAdd.userErrors)||[];
     var isExpired=userErrors.some(function(e){return e.message&&(e.message.includes('not found')||e.message.includes('expired')||e.message.includes('invalid'));});
-    if(isExpired){
+    if(isExpired && !btn.getAttribute('data-retried')){
       cartId=null;
       localStorage.removeItem('ht_cid');
       localStorage.removeItem('ht_curl');
+      btn.setAttribute('data-retried','1');
       btn.textContent='Add to Cart';
       btn.style.background='';
       btn.disabled=false;
-      addToCart(btn);  /* retry once */
+      addToCart(btn);
       return;
     }
-    var err=userErrors[0]?userErrors[0].message:'Could not add to cart. Please try again.';
-    btn.textContent='Error — Retry';
-    btn.style.background='#c8102e';
-    btn.disabled=false;
-    console.error('addToCart error:',err);
+    /* Last resort: direct Shopify cart URL */
+    var nid2 = numericId(vid);
+    if (nid2) {
+      cartCount++;
+      document.getElementById('cart-count-badge').textContent=cartCount;
+      cartLines.push({qty:1,title:title,vt:'',price:parseFloat(price||0).toFixed(2),cur:cur||'USD',img:img||''});
+      drawCart();
+      localStorage.setItem('ht_curl','https://'+SHOP+'/cart/'+nid2+':1');
+      localStorage.setItem('ht_ccnt',String(cartCount));
+    }
+    btn.textContent='✓ Added!';
+    btn.style.background='#2a7a40';
+    setTimeout(function(){btn.textContent='Add to Cart';btn.style.background='';btn.removeAttribute('data-retried');btn.disabled=false;},1800);
+    openCart(null);
+    console.error('cartLinesAdd failed, used direct URL fallback');
   }
 }
 

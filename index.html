@@ -1834,7 +1834,7 @@ async function addToCart(btn){
       var n=e.node,m=n.merchandise;
       var linePrice = (n.cost&&n.cost.totalAmount) ? n.cost.totalAmount : (m&&m.price || {amount:'0',currencyCode:'USD'});
       var pTitle=(m&&m.product&&m.product.title)||title||'Product';
-      return {lineId:n.id,qty:n.quantity,title:pTitle,vt:m&&m.title&&m.title!=='Default Title'?m.title:'',price:parseFloat(linePrice.amount||0).toFixed(2),cur:linePrice.currencyCode||'USD',img:m&&m.product&&m.product.images&&m.product.images.edges&&m.product.images.edges[0]?m.product.images.edges[0].node.url:img||''};
+      return {lineId:n.id,variantId:m&&m.id?m.id:'',qty:n.quantity,title:pTitle,vt:m&&m.title&&m.title!=='Default Title'?m.title:'',price:parseFloat(linePrice.amount||0).toFixed(2),cur:linePrice.currencyCode||'USD',img:m&&m.product&&m.product.images&&m.product.images.edges&&m.product.images.edges[0]?m.product.images.edges[0].node.url:img||''};
     });
 
     btn.textContent='✓ Added!';
@@ -1886,7 +1886,7 @@ async function removeFromCart(lineId, idx) {
       cartLines=cart.lines.edges.map(function(e){
         var n=e.node,m=n.merchandise;
         var lp=(n.cost&&n.cost.totalAmount)?n.cost.totalAmount:(m&&m.price||{amount:'0',currencyCode:'USD'});
-        return {lineId:n.id,qty:n.quantity,title:(m&&m.product&&m.product.title)||'Product',vt:m&&m.title&&m.title!=='Default Title'?m.title:'',price:parseFloat(lp.amount||0).toFixed(2),cur:lp.currencyCode||'USD',img:m&&m.product&&m.product.images&&m.product.images.edges&&m.product.images.edges[0]?m.product.images.edges[0].node.url:''};
+        return {lineId:n.id,variantId:m&&m.id?m.id:'',qty:n.quantity,title:(m&&m.product&&m.product.title)||'Product',vt:m&&m.title&&m.title!=='Default Title'?m.title:'',price:parseFloat(lp.amount||0).toFixed(2),cur:lp.currencyCode||'USD',img:m&&m.product&&m.product.images&&m.product.images.edges&&m.product.images.edges[0]?m.product.images.edges[0].node.url:''};
       });
       drawCart();
       return;
@@ -1936,11 +1936,26 @@ function goToCheckout(){
   if(!cartLines.length){ return; }
   var u=localStorage.getItem('ht_curl');
   if(u && (u.indexOf('/checkout')!==-1 || u.indexOf('/cart/c/')!==-1)){
-    /* Real Shopify checkout URL from Cart API — navigate in same tab */
-    window.location.href=u;
+    /* Force the hostname to countrydreamshop.myshopify.com so checkout
+       always works regardless of which custom domain Shopify has set as primary */
+    try {
+      var parsed = new URL(u);
+      parsed.hostname = SHOP;
+      u = parsed.toString();
+    } catch(e){}
+    window.location.href = u;
+  } else if(cartLines.length > 0) {
+    /* Build a /cart/add URL from tracked variant IDs */
+    var items = cartLines.map(function(l){
+      var vid = l.variantId || '';
+      var nid = vid ? vid.split('/').pop() : '';
+      return nid ? nid+':'+l.qty : '';
+    }).filter(Boolean).join(',');
+    window.location.href = items
+      ? 'https://'+SHOP+'/cart/'+items
+      : 'https://'+SHOP+'/cart';
   } else {
-    /* Fallback: send customer to Shopify cart page */
-    window.location.href='https://'+SHOP+'/cart';
+    window.location.href = 'https://'+SHOP+'/cart';
   }
 }
 

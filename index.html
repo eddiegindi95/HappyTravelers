@@ -1003,6 +1003,13 @@ async function syncCartFromShopify() {
  */
 function router() {
  window.scrollTo(0,0);
+ /* Path-based routing: /products/:handle (for Google crawling) */
+ var pathname = window.location.pathname;
+ if (pathname.startsWith('/products/')) {
+  var handle = pathname.replace(/^\/products\//, '').replace(/\/$/, '');
+  if (handle) { renderProduct(handle); return; }
+ }
+ /* Hash-based routing (legacy + all non-product pages) */
  var hash = location.hash.replace(/^#\/?/,'');
  /* Highlight active nav link */
  document.querySelectorAll('.nav-link').forEach(function(el){el.classList.remove('active');});
@@ -1020,8 +1027,30 @@ function router() {
  else renderHome();
 }
 window.addEventListener('hashchange', router);
+window.addEventListener('popstate', function() { router(); });
 
-function navigate(h){ location.hash = h || ''; }
+/* Click interceptor: /products/* links stay in SPA without full reload */
+document.addEventListener('click', function(e) {
+ var a = e.target.closest('a[href^="/products/"]');
+ if (a) {
+  e.preventDefault();
+  var handle = a.getAttribute('href').replace(/^\/products\//, '');
+  history.pushState({}, '', '/products/' + handle);
+  renderProduct(handle);
+  window.scrollTo(0,0);
+ }
+});
+
+function navigate(h){
+ if (h && h.startsWith('product/')) {
+  var handle = h.replace('product/', '');
+  history.pushState({}, '', '/products/' + handle);
+  renderProduct(handle);
+  window.scrollTo(0,0);
+  return;
+ }
+ location.hash = h || '';
+}
 
 /* 
  HOME VIEW
@@ -1792,7 +1821,7 @@ function prodCard(p){
  var vPrice = variantPrice ? parseFloat(variantPrice.amount||price).toFixed(2) : price;
  var vCur = variantPrice ? (variantPrice.currencyCode||cur) : cur;
 
- var purl = '#product/'+p.handle;
+ var purl = '/products/'+p.handle;
  var exturl = 'https://'+SHOP+'/products/'+p.handle;
  var ihtml = img
  ? '<img src="'+img+'" alt="'+esc(alt)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:10px;">'
@@ -1822,7 +1851,7 @@ function popCard(p){
  var imgN = p.images && p.images.edges && p.images.edges[0] ? p.images.edges[0].node : null;
  var img = imgN ? imgN.url : '';
  var alt = imgN ? (imgN.altText||p.title) : p.title;
- var purl = '#product/'+p.handle;
+ var purl = '/products/'+p.handle;
  var ihtml = img
  ? '<img src="'+img+'" alt="'+esc(alt)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:14px;">'
  : '<div class="img-ph">'+esc(p.title)+'</div>';

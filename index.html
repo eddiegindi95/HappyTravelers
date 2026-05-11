@@ -1207,11 +1207,9 @@ function renderCollection(handle) {
 
  document.getElementById('app-view').innerHTML =
  heroImg
- +'<div class="coll-banner '+bannerClass+'">'
- +'<div class="coll-banner-bc">'+breadcrumb+'</div>'
- +'<h1>'+emoji+' '+label+'</h1>'
- +'<p>'+desc+'</p>'
- +'</div>'
+ +(heroImg
+  ? '<div class="coll-banner-bc" style="padding:8px 24px;font-size:12px;color:#666;background:#f8f9fa;border-bottom:1px solid #eee;">'+breadcrumb+'</div>'
+  : '<div class="coll-banner '+bannerClass+'">'+bgImg+'<div class="coll-banner-bc">'+breadcrumb+'</div><h1>'+emoji+' '+label+'</h1><p>'+desc+'</p></div>')
  +'<div class="filter-bar">'
  +'<span class="filter-label">Sort:</span>'
  +'<select class="filter-sort" id="sort-select" onchange="applyCollSort(this.value,\''+handle+'\')" >'

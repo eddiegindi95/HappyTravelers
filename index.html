@@ -1169,7 +1169,7 @@ function renderCollection(handle) {
  label = sh.l;
  emoji = sh.e || '';
  desc = 'Browse all ' + sh.l + ' products.';
- bannerClass= handle; /* use specific handle for CSS color */
+ bannerClass= handle;
  if (sh.parent) {
  var pcfg = COLS.find(function(c){return c.h===sh.parent;});
  var pLabel = pcfg ? pcfg.l : cap(sh.parent);
@@ -1185,24 +1185,25 @@ function renderCollection(handle) {
  breadcrumb = '<a href="javascript:void(0)" onclick="navigate()">Home</a> &rsaquo; '+label;
  }
 
- /* Update page title */
  document.title = label + ' — Happy Travelers';
 
  /* Reset pagination state on new collection */
  pageCursors = [null]; currentPage = 0; collPriceMi = 0; collPriceMa = 999999; collSort = 'BEST_SELLING';
  var bgImg = circleImages[handle] ? '<img class="coll-banner-bg" src="'+circleImages[handle]+'" alt="">' : '';
+
+ /* Build subcategory buttons BEFORE innerHTML so subcatHTML is ready */
+ var subcats = Object.keys(SEARCH_HANDLES).filter(function(k){ return SEARCH_HANDLES[k].parent === handle; });
+ var subcatHTML = subcats.length ? ('<span class="filter-label" style="margin-left:8px;">Category:</span><div class="price-btns">'
+  + '<button class="price-btn active" onclick="activeCatBtn(this)" style="min-width:60px;">All</button>'
+  + subcats.map(function(k){ return '<button class="price-btn" onclick="navigate(\'collection/'+k+'\');activeCatBtn(this);" >'+SEARCH_HANDLES[k].l+'</button>'; }).join('')
+  + '</div>') : '';
+
  document.getElementById('app-view').innerHTML =
  '<div class="coll-banner '+bannerClass+'">'+bgImg
  +'<div class="coll-banner-bc">'+breadcrumb+'</div>'
  +'<h1>'+emoji+' '+label+'</h1>'
  +'<p>'+desc+'</p>'
  +'</div>'
- /* Build subcategory buttons */
- var subcats = Object.keys(SEARCH_HANDLES).filter(function(k){ return SEARCH_HANDLES[k].parent === handle; });
- var subcatHTML = subcats.length ? ('<span class="filter-label" style="margin-left:8px;">Category:</span><div class="price-btns">'
-  + '<button class="price-btn active" onclick="activeCatBtn(this)" style="min-width:60px;">All</button>'
-  + subcats.map(function(k){ return '<button class="price-btn" onclick="navigate(\'collection/'+k+'\');activeCatBtn(this);" >'+SEARCH_HANDLES[k].l+'</button>'; }).join('')
-  + '</div>') : '';
  +'<div class="filter-bar">'
  +'<span class="filter-label">Sort:</span>'
  +'<select class="filter-sort" id="sort-select" onchange="applyCollSort(this.value,\''+handle+'\')" >'
@@ -1213,11 +1214,11 @@ function renderCollection(handle) {
  +'</select>'
  +'<span class="filter-label" style="margin-left:8px;">Price:</span>'
  +'<div class="price-btns">'
- +'<button class="price-btn active" onclick="applyCollPrice(0,999999,this,\''+handle+'\')" >All</button>'
- +'<button class="price-btn" onclick="applyCollPrice(0,10,this,\''+handle+'\')" >Under $10</button>'
- +'<button class="price-btn" onclick="applyCollPrice(10,25,this,\''+handle+'\')" >$10–$25</button>'
- +'<button class="price-btn" onclick="applyCollPrice(25,50,this,\''+handle+'\')" >$25–$50</button>'
- +'<button class="price-btn" onclick="applyCollPrice(50,999999,this,\''+handle+'\')" >$50+</button>'
+ +'<button class="price-btn active" onclick="applyCollPrice(0,999999,this,\''+handle+'\')">All</button>'
+ +'<button class="price-btn" onclick="applyCollPrice(0,10,this,\''+handle+'\')">Under $10</button>'
+ +'<button class="price-btn" onclick="applyCollPrice(10,25,this,\''+handle+'\')">$10–25</button>'
+ +'<button class="price-btn" onclick="applyCollPrice(25,50,this,\''+handle+'\')">$25–50</button>'
+ +'<button class="price-btn" onclick="applyCollPrice(50,999999,this,\''+handle+'\')">$50+</button>'
  +'</div>'
  +subcatHTML
  +'</div>'

@@ -1852,9 +1852,12 @@ async function fetchPopular(){
  */
 function setCircleImg(handle, label, url) {
  if (!url) return;
- circleImages[handle] = url;
+ /* Don't overwrite pre-set custom circle images */
+ if (!circleImages[handle]) circleImages[handle] = url;
  var el = document.getElementById('ci-'+handle);
- if (el) el.innerHTML = '<img src="'+url+'" alt="'+label+'" style="width:100%;height:100%;object-fit:cover;">';
+ if (el && !el.querySelector('img[data-custom]')) {
+  el.innerHTML = '<img src="'+circleImages[handle]+'" alt="'+label+'" style="width:100%;height:100%;object-fit:cover;">';
+ }
 }
 
 async function loadCircleImages(){
